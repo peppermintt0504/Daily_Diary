@@ -3,15 +3,22 @@ import styled from "styled-components";
 
 const Text = (props) => {
 
-    const { cursor, font_style, _onClick,margin, bold, color, size, children} = props;
-    const styles = {
-        bold : bold, 
-        color:color,
-        size: size,
-        margin : margin,
-        font_style,
-        cursor,
+    const { F_size, F_color, F_weight, F_style } = props;
 
+    const { cursor } = props
+
+    const { margin } = props
+
+    const { _onClick, children } = props;
+    const styles = {
+        F_size,
+        F_color,
+        F_weight, 
+        F_style,
+
+        margin,
+
+        cursor,
         };
 
     return (
@@ -22,22 +29,27 @@ const Text = (props) => {
 }
 
 Text.defaultProps ={
-    bold : false,
-    color : '#222831',
-    size : '14px',
-    margin : null,
-    _onClick : null,
-    font_style : null,
+    F_size : '14px',
+    F_color : '#222831',
+    F_weight : false,
+    F_style : null,
+
     cursor : null,
 
+    margin : null,
+    
+    _onClick : null,
 };
 
 const P = styled.div`
-    color : ${(props) => props.color};
-    font-size : ${(props) => props.size};
-    font-weight : ${(props) => (props.bold?"600" : "400")};
+    font-size : ${(props) => props.F_size};
+    color : ${(props) => props.F_color};
+    font-weight : ${(props) => (props.F_weight)};
+    font-style: ${(props) => props.F_style};
+
+
+
     margin : ${(props) => props.margin};
-    font-style: ${(props) => props.font_style};
     cursor : ${(props) => props.cursor};
 `;
 
