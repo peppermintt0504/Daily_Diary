@@ -34,6 +34,7 @@ function App() {
         <Route path="/" element={<Main />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
+        
         <Route path="/diarywrite" element={<DiaryWrite />}/>
 
 

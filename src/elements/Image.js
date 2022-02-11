@@ -42,9 +42,9 @@ Image.defaultProps = {
     
     shape: null,
     src: "https://thumb.mt.co.kr/06/2021/03/2021030521582049015_1.jpg/dims/optimize/",
-    size: "500",
-    width : "50%",
-    height : "50%",
+    size: "200",
+    width : null,
+    height : null,
     margin : "5px",
 };
 
@@ -53,6 +53,7 @@ const ImageDefault = styled.div`
     height : ${(props)=> props.height};
     background-image: url("${(props) => props.src}");
     background-size: cover;
+    // border-top-left-radius ;
 `;
 
 const AspectOutter = styled.div`
