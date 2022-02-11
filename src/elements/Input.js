@@ -12,6 +12,9 @@ const Input = (props) => {
     //setting, event category
     const { label, _onChange, _defaultValue, _ref , type, value, placeholder } = props;
 
+    //kind of input
+    const { is_textarea } = props;
+
     //children
     const { children } = props;
 
@@ -24,6 +27,26 @@ const Input = (props) => {
         width,
         height,
         margin
+    }
+
+    if(is_textarea){
+        return (
+            <div>
+
+            <P>{label}</P>
+            <Wrap>
+                <TA
+                rows={rows}
+                onChange = {_onChange}
+                defaultValue={_defaultValue}
+                ref={_ref}
+                type = {type}
+                value={value}
+                placeholder = {placeholder}
+                {...styles}></TA>
+            </Wrap>
+        </div>
+        )
     }
 
     return (
@@ -59,6 +82,8 @@ Input.defaultProps ={
     height : "40px",
     margin : "auto",
 
+    is_textarea : false,
+
 };
 
 const Wrap = styled.div`
@@ -79,6 +104,18 @@ const In = styled.input`
     width : ${props => props.width};
     margin :  ${props => props.margin};;
 `;
+
+const TA = styled.textarea`
+    border : ${props=> props.Border};
+    border-radius : ${props => props.B_radius};
+
+    justify-content : center; 
+    
+    height : ${props => props.height};
+    width : ${props => props.width};
+    margin :  ${props => props.margin};;
+`;
+
 const P = styled.div`
     font-size : 12px;
     margin : 1px

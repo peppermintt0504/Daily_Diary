@@ -52,10 +52,12 @@ function SignUp() {
         <Grid>
             <Header/>
             <Grid is_flex flex_direction="column" align-items="center">
+
                 <Grid justify_content="center" is_flex align-items="center">
                 <Input _ref={idRef} margin="10px" label="ID" width = "25vw"></Input>
                 <Button margin="15px 0 0 0" text="중복체크" width="5vw" height="50px" _onClick={pwdCheck}/>
                 </Grid>
+                
                 <Input _ref={nickRef} margin="10px" label="NickName" width = "30vw"></Input>
                 <Input _ref={pwdRef} margin="10px" label="PassWord" width = "30vw"></Input>
                 <Input _ref={pwdCheckRef} margin="10px" label="CheckPassWord" width = "30vw"></Input>
