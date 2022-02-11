@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 const Text = (props) => {
 
-    const { F_size, F_color, F_weight, F_style } = props;
+    const { F_size, F_color, F_weight, F_style, F_align, } = props;
 
-    const { cursor } = props
+    const { cursor, L_height } = props
 
-    const { margin } = props
+    const { margin,  display} = props
 
     const { _onClick, children } = props;
     const styles = {
@@ -15,7 +15,11 @@ const Text = (props) => {
         F_color,
         F_weight, 
         F_style,
+        F_align,
 
+        L_height,
+
+        display,
         margin,
 
         cursor,
@@ -33,8 +37,12 @@ Text.defaultProps ={
     F_color : '#222831',
     F_weight : false,
     F_style : null,
+    F_align : 'center',
+    
+    L_height : false,
 
     cursor : null,
+    display : false,
 
     margin : null,
     
@@ -45,10 +53,11 @@ const P = styled.div`
     font-size : ${(props) => props.F_size};
     color : ${(props) => props.F_color};
     font-weight : ${(props) => (props.F_weight)};
-    font-style: ${(props) => props.F_style};
+    font-style : ${(props) => props.F_style};
+    text-align : ${(props) => props.align};
+    line-height : ${(props) => props.L_height};
 
-
-
+    display : ${(props) => props.display};
     margin : ${(props) => props.margin};
     cursor : ${(props) => props.cursor};
 `;

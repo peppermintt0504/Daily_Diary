@@ -5,7 +5,7 @@ const Grid = (props) => {
 
     
     //Border category
-    const { B_left, B_right} = props;
+    const { B_left, B_right, border} = props;
 
     //Background category
     const { BG_c} = props;
@@ -27,6 +27,7 @@ const Grid = (props) => {
     const styles = {
         B_left,
         B_right,
+        border,
 
         BG_c,
 
@@ -54,6 +55,8 @@ const Grid = (props) => {
 //default Props value
 Grid.defaultProps ={
     children : null,
+
+    border : false,
 
     is_flex :false,
     flex_direction : "row",
@@ -86,13 +89,14 @@ const GridBox = styled.div`
     margin : ${props => props.margin};
 
     //border
+    border : ${props => props.border};
     border-left : ${props => props.B_left};
     border-right :  ${props => props.B_right};
     
     //background
-    background-color : ${props => props.bg};}
+    background-color : ${props => props.BG_c};}
     
-    /* box-sizing : border-box; */
+box-sizing : border-box;
 
 `;
 

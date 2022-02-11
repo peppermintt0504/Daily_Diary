@@ -12,7 +12,7 @@ import './App.css';
 import { Button, Grid, Input } from "../elements" 
 
 //import Pages
-import Main from "..../pages/Main 
+import Main from "../pages/Main"
 
 function App() {
 

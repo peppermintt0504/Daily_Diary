@@ -10,11 +10,14 @@ const Button = (props) => {
     //Background category
     const { BG_color,   } = props;
     
+    // point
+    const { cursor, } = props;
+
     //font category
-    const { font_color, font_size  } = props;
+    const { font_color, font_size, font_weight  } = props;
     
     //size, position category
-    const { width,height, } = props;
+    const { width, height, } = props;
     
     //event category
     const { _ref , _onClick, disabled, } = props;
@@ -35,6 +38,9 @@ const Button = (props) => {
 
         BG_color,
 
+        cursor,
+
+        font_weight,
         font_color,
         font_size,
 
@@ -57,7 +63,9 @@ Button.defaultProps ={
     height : "50px",
     width : "100px",
     
-
+    cursor : 'pointer',
+    font_weight : false,
+    
     text : null,
     _onClick : false,
     disabled : false,
@@ -71,8 +79,10 @@ const Btn = styled.button`
     
     background-color :  ${props => props.BG_color};
     
+    font_weight :         ${props => props.font_weight};
     font-size :         ${props => props.font_size};
     color :             ${props => props.font_color};
+    cursor :             ${props => props.cursor};
     
     height :            ${props => props.height};
     width :             ${props => props.width};
