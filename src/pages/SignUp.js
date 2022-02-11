@@ -20,11 +20,9 @@ function SignUp() {
     React.useEffect(async() => {
     },[]);
 
-    return {
-
-
-    }
-
+    return (
+        <div>dkdks</div>
+    )
 }
 
 export default SignUp;

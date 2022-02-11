@@ -19,9 +19,11 @@ function ____() {
     React.useEffect(async() => {
     },[]);
 
-    return{
+    return (
 
-    }
+        <div> it's template...</div>
+
+    )
 
 }
 
