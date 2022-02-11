@@ -12,6 +12,9 @@ logo
 Youtube
 
 
+
+
+
 📅 Schedule & Developers
 2022-02-11 ~ 2022-02-17
 Frontend developers
@@ -32,9 +35,9 @@ Redux
 
 📖 Notion & WireFrame & API
 Project Note
-https://climbing-law-501.notion.site/128814132923439b81265970a2e4885c
+https://secretive-nerve-c88.notion.site/e3d8f48497bf4eb28d533bdbbdd2704f
 Swagger UI API
-http://13.124.187.20/swagger/
+
 
 
 
