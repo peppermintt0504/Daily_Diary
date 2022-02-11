@@ -28,7 +28,7 @@ const Header = (props) => {
                     <Button B_radius="10px" Border="1px #fff0 solid" BG_color="#4571eeab" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}></Button>
                 </Grid>
             </Grid>
-            <Grid margin = "70px"/>
+            <Grid margin = "80px"/>
         </React.Fragment>
     );
 

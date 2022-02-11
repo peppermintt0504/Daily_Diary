@@ -21,7 +21,16 @@ function SignUp() {
     },[]);
 
     return (
-        <div>dkdks</div>
+        <Grid>
+            <Header/>
+            <Grid is_flex flex_direction="column" align-items="center">
+                <Input margin="10px" label="ID" width = "30vw"></Input>
+                <Input margin="10px" label="NickName" width = "30vw"></Input>
+                <Input margin="10px" label="PassWord" width = "30vw"></Input>
+                <Input margin="10px" label="CheckPassWord" width = "30vw"></Input>
+                <Button margin="20px" width="15vw" text="Signup" />
+            </Grid>
+        </Grid>
     )
 }
 
