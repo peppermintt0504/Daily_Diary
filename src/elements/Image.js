@@ -6,7 +6,7 @@ const Image = (props) => {
     const { src, } = props;
     
     //shape, size category
-    const { shape, size, width, height } = props;
+    const { shape, size, width, height, margin } = props;
     
     //event category
     const { _onClick, } = props;
@@ -19,6 +19,7 @@ const Image = (props) => {
         size,
         width,
         height,
+        margin,
         
     }
 
@@ -41,9 +42,10 @@ Image.defaultProps = {
     
     shape: null,
     src: "https://thumb.mt.co.kr/06/2021/03/2021030521582049015_1.jpg/dims/optimize/",
-    size: "500",
-    width : "50%",
-    height : "50%"
+    size: "200",
+    width : null,
+    height : null,
+    margin : "5px",
 };
 
 const ImageDefault = styled.div`
@@ -51,11 +53,13 @@ const ImageDefault = styled.div`
     height : ${(props)=> props.height};
     background-image: url("${(props) => props.src}");
     background-size: cover;
+    // border-top-left-radius ;
 `;
 
 const AspectOutter = styled.div`
     width : ${(props)=> props.width};
     height : ${(props)=> props.height};
+    margin : ${props => props.margin};
     min-width: 400px;
 `;
 
@@ -74,7 +78,7 @@ const ImageCircle = styled.div`
     width: var(--size);
     height: var(--size);
     border-radius: var(--size);
-
+    
     background-image: url("${(props) => props.src}");
     background-size: cover;
     margin: 4px;

@@ -15,6 +15,7 @@ import { Button, Grid, Input } from "../elements"
 import Main from "../pages/Main";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import DiaryWrite from "../pages/DiaryWrite"
 
 function App() {
 
@@ -33,6 +34,8 @@ function App() {
         <Route path="/" element={<Main />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
+        
+        <Route path="/diarywrite" element={<DiaryWrite />}/>
 
 
       </Routes>

@@ -4,47 +4,44 @@ import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-//import Components
 import { Button, Grid, Input, Image, Text } from "../elements" 
 
 //import Icon
-import { BsFillMenuButtonWideFill } from "react-icons/bs";
+
 import Header from "../components/Header";
+import Post from "../components/Post";
+
+
+
 
 function Temp() {
+    const navigate = useNavigate();
+    const page_move = () => {
+        console.log('상세페이지로 이동')
+        navigate("/detail")
+    }
 
     React.useEffect(async() => {
     },[]);
 
     return (
-
         <Grid >
             <Header/>
-            <Grid width="1000px" heght='100%' margin="30px" border='1px solid black'>
-                <Grid is_flex justify_content="space-between" BG_c='#e9ecef' height='60px' padding='10px 0 10px 25px' >
-                    <Grid is_flex >
-                        <BsFillMenuButtonWideFill size='38px'/>
-                        <Grid margin='0 0 0 7px'>
-                            <Text F_size='18px' align='center'  L_height='15px' display='inline-block'>Daily</Text>
-                            <Text F_size='18px' L_height='15px' >Diary</Text>
-                        </Grid>
-                    </Grid>
-                    <Grid  is_flex justify_content='flex-end'>
-                        <Button text="@@님" Border="none" font_weight='600' cursor = 'pointer'/>
-                        <Button text="마이페이지" Border="none" font_weight='600' cursor = 'pointer'/>
-                        <Button text="로그아웃" Border="none" font_weight='600' cursor = 'pointer'/>
-                    </Grid>
+            <Grid width='1200px' margin='0 auto' _onClick={page_move}>
+                <Grid  height='300px' BG_c='#dee2e6' margin='30px 0'> 
+                    <Image src='../img/bg1.jpg'></Image>
                 </Grid>
-
-                <Grid >
-                    <Grid border='1px solid black' width='30%' height='200px'></Grid>
-                    <Grid border='1px solid black' width='30%' height='200px'></Grid>
-                    <Grid border='1px solid black' width='30%' height='200px'></Grid>
+                <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' >
+                    <Post></Post>
+                    <Post></Post>
+                    <Post></Post>
                 </Grid>
-                {/* <Input B_radius="10px" label="안녕?"></Input>
-                <Image src="https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229"/> */}
+                <Button 
+                    _onClikc={()=>{ 
+                        navigate("/write")
+                        console.log('글작성페이지 이동') }}>추가
+                </Button>
             </Grid>
-        
         </Grid>
 
     );

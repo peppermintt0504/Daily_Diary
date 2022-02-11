@@ -5,13 +5,13 @@ const Grid = (props) => {
 
     
     //Border category
-    const { B_left, B_right} = props;
+    const { B_left, B_right, Border, B_radius} = props;
 
     //Background category
     const { BG_c } = props;
     
     //flex category
-    const { is_flex, flex_direction, justify_content, align_items } = props;
+    const { is_flex, flex_direction, flex_wrap, justify_content, align_items } = props;
     
     //size, position category
     const { width, height, margin, padding, position, top, z_index } = props;
@@ -27,6 +27,8 @@ const Grid = (props) => {
     const styles = {
         B_left,
         B_right,
+        B_radius,
+        Border,
 
         BG_c,
 
@@ -34,6 +36,7 @@ const Grid = (props) => {
         flex_direction,
         justify_content,
         align_items,
+        flex_wrap,
         
         width,
         height,
@@ -60,13 +63,15 @@ Grid.defaultProps ={
 
     is_flex :false,
     flex_direction : "row",
+    flex_wrap : 'wrap',
     align_items : "center",
     justify_content : null,
     
     BG_c : false,
     
-    width : "100%",
-    height : "100%",
+    border:false,
+    width : null,
+    height : null,
     padding : false,
     margin : false,
     position : null,
@@ -83,8 +88,8 @@ const GridBox = styled.div`
     ${(props) => (props.is_flex? `display : flex;`:"")};
     align-items : ${props => props.align_items};
     justify-content:${props => props.justify_content};
-    /* ${props => props.justify_content}; */
     flex-direction :  ${props => props.flex_direction};
+    flex-wrap :  ${props => props.flex_wrap};
 
     //size, position
     width : ${props => props.width};
@@ -97,13 +102,15 @@ const GridBox = styled.div`
     z-index : ${props => props.z_index};
 
     //border
+    border : ${props => props.border};
     border-left : ${props => props.B_left};
     border-right :  ${props => props.B_right};
+    border-radius : ${props => props.B_radius};
     
     //background
     background-color : ${props => props.BG_c};}
     
-    /* box-sizing : border-box; */
+    box-sizing : border-box;
 
 `;
 
