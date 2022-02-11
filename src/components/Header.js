@@ -24,9 +24,13 @@ const Header = (props) => {
                 </Grid>
 
                 <Grid width="600px" margin="0 100px" flex_direction= "row" justify_content="space-between" is_flex>
-                    <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님</Text>
-                    <Button B_radius="10px" Border="1px #fff0 solid" BG_color="#4571eeab" width="150px" text="마이페이지" _onClick ={() => console.log("go to mypage site")}></Button>
-                    <Button B_radius="10px" Border="1px #fff0 solid" BG_color="#4571eeab" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}></Button>
+                    <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님
+                    </Text>
+                    <Button B_radius="10px" Border="1px #fff0 solid"   BG_color="#4571eeab" width="150px" text="마이페이지" 
+                    _onClick ={() => console.log("go to mypage site")}>
+                    </Button>
+                    <Button B_radius="10px" Border="1px #fff0 solid" BG_color="#4571eeab" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}>
+                    </Button>
                 </Grid>
             </Grid>
             <Grid margin = "80px"/>

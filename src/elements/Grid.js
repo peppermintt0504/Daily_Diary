@@ -16,7 +16,6 @@ const Grid = (props) => {
     //size, position category
     const { width, height, margin, padding, position, top, z_index } = props;
     
-    
     //event category
     const {_onClick} = props;
     
@@ -69,7 +68,7 @@ Grid.defaultProps ={
     
     BG_c : false,
     
-    border:false,
+    Border:false,
     width : null,
     height : null,
     padding : false,
@@ -102,7 +101,7 @@ const GridBox = styled.div`
     z-index : ${props => props.z_index};
 
     //border
-    border : ${props => props.border};
+    border : ${props => props.Border};
     border-left : ${props => props.B_left};
     border-right :  ${props => props.B_right};
     border-radius : ${props => props.B_radius};

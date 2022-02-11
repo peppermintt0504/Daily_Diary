@@ -16,6 +16,8 @@ import Main from "../pages/Main";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import DiaryWrite from "../pages/DiaryWrite"
+import Detail from "../pages/Detail"
+import MyPage from "../pages/MyPage"
 
 function App() {
 
@@ -34,8 +36,9 @@ function App() {
         <Route path="/" element={<Main />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
-        
         <Route path="/diarywrite" element={<DiaryWrite />}/>
+        <Route path="/detail" element={<Detail />}/>
+        <Route path="/mypage" element={<MyPage />}/>
 
 
       </Routes>

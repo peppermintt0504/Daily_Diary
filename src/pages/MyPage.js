@@ -16,8 +16,9 @@ import Post from "../components/Post";
 
 
 
-function Temp() {
-    const navigate = useNavigate();
+function MyPage() {
+
+  const navigate = useNavigate();
 
     const go_diarywrite = ()=>{
         console.log('글작성페이지 이동')
@@ -27,21 +28,18 @@ function Temp() {
     React.useEffect(async() => {
     },[]);
 
-    return (
+    return(
+        <React.Fragment>
+        <Grid >
+            <Text F_size='50px' margin='120px 0 0 80px'>MyPage</Text>
+        </Grid>
         <Grid position='relative' heigh='100%'>
             <Header/>
-            <Grid width='1200px' height='1000px' margin='0 auto'>
-                <Grid  height='300px' BG_c='#dee2e6' margin='100px 0 30px 0'> 
-                    <Image src='../img/sun.png' shape='imagePost' width='100%' heigh='100%' ></Image>
-                </Grid>
-                <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
-                    <Post _onClick={()=>{
-                        console.log('상세페이지로 이동 포스트각각 하나씩 줘야하는거아닌가!! ')
-                        navigate("/detail")
-                    }}></Post>
-                    <Post></Post>
-                    <Post></Post>
-                </Grid>
+              <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
+                <Post _onClick={()=>{
+                    console.log('상세페이지로 이동 포스트각각 하나씩 줘야하는거아닌가!! 에러남 ')
+                    navigate("/detail")
+                }}></Post>
             </Grid>
             <Button 
                 BG_color='#ffec99' Border='none' B_radius='30px' 
@@ -52,8 +50,10 @@ function Temp() {
                 <FiEdit2 size='30px'/>
             </Button>
         </Grid>
-
+        </React.Fragment>
     );
 }
 
-export default Temp;
+
+
+export default MyPage; 

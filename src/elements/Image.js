@@ -22,13 +22,16 @@ const Image = (props) => {
         margin,
         
     }
-
+    if(shape === "imagePost"){
+        return(
+            <ImagePost onClick={_onClick} {...styles}></ImagePost>
+        )
+    }
     if(shape === "circle"){
         return (
             <ImageCircle onClick={_onClick} {...styles}></ImageCircle>
         )
     }
-
     return (
         <AspectOutter>
             <AspectInner onClick={_onClick} {...styles}></AspectInner>
@@ -72,7 +75,6 @@ const AspectInner = styled.div`
     background-image: url("${(props) => props.src}");
     background-size: cover;
 `;
-
 const ImageCircle = styled.div`
     --size: ${(props) => props.size}px;
     width: var(--size);
@@ -82,6 +84,12 @@ const ImageCircle = styled.div`
     background-image: url("${(props) => props.src}");
     background-size: cover;
     margin: 4px;
+`;
+const ImagePost = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url("${(props) => props.src}");
+    background-size: cover;
 `;
 
 export default Image;
