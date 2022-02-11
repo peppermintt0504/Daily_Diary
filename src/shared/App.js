@@ -12,7 +12,7 @@ import './App.css';
 import { Button, Grid, Input } from "../elements" 
 
 //import Pages
-import Temp from "../pages/Temp"; 
+import Main from "..../pages/Main 
 
 function App() {
 
@@ -27,7 +27,7 @@ function App() {
   return (
     <React.Fragment>
       <Routes>
-        <Route path="/" element={<Temp />}/>
+        <Route path="/" element={<Main />}/>
       </Routes>
     </React.Fragment>
 
