@@ -28,24 +28,18 @@ const Image = (props) => {
         )
     }
 
-    if(shape === "rectangle"){
-        return (
-            <AspectOutter>
-                <AspectInner onClick={_onClick} {...styles}></AspectInner>
-            </AspectOutter>
-        )
-    }
-
     return (
-        <React.Fragment>
-            <ImageDefault onClick={_onClick} {...styles}></ImageDefault>
-        </React.Fragment>
+        <AspectOutter>
+            <AspectInner onClick={_onClick} {...styles}></AspectInner>
+        </AspectOutter>
     )
+
+
 }
 
 Image.defaultProps = {
     
-    shape: "circle",
+    shape: null,
     src: "https://thumb.mt.co.kr/06/2021/03/2021030521582049015_1.jpg/dims/optimize/",
     size: "500",
     width : "50%",
@@ -53,9 +47,8 @@ Image.defaultProps = {
 };
 
 const ImageDefault = styled.div`
-    --size: ${(props) => props.size}px;
-    width: var(--size);
-    height: var(--size);
+    width : ${(props)=> props.width};
+    height : ${(props)=> props.height};
     background-image: url("${(props) => props.src}");
     background-size: cover;
 `;
@@ -67,6 +60,8 @@ const AspectOutter = styled.div`
 `;
 
 const AspectInner = styled.div`
+    width : ${(props)=> props.width};
+    height : ${(props)=> props.height};
     position: relative;
     padding-top: 75%;
     overflow: hidden;

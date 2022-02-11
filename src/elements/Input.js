@@ -7,7 +7,7 @@ const Input = (props) => {
     const { Border, B_radius, } = props;
     
     //size, position category
-    const { rows, width, height, } = props;
+    const { rows, width, height, margin } = props;
     
     //setting, event category
     const { label, _onChange, _defaultValue, _ref , type, value, placeholder } = props;
@@ -23,6 +23,7 @@ const Input = (props) => {
         rows,
         width,
         height,
+        margin
     }
 
     return (
@@ -56,6 +57,8 @@ Input.defaultProps ={
     rows : "1",
     width : "100%",
     height : "40px",
+    margin : "auto",
+
 };
 
 const Wrap = styled.div`
@@ -63,17 +66,18 @@ const Wrap = styled.div`
     display : flex;
     flex-wrap : wrap;
     align-items : center;
+    
 `;
 
 const In = styled.input`
     border : ${props=> props.Border};
     border-radius : ${props => props.B_radius};
 
-    margin : auto;
     justify-content : center; 
-
+    
     height : ${props => props.height};
     width : ${props => props.width};
+    margin :  ${props => props.margin};;
 `;
 const P = styled.div`
     font-size : 12px;

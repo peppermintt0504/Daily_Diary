@@ -8,13 +8,13 @@ const Grid = (props) => {
     const { B_left, B_right} = props;
 
     //Background category
-    const { BG_c} = props;
+    const { BG_c } = props;
     
     //flex category
     const { is_flex, flex_direction, justify_content, align_items } = props;
     
     //size, position category
-    const { width, height, margin, padding, center, } = props;
+    const { width, height, margin, padding, position, top, z_index } = props;
     
     
     //event category
@@ -39,6 +39,9 @@ const Grid = (props) => {
         height,
         margin,
         padding,
+        position,
+        top,
+        z_index,
 
     };
 
@@ -66,6 +69,9 @@ Grid.defaultProps ={
     height : "100%",
     padding : false,
     margin : false,
+    position : null,
+    top : "0px",
+    z_index :null,
 
     _onClick : null,
 }
@@ -74,9 +80,10 @@ const GridBox = styled.div`
 
 
     //flex
-    ${(props) => (props.is_flex? `display : flex;`:"")}
+    ${(props) => (props.is_flex? `display : flex;`:"")};
     align-items : ${props => props.align_items};
-    justify-content : ${props => props.justify_content};
+    justify-content:${props => props.justify_content};
+    /* ${props => props.justify_content}; */
     flex-direction :  ${props => props.flex_direction};
 
     //size, position
@@ -85,12 +92,16 @@ const GridBox = styled.div`
     padding :${props => props.padding};
     margin : ${props => props.margin};
 
+    position : ${props => props.position};
+    top : ${props => props.top};
+    z-index : ${props => props.z_index};
+
     //border
     border-left : ${props => props.B_left};
     border-right :  ${props => props.B_right};
     
     //background
-    background-color : ${props => props.bg};}
+    background-color : ${props => props.BG_c};}
     
     /* box-sizing : border-box; */
 
