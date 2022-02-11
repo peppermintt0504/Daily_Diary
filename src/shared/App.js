@@ -12,7 +12,8 @@ import './App.css';
 import { Button, Grid, Input } from "../elements" 
 
 //import Pages
-import Main from "..../pages/Main 
+import Main from "../pages/Main";
+import Login from "../pages/Login";
 
 function App() {
 
@@ -28,6 +29,8 @@ function App() {
     <React.Fragment>
       <Routes>
         <Route path="/" element={<Main />}/>
+        <Route path="/login" element={<Login />}/>
+
       </Routes>
     </React.Fragment>
 

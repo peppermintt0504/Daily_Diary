@@ -14,7 +14,7 @@ const Button = (props) => {
     const { font_color, font_size  } = props;
     
     //size, position category
-    const { width,height, } = props;
+    const { width,height, margin } = props;
     
     //event category
     const { _ref , _onClick, disabled, } = props;
@@ -40,6 +40,7 @@ const Button = (props) => {
 
         width,
         height,
+        margin,
 
     }
     
@@ -56,12 +57,14 @@ Button.defaultProps ={
 
     height : "50px",
     width : "100px",
+    margin : null,
     
 
     text : null,
     _onClick : false,
     disabled : false,
     _ref:null,
+
 };
 
 const Btn = styled.button`
@@ -76,6 +79,7 @@ const Btn = styled.button`
     
     height :            ${props => props.height};
     width :             ${props => props.width};
+    margin :            ${props => props.margin};
 `;
 
 

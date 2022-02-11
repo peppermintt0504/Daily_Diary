@@ -10,6 +10,8 @@ import { Button, Grid, Input, Image } from "../elements"
 
 
 function Temp() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     React.useEffect(async() => {
     },[]);
