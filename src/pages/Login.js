@@ -22,7 +22,7 @@ function Login() {
 
     return (
         <Grid >
-            <Header/>
+            {/* <Header/> */}
             
             <Grid is_flex flex_direction="column" align-items="center">
                 <Grid width="30vw" margin="30px">
@@ -32,6 +32,7 @@ function Login() {
                 <Input margin="10px" label="PassWord" width = "30vw"></Input>
                 <Button margin="20px" width="15vw" text="LogIn" />
                 <Text cursor="pointer" F_color="#3d078cd9" _onClick={()=>{navigate("/signup")}}>회원이 아니신가요??</Text>
+
             </Grid>
         </Grid>
     );

@@ -7,13 +7,15 @@ const Input = (props) => {
     const { Border, B_radius, } = props;
     
     //size, position category
-    const { rows, width, height, margin } = props;
+    const { rows, width, height, margin, padding } = props;
     
     //setting, event category
     const { label, _onChange, _defaultValue, _ref , type, value, placeholder } = props;
 
     //kind of input
     const { is_textarea } = props;
+
+
 
     //children
     const { children } = props;
@@ -26,7 +28,9 @@ const Input = (props) => {
         rows,
         width,
         height,
-        margin
+        margin,
+        padding,
+
     }
 
     if(is_textarea){
@@ -81,6 +85,7 @@ Input.defaultProps ={
     width : "100%",
     height : "40px",
     margin : "auto",
+    padding : false,
 
     is_textarea : false,
 
@@ -113,7 +118,9 @@ const TA = styled.textarea`
     
     height : ${props => props.height};
     width : ${props => props.width};
-    margin :  ${props => props.margin};;
+    margin :  ${props => props.margin};
+    padding : ${props => props.padding};
+    box-sizing : border-box;
 `;
 
 const P = styled.div`
