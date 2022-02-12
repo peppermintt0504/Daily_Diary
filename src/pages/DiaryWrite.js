@@ -13,7 +13,7 @@ import { actionCreators as diaryActions } from "../redux/modules/diary";
 
 //import API
 import {RESP} from "../shared/tempAPI";
-import {instance} from "../shared/Request";
+import instance from "../shared/Request";
 
 
 function DiaryWrite() {
@@ -72,6 +72,8 @@ function DiaryWrite() {
     }
 
     React.useEffect(async() => {
+
+        
         dispatch(diaryActions.getDiary());
     },[]);
 

@@ -8,8 +8,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { Button, Grid, Input, Image, Text } from "../elements" 
 
-//import API
-import {RESP} from "../shared/tempAPI"
+//import Actions
+import { actionCreators as userActions } from "../redux/modules/user";
 
 
 function SignUp() {
@@ -32,6 +32,19 @@ function SignUp() {
         console.log(pwdRef.current.value)
         console.log(pwdCheckRef.current.value)
 
+        const user_data = {
+            loginId : idRef.current.value,
+            password : pwdRef.current.value,
+            nickname : nickRef.current.value,
+            user_profile : "https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832",
+
+        }
+
+        if(pwdRef.current.value !== pwdCheckRef.current.value){
+            console.log("plz recheck your password...");
+        }else{
+            dispatch( userActions.signupUser(user_data))
+        }
         
 
     }

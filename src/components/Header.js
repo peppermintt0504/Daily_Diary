@@ -15,6 +15,11 @@ const Header = (props) => {
 
 
 
+    const logout = () =>{
+        console.log("logout and go to login page");
+        navigate("/login");
+    }
+
 
     return(
         <React.Fragment>
@@ -35,7 +40,7 @@ const Header = (props) => {
                 <Grid width="600px" margin="0 100px" flex_direction= "row" justify_content="space-between" is_flex>
                     <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님</Text>
                     <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="마이페이지" _onClick ={() => navigate("/mypage")}/>
-                    <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}/>
+                    <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={logout}/>
                     
                 </Grid>
             </Grid>
