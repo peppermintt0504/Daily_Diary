@@ -29,7 +29,7 @@ const getUser = createAction(GET_USER, (user) => ({ user }));
 
 //initialState
 const initialState = {
-    is_login : false,
+    is_login : true,
     user : {},
     list : {...RESP.USER.list},
 };

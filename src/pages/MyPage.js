@@ -36,10 +36,7 @@ function MyPage() {
         <Grid position='relative' heigh='100%'>
             <Header/>
                 <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
-                    <Post _onClick={()=>{
-                        console.log('상세페이지로 이동 포스트각각 하나씩 줘야하는거아닌가!! 에러남 ')
-                        navigate("/detail")
-                    }}></Post>
+                    <Post ></Post>
                 </Grid>
             <Button 
                 BG_color='#ffec99' Border='none' B_radius='30px' 
