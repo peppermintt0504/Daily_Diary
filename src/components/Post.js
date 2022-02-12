@@ -13,20 +13,29 @@ const Post = (props) => {
 
     return(
         <>
-        <Grid Border='1px solid black' width='385px' height='500px' margin='0 0 20px 0' B_radius='20px' >
-
-            <Grid height='50px' padding='0 15px' is_flex justify_content='space-between'>
-                <Text>작성자</Text>
-                <Text>2022-02-11</Text>
+        <Grid Border='1px solid black' width='385px' height='600px' margin='0 0 20px 0' B_radius='20px' >
+            <Grid height='70px' padding='0 15px' is_flex justify_content='space-between'>
+                <Grid is_flex>
+                    <Image shape='circle' size='40'></Image>
+                    <Text margin='0 0 0 7px'>{props.user_info.user_name}</Text>
+                </Grid>
+                <Text>{props.insert_dt}</Text>
             </Grid>
 
-            <Grid width='100%'  height='300px'  >
-                <Image src='https://image.msscdn.net/images/goods_img/20210917/2140552/2140552_1_500.jpg' shape='imagePost'></Image>
+            <Grid width='100%' height='300px'>
+                <Image src={props.image_url} shape='imagePost'>
+                </Image>
             </Grid>
 
-            <Grid padding='10px 15px'>
-                <Text F_size='20px' F_weight='600' margin='0 0 10px 0'>소영2222222</Text>
-                <Text >다이어리Test입니다.다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어</Text>
+            <Grid padding='10px 15px' margin='0 0 10px 0' position='relative' height='225px'>
+                <Grid is_flex justify_content='flex-start' align_items='center' margin='0 10px 15px 0'>
+                    <Image shape='circle' size='40' margin='0 10px 0 0' src={props.user_info.user_profile}></Image>
+                    <Text F_size='20px' F_weight='600' >{props.title}</Text>
+                </Grid>
+                <Text margin='0 0 20px 0' height='120px'>{props.contents}</Text>
+                <Grid position='absolute' bottom='15px'>
+                    <Text>{props.tag.map((T,idx)=>{return (`#${T }  `)})}</Text>
+                </Grid>
             </Grid>
         </Grid>
         </>
@@ -34,6 +43,23 @@ const Post = (props) => {
 
     )
 }
+Post.defaultProps = {
+    diary_uid : "NKLJSDFGLER",
+    emotion : "GOOD",
+    tag : ["오늘","언제","끝날까?"],
+    image_url : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229",
+    title : "야근하는 날",
+    contents : "야근을 왜 해야하죠",
+    comment_cnt : 0,
+    insert_dt : "2022-02-11 16:51:32" ,
+    is_open : true,
+    user_info:{
+        uid : "user000001",
+        user_id: "hello_world@naver.com",
+        user_name : "hello_world",
+        user_profile : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229"
+    },
+};
 
 
 export default Post;

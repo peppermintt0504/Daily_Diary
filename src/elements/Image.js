@@ -22,6 +22,11 @@ const Image = (props) => {
         margin,
         
     }
+    if(shape === "imageBG"){
+        return(
+            <ImageBG onClick={_onClick} {...styles}></ImageBG>
+        )
+    }
     if(shape === "imagePost"){
         return(
             <ImagePost onClick={_onClick} {...styles}></ImagePost>
@@ -89,7 +94,16 @@ const ImagePost = styled.div`
     width: 100%;
     height: 100%;
     background-image: url("${(props) => props.src}");
-    background-size: cover;
+    background-size: cover;   
+    background-position: center;
+`;
+const ImageBG = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url("${(props) => props.src}");
+    object-fit:cover; 
+    background-position: center;
+    border: 1px solid #ffec99;
 `;
 
 export default Image;
