@@ -5,9 +5,9 @@ const Text = (props) => {
 
     const { F_size, F_color, F_weight, F_style, F_decoration } = props;
 
-    const { cursor } = props
-
     const { margin } = props
+
+    const { cursor } = props
 
     const { _onClick, children } = props;
     const styles = {
@@ -36,9 +36,8 @@ Text.defaultProps ={
     F_style : null,
     F_decoration : null,
 
-    cursor : null,
-
     margin : null,
+    cursor : null,
     
     _onClick : null,
 };
@@ -49,9 +48,7 @@ const P = styled.div`
     font-weight : ${(props) => (props.F_weight)};
     font-style: ${(props) => props.F_style};
     text-decoration : ${props => props.F_decoration};
-
-
-
+    
     margin : ${(props) => props.margin};
     cursor : ${(props) => props.cursor};
 `;

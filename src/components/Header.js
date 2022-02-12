@@ -41,8 +41,8 @@ const Header = (props) => {
                     <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님</Text>
                     <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="마이페이지" _onClick ={() => navigate("/mypage")}/>
                     <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={logout}/>
-                    
                 </Grid>
+                
             </Grid>
             <Grid margin = "80px"/>
         </React.Fragment>

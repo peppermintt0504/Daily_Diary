@@ -8,25 +8,34 @@ import { useSelector ,useDispatch} from "react-redux";
 
 
 const Post = (props) => {
+    // console.log(props)
 
     const navigate = useNavigate();
 
     return(
         <>
-        <Grid Border='1px solid black' width='385px' height='500px' margin='0 0 20px 0' B_radius='20px' >
-
-            <Grid height='50px' padding='0 15px' is_flex justify_content='space-between'>
-                <Text>작성자</Text>
-                <Text>2022-02-11</Text>
+        <Grid Border='1px solid black' width='385px' height='600px' margin='0 0 20px 0' B_radius='20px' >
+            <Grid height='70px' padding='0 15px' is_flex justify_content='space-between'>
+                <Grid is_flex>
+                    <Image shape='circle' size='40'></Image>
+                    <Text margin='0 0 0 7px'>{props.user_info.user_name}</Text>
+                </Grid>
+                <Text>{props.insert_dt}</Text>
             </Grid>
 
-            <Grid width='100%'  height='300px'  >
-                <Image src='https://image.msscdn.net/images/goods_img/20210917/2140552/2140552_1_500.jpg' shape='imagePost'></Image>
+            <Grid width='100%' height='300px'>
+                <Image src={props.image_url} shape='imagePost'>
+                </Image>
             </Grid>
-
-            <Grid padding='10px 15px'>
-                <Text F_size='20px' F_weight='600' margin='0 0 10px 0'>소영2222222</Text>
-                <Text >다이어리Test입니다.다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어리Test입니다다이어</Text>
+            <Grid padding='10px 15px' margin='0 0 10px 0' position='relative' height='225px'>
+                <Grid is_flex justify_content='flex-start' align_items='center' margin='0 10px 15px 0'>
+                    <Image shape='circle' size='40' margin='0 10px 0 0' src={props.user_info.user_profile}></Image>
+                    <Text F_size='20px' F_weight='600' >{props.title}</Text>
+                </Grid>
+                <Text margin='0 0 20px 0' height='120px'>{props.contents}</Text>
+                <Grid position='absolute' bottom='15px'>
+                    <Text>{props.tag.map((T,idx)=>{return (`#${T }  `)})}</Text>
+                </Grid>
             </Grid>
         </Grid>
         </>

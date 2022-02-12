@@ -30,6 +30,7 @@ const getDiary=() =>{
     return async function (dispatch,getState){
         const diary_list = RESP.DIARY.list;
         dispatch(setDiary(diary_list));
+        // console.log(diary_list)
     }
 }
 
@@ -37,7 +38,7 @@ const getDiary=() =>{
 const addDiarydata=(diary_data) =>{
     return async function (dispatch,getState){
         diary_data.diary_uid = "temp uid";
-        console.log(diary_data);
+        // console.log(diary_data);
         dispatch(addDiary(diary_data));
     }
 }
@@ -48,6 +49,7 @@ export default handleActions(
         [SET_DIARY]: (state, action) =>
         produce(state, (draft) => {
             draft.list = action.payload.diary_list;
+            // console.log(action.payload.diary_list)
         }),
         [ADD_DIARY]: (state, action) =>
         produce(state, (draft) => {

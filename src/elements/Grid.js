@@ -14,7 +14,7 @@ const Grid = (props) => {
     const { is_flex, flex_direction, flex_wrap, justify_content, align_items } = props;
     
     //size, position category
-    const { width, height, margin, padding, position, top, z_index } = props;
+    const { width, height, margin, padding, position, top, bottom, z_index } = props;
     
     //event category
     const {_onClick} = props;
@@ -42,7 +42,7 @@ const Grid = (props) => {
         margin,
         padding,
         position,
-        top,
+        top, bottom,
         z_index,
 
     };
@@ -75,6 +75,7 @@ Grid.defaultProps ={
     margin : false,
     position : null,
     top : null,
+    bottom : null,
     z_index :null,
 
     _onClick : null,
@@ -98,6 +99,7 @@ const GridBox = styled.div`
 
     position : ${props => props.position};
     top : ${props => props.top};
+    bottom : ${props => props.bottom};
     z-index : ${props => props.z_index};
 
     //border

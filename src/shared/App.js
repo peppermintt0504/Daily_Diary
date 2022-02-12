@@ -40,7 +40,6 @@ function App() {
         <Route path="/detail" element={<Detail />}/>
         <Route path="/mypage" element={<MyPage />}/>
 
-
       </Routes>
     </React.Fragment>
 
