@@ -40,7 +40,7 @@ const Button = (props) => {
         font_size,
 
         position,
-        // top, 
+        top, 
         right, bottom,
 
         width,
@@ -65,9 +65,9 @@ Button.defaultProps ={
     margin : null,
 
     position : null,
-    // top : "0px",
-    right : "0px",
-    bottom : "0px",
+    top : null,
+    right : null,
+    bottom : null,
 
     text : null,
     _onClick : false,
@@ -92,7 +92,7 @@ const Btn = styled.button`
     margin :            ${props => props.margin};
 
     position :          ${props => props.position};
-    // top :               ${props => props.top};
+    top :               ${props => props.top};
     bottom :            ${props => props.bottom};
     right :             ${props => props.right};
     cursor : pointer;

@@ -5,7 +5,7 @@ const Grid = (props) => {
 
     
     //Border category
-    const { B_left, B_right, Border, B_radius} = props;
+    const { B_left, B_right, Border, B_radius, B_bottom, B_top,} = props;
 
     //Background category
     const { BG_c } = props;
@@ -24,8 +24,8 @@ const Grid = (props) => {
     
     
     const styles = {
-        B_left,
-        B_right,
+        B_left, B_right,
+        B_bottom, B_top,
         B_radius,
         Border,
 
@@ -104,6 +104,8 @@ const GridBox = styled.div`
     border : ${props => props.Border};
     border-left : ${props => props.B_left};
     border-right :  ${props => props.B_right};
+    border-top : ${props => props.B_top};
+    border-bottom : ${props => props.B_bottom};
     border-radius : ${props => props.B_radius};
     
     //background
