@@ -73,7 +73,6 @@ function DiaryWrite() {
 
     React.useEffect(async() => {
 
-        
         dispatch(diaryActions.getDiary());
     },[]);
 
