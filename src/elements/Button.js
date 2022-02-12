@@ -14,14 +14,15 @@ const Button = (props) => {
     const { font_color, font_size  } = props;
     
     //size, position category
-    const { width,height, margin } = props;
-    
+    const { width, height, margin, position, top, right, bottom,  } = props;
+
+
     //event category
     const { _ref , _onClick, disabled, } = props;
     
     //text category
     const { text, children} = props;
-    
+
 
     const {  } = props;
 
@@ -38,12 +39,16 @@ const Button = (props) => {
         font_color,
         font_size,
 
+        position,
+        // top, 
+        right, bottom,
+
         width,
         height,
         margin,
 
     }
-    
+
     
     return (
     <div>
@@ -58,12 +63,17 @@ Button.defaultProps ={
     height : "50px",
     width : "100px",
     margin : null,
-    
+
+    position : null,
+    // top : "0px",
+    right : "0px",
+    bottom : "0px",
 
     text : null,
     _onClick : false,
     disabled : false,
     _ref:null,
+    
 
 };
 
@@ -80,6 +90,12 @@ const Btn = styled.button`
     height :            ${props => props.height};
     width :             ${props => props.width};
     margin :            ${props => props.margin};
+
+    position :          ${props => props.position};
+    // top :               ${props => props.top};
+    bottom :            ${props => props.bottom};
+    right :             ${props => props.right};
+    cursor : pointer;
 `;
 
 
