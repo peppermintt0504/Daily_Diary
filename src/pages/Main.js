@@ -4,6 +4,10 @@ import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
+//import Actions
+import { actionCreators as diaryActions } from "../redux/modules/diary";
+
+//import elements
 import { Button, Grid, Input, Image, Text } from "../elements" 
 
 //import Icon
@@ -17,6 +21,8 @@ import Post from "../components/Post";
 
 
 function Temp() {
+    const _diary = useSelector(state => state.diary);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const go_diarywrite = ()=>{
@@ -25,22 +31,24 @@ function Temp() {
     }
 
     React.useEffect(async() => {
+        dispatch(diaryActions.getDiary())
     },[]);
 
     return (
-        <Grid position='relative' heigh='100%'>
+        <Grid>
             <Header/>
-            <Grid width='1200px' height='1000px' margin='0 auto'>
+            <Grid width='1200px' margin='0 auto'>
                 <Grid  height='300px' BG_c='#dee2e6' margin='100px 0 30px 0'> 
                     <Image src='../img/sun.png' shape='imagePost' width='100%' heigh='100%' ></Image>
                 </Grid>
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
-                    <Post _onClick={()=>{
-                        console.log('상세페이지로 이동 포스트각각 하나씩 줘야하는거아닌가!! ')
-                        navigate("/detail")
-                    }}></Post>
-                    <Post></Post>
-                    <Post></Post>
+                    <Post/>
+                    <Post/>
+                    <Post/>
+                    <Post/>
+                    <Post/>
+                    
+                    
                 </Grid>
             </Grid>
             <Button 

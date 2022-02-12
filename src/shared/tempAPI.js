@@ -11,7 +11,8 @@ export const RESP = {
             tag : ["오늘","언제","끝날까?"],
             image_url : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229",
             title : "야근하는 날",
-            comment_cnt : "야근을 왜 해야하죠",
+            contents : "야근을 왜 해야하죠",
+            comment_cnt : 0,
             insert_dt : "2022-02-11 16:51:32" ,
             is_open : true,
             user_info:{
@@ -27,7 +28,8 @@ export const RESP = {
             tag : ["내일","언제","집가지?"],
             image_url : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229",
             title : "출근하는 날",
-            comment_cnt : "출근을 왜 해야하죠",
+            contents : "출근을 왜 해야하죠",
+            comment_cnt : 0,
             insert_dt : "2022-02-12 16:51:32" ,
             is_open : false,
             user_info:{

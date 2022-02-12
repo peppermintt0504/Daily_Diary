@@ -18,19 +18,25 @@ const Header = (props) => {
 
     return(
         <React.Fragment>
-            <Grid z_index = "9" position="fixed" height="70px" BG_c="#d2dbf4" width="100%" justify_content="space-between" is_flex padding="4px 16px">
-                <Grid width="200px" >
-                    <Text cursor={"pointer"} F_style={"italic"} F_size="40px" F_weight="bold" _onClick= {() => navigate("/")}>데다!</Text>
+            <Grid flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+                <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
+                    <Grid F_style={"italic"} is_flex justify_content='flex-start' >
+                        <Grid>
+                            <BsFillMenuButtonWideFill size='38px'/>
+                        </Grid>
+                        <Grid margin='0 0 2px 7px'>
+                            <Text F_size='22px' align='center'  L_height='18px' F_weight='600' display='inline-block'>Daily</Text>
+                            <Text F_size='22px' L_height='22px' F_weight='600' >Diary</Text>
+                        </Grid>
+                    </Grid>
                 </Grid>
 
+
                 <Grid width="600px" margin="0 100px" flex_direction= "row" justify_content="space-between" is_flex>
-                    <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님
-                    </Text>
-                    <Button B_radius="10px" Border="1px #fff0 solid"   BG_color="#4571eeab" width="150px" text="마이페이지" 
-                    _onClick ={() => console.log("go to mypage site")}>
-                    </Button>
-                    <Button B_radius="10px" Border="1px #fff0 solid" BG_color="#4571eeab" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}>
-                    </Button>
+                    <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님</Text>
+                    <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="마이페이지" _onClick ={() => navigate("/mypage")}/>
+                    <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}/>
+                    
                 </Grid>
             </Grid>
             <Grid margin = "80px"/>

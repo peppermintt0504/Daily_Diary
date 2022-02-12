@@ -4,12 +4,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 
 
 //import Modules
-import Post from "./modules/post";
+import Diary from "./modules/diary";
+
 
 
 const middlewares = [thunk];
 const rootReducer = combineReducers({
-    post : Post,
+    diary : Diary,
 });
 const enhancer = applyMiddleware(...middlewares);
 const store = createStore(rootReducer,enhancer);
