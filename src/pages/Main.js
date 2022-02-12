@@ -30,8 +30,6 @@ function Temp() {
         navigate("/diarywrite")  
     }
 
-    console.log(_diary)
-
     React.useEffect(async() => {
         dispatch(diaryActions.getDiary())
     },[]);
