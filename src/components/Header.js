@@ -18,7 +18,7 @@ const Header = (props) => {
 
     return(
         <React.Fragment>
-            <Grid z_index = "9" position="fixed" height="70px" BG_c="#d2dbf4" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+            <Grid flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#d2dbf4" width="100%" justify_content="space-between" is_flex padding="4px 16px">
                 <Grid width="200px" >
                     <Text cursor={"pointer"} F_style={"italic"} F_size="40px" F_weight="bold" _onClick= {() => navigate("/")}>데다!</Text>
                 </Grid>
@@ -27,7 +27,7 @@ const Header = (props) => {
                     <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님
                     </Text>
                     <Button B_radius="10px" Border="1px #fff0 solid"   BG_color="#4571eeab" width="150px" text="마이페이지" 
-                    _onClick ={() => console.log("go to mypage site")}>
+                    _onClick ={() => navigate("/mypage")}>
                     </Button>
                     <Button B_radius="10px" Border="1px #fff0 solid" BG_color="#4571eeab" width="150px" text="로그아웃" _onClick ={() => console.log("logout and go to login page")}>
                     </Button>

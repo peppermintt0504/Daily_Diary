@@ -74,7 +74,7 @@ Grid.defaultProps ={
     padding : false,
     margin : false,
     position : null,
-    top : "0px",
+    top : null,
     z_index :null,
 
     _onClick : null,
@@ -107,7 +107,7 @@ const GridBox = styled.div`
     border-radius : ${props => props.B_radius};
     
     //background
-    background-color : ${props => props.BG_c};}
+    background-color : ${props => props.BG_c};
     
     box-sizing : border-box;
 
