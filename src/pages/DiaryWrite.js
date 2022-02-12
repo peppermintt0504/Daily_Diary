@@ -67,7 +67,7 @@ function DiaryWrite() {
         }
         dispatch(diaryActions.addDiarydata(newdiary));
         window.alert("게시물이 추가 되었습니다.");
-        //navigate("/")
+        navigate("/");
         
     }
 
