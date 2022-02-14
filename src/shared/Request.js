@@ -1,8 +1,14 @@
 import axios from "axios";
 
 const instance = axios.create({
-	baseURL: "http://binscot.shop" // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
+	//baseURL: "http://binscot.shop" // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
+	baseURL : "http://dean900404.shop",
+	headers : {'Access-Control-Allow-Origin': 'https://www.domain.com'},
 });
+
+
+
+
 
 // instance.post('/api/login', {
 //     firstName: 'Fred',

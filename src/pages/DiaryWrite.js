@@ -14,6 +14,7 @@ import { actionCreators as diaryActions } from "../redux/modules/diary";
 //import API
 import {RESP} from "../shared/tempAPI";
 import instance from "../shared/Request";
+import axios from "axios";
 
 
 function DiaryWrite() {
@@ -65,10 +66,26 @@ function DiaryWrite() {
                 user_profile : "nuknown user profile..."
             },
         }
-        dispatch(diaryActions.addDiarydata(newdiary));
-        window.alert("게시물이 추가 되었습니다.");
-        navigate("/");
+        // instance.post('/user/login', {
+        //     firstName: 'Fred',
+        //     lastName: 'Flintstone'
+        // })
+        // .then(function (response) {
+        // console.log(response);
+        // })
+        // .catch(function (error) {
+        // console.log(error);
+        // });
+
+        axios.get('http://binscot.shop/user',{
+            
+
+        },{"Access-Control-Allow-Origin": "http://binscot.shop", 
+            "Access-Control-Allow-Credentials": true}).then((res) => console.log(res)).catch((err,res) => console.log(err,res));
         
+
+
+
     }
 
     React.useEffect(async() => {
@@ -101,7 +118,6 @@ function DiaryWrite() {
                         <label onClick={()=>setIs_open(false)}>비공개<input type={"radio"} name={"is_open"} value="비공개"></input></label>
                     </Grid>
                     <Button margin="20px" width="15vw" text="Signup" _onClick={sendData} />
-
                 </Grid>
         </Grid>
 

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.25.0",
     "connected-react-router": "^6.9.2",
+    "cors": "^2.8.5",
     "firebase": "^9.6.6",
     "history": "4.10.1",
     "immer": "^9.0.12",
