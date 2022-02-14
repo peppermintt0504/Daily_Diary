@@ -3,9 +3,11 @@ import { produce } from "immer";
 
 //API
 import { RESP } from "../../shared/tempAPI";
+import { instance } from "../../shared/Request"
 
 //cookie
 import { getCookie, setCookie, deleteCookie } from "../../shared/Cookie";
+import { set } from "lodash";
 
 //action
 const SIGN_UP = "SIGN_UP";
@@ -23,13 +25,13 @@ const logIn = createAction(SIGN_UP, (diary_list) => ({ diary_list }));
 const get_user = createAction(LOG_IN, (diary_data) => ({ diary_data }));
 
 const setUser = createAction(SET_USER, (user) => ({ user }));
-const logOut = createAction(LOG_OUT, (user) => ({ user }));
+const logOut = createAction(LOG_OUT, (  ) => ({  }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
 
 
 //initialState
 const initialState = {
-    is_login : true,
+    is_login : false,
     user : {},
     list : {...RESP.USER.list},
 };
@@ -39,12 +41,28 @@ const initialState = {
 const signupUser=(user_data) =>{
     return async function (dispatch,getState){
         console.log("user data : ", user_data);
+        
     }
 }
 
 const loginUser=(user_data) =>{
     return async function (dispatch,getState){
         console.log("user data : ", user_data);
+        setCookie("is_login",user_data.uid);
+        dispatch(setUser(user_data));
+    }
+}
+
+const loginCheck=() =>{
+    return async function (dispatch,getState){
+
+    }
+}
+
+const logoutUser=() =>{
+    return async function (dispatch,getState){
+        deleteCookie("is_login");
+        dispatch(logOut());
     }
 }
 
@@ -54,11 +72,15 @@ const loginUser=(user_data) =>{
 //reducer
 export default handleActions(
     {
-        [SIGN_UP]: (state, action) =>
+        [SET_USER]: (state, action) =>
         produce(state, (draft) => {
+            draft.is_login=true;
+            draft.user = action.payload.user;
         }),
-        [LOG_IN]: (state, action) =>
+        [LOG_OUT]: (state, action) =>
         produce(state, (draft) => {
+            draft.is_login=false;
+            draft.user = {};
         }),
 
     },
@@ -70,7 +92,8 @@ export default handleActions(
 const actionCreators = {
     signupUser,
     loginUser,
-
+    logoutUser,
+    loginCheck,
 
 };
 
