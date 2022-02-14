@@ -51,17 +51,8 @@ function Login() {
         //     dispatch(userActions.loginUser(_user));
 
 
-        axios({
-            method: 'post',
-            url: '/api/login',
-            headers: headers,
-            params: {
-                username : logIn_data.username,
-            },
-            data : logIn_data,
-
-        }
-        ).then((res) => {
+        instance.get('/api/users',logIn_data)
+            .then((res) => {
             console.log(res.data)
             const _user = {
                 uid : res.data.id,
@@ -69,13 +60,13 @@ function Login() {
                 nickname : res.data.nickname,
                 user_profile : res.data.userimage,
             }
-            dispatch(userActions.loginUser(_user));
+            //dispatch(userActions.loginUser(_user));
 
 
         })
         .catch((err,res) => {
             console.log(err)
-            window.alert("로그인에 실패하였습니다.");
+            //window.alert("로그인에 실패하였습니다.");
         });
 
     }

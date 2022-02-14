@@ -33,7 +33,7 @@ function DiaryWrite() {
 
     const [emotion, setEmotion ] = React.useState("Good")
     const [title,setTitle] = React.useState("");
-    const [image_url,setImage_url] = React.useState("https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832");
+    const [image_url,setImage_url] = React.useState("https://mnapoli.fr/images/posts/null.png");
     const [contents,setContents] = React.useState("");
     const [tag,setTag] = React.useState("");
     const [is_open,setIs_open] = React.useState(true);
@@ -105,7 +105,7 @@ function DiaryWrite() {
         }
         
         
-        axios.post('http://binscot.shop/api/login',data).then((res) => console.log(res.data)).catch((err,res) => console.log(err,res));
+        axios.post('http://binscot.shop/api/login',data,headers).then((res) => console.log(res.data)).catch((err,res) => console.log(err,res));
         
 
 

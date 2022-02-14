@@ -48,7 +48,7 @@ function SignUp() {
             console.log("plz recheck your password...");
             return;
         }else{
-            axios.post('/api/signup',user_data)
+            instance.post('/api/signup',user_data)
             .then((res) => {
                 window.alert("회원가입이 완료되었습니다.")
                 console.log(res);
