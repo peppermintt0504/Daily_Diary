@@ -34,18 +34,18 @@ function Login() {
             username : idRef.current.value,
             password : pwdRef.current.value,
         }
-        console.log(logIn_data);
         
+        console.log(logIn_data);
+
         const _user = {
-            uid : "15",
-            user_id : "test",
-            nickname : "test1",
-            user_profile : "url",
-        }
+                uid : "15",
+                user_id : "test",
+                nickname : "test1",
+                user_profile : "url",
+            }
         dispatch(userActions.loginUser(_user));
         navigate("/");
-        
-    
+
     }
 
     React.useEffect(async() => {

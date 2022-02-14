@@ -1,21 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-	baseURL: "http://binscot.shop", // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
-	headers : {
-		"Access-Control-Allow-Origin": "http://binscot.shop", 
-		"Access-Control-Allow-Credentials": true,},
+	baseURL: "http://binscot.shop" // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
 });
-
-
-// const headers = {
-// 	"Access-Control-Allow-Origin": "http://binscot.shop", 
-// 	"Access-Control-Allow-Credentials": true,
-// 	"Content-Type": "application/x-www-form-urlencoded",
-
-// };
-
-//https://cors-anywhere.herokuapp.com/
 
 // instance.post('/api/login', {
 //     firstName: 'Fred',
@@ -49,8 +36,6 @@ const instance = axios.create({
         //         user_profile : res.data.userimage,
         //     }
         //     //dispatch(userActions.loginUser(_user));
-
-
         // })
         // .catch((err,res) => {
         //     console.log(err)
