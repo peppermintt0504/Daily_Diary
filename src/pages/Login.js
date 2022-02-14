@@ -25,9 +25,7 @@ function Login() {
     const tryLogIn = () =>{
         console.log(idRef.current.value);
         console.log(pwdRef.current.value);
-
         
-
     }
 
     React.useEffect(async() => {

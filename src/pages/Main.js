@@ -32,7 +32,9 @@ function Temp() {
     }
 
     React.useEffect(async() => {
-        dispatch(diaryActions.getDiary())
+        if(_diary.length === 0){
+            dispatch(diaryActions.getDiary())
+        }
     },[]);
 
     return (
@@ -45,9 +47,7 @@ function Temp() {
                 </Grid>
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
                     {_diary.map((D, idx) => {
-                        return(
-                            <Post key={idx} {...D}/>
-                            )
+                        return(<Post key={idx} {...D} idx={idx}/>)
                     })}
                 </Grid>
             </Grid>
