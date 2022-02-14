@@ -16,6 +16,7 @@ import {RESP} from "../shared/tempAPI";
 import instance from "../shared/Request";
 import axios from "axios";
 
+import qs from 'qs';
 
 function DiaryWrite() {
     const dispatch = useDispatch();
@@ -77,11 +78,34 @@ function DiaryWrite() {
         // console.log(error);
         // });
 
-        axios.get('http://binscot.shop/user',{
-            
+        const params = new URLSearchParams();
+        params.append('userId',"aaaaaa");
+        params.append('nickname',"hello");
+        params.append('password',"111111");
 
-        },{"Access-Control-Allow-Origin": "http://binscot.shop", 
-            "Access-Control-Allow-Credentials": true}).then((res) => console.log(res)).catch((err,res) => console.log(err,res));
+        
+        
+
+        const headers = {
+            "Access-Control-Allow-Origin": "http://binscot.shop", 
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type": "application/x-www-form-urlencoded",
+            
+        };
+        const data = {
+            username: "123123123",
+            nickname : "123123123",
+            password : "123123",
+        };
+        const option = {
+            method : "POST",
+            headers : headers,
+            data : data,
+
+        }
+        
+        
+        axios.post('http://binscot.shop/api/login',data).then((res) => console.log(res.data)).catch((err,res) => console.log(err,res));
         
 
 

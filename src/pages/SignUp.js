@@ -11,6 +11,10 @@ import { Button, Grid, Input, Image, Text } from "../elements"
 //import Actions
 import { actionCreators as userActions } from "../redux/modules/user";
 
+//import API
+import instance from "../shared/Request"
+import axios from "axios";
+
 
 function SignUp() {
     const dispatch = useDispatch();
@@ -33,7 +37,7 @@ function SignUp() {
         console.log(pwdCheckRef.current.value)
 
         const user_data = {
-            loginId : idRef.current.value,
+            username : idRef.current.value,
             password : pwdRef.current.value,
             nickname : nickRef.current.value,
             user_profile : "https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832",
@@ -42,11 +46,22 @@ function SignUp() {
 
         if(pwdRef.current.value !== pwdCheckRef.current.value){
             console.log("plz recheck your password...");
+            return;
         }else{
-            dispatch( userActions.signupUser(user_data))
+            axios.post('/api/signup',user_data)
+            .then((res) => {
+                window.alert("회원가입이 완료되었습니다.")
+                console.log(res);
+                navigate("/login");
+            })
+            .catch((err,res) => {
+                console.log(err)
+            });
+            //dispatch( userActions.signupUser(user_data))
         }
         
 
+        
     }
 
     const pwdCheck = () =>{
