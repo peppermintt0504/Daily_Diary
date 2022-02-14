@@ -34,41 +34,18 @@ function Login() {
             username : idRef.current.value,
             password : pwdRef.current.value,
         }
-        const headers = {
-            "Access-Control-Allow-Origin": "http://binscot.shop", 
-            "Access-Control-Allow-Credentials": true,
-            "Content-Type": "application/x-www-form-urlencoded",
-            
-        };
         console.log(logIn_data);
-
-        // const _user = {
-        //         uid : "15",
-        //         user_id : "test",
-        //         nickname : "test1",
-        //         user_profile : "url",
-        //     }
-        //     dispatch(userActions.loginUser(_user));
-
-
-        instance.get('/api/users',logIn_data)
-            .then((res) => {
-            console.log(res.data)
-            const _user = {
-                uid : res.data.id,
-                user_id : res.data.username,
-                nickname : res.data.nickname,
-                user_profile : res.data.userimage,
-            }
-            //dispatch(userActions.loginUser(_user));
-
-
-        })
-        .catch((err,res) => {
-            console.log(err)
-            //window.alert("로그인에 실패하였습니다.");
-        });
-
+        
+        const _user = {
+            uid : "15",
+            user_id : "test",
+            nickname : "test1",
+            user_profile : "url",
+        }
+        dispatch(userActions.loginUser(_user));
+        navigate("/");
+        
+    
     }
 
     React.useEffect(async() => {
