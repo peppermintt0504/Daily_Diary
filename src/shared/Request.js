@@ -12,7 +12,7 @@ const instance = axios.create({
 // 	"Access-Control-Allow-Origin": "http://binscot.shop", 
 // 	"Access-Control-Allow-Credentials": true,
 // 	"Content-Type": "application/x-www-form-urlencoded",
-	
+
 // };
 
 //https://cors-anywhere.herokuapp.com/
