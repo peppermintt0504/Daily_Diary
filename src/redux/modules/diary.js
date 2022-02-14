@@ -36,15 +36,13 @@ const getDiary=() =>{
 
 const addDiarydata=(diary_data) =>{
     return async function (dispatch,getState){
-        diary_data.diary_uid = "temp uid";
-        console.log(diary_data);
+        
         dispatch(addDiary(diary_data));
     }
 }
 
 const delDiarydata=(diary_data) =>{
     return async function (dispatch,getState){
-        console.log(diary_data);
         dispatch(delDiary(diary_data));
     }
 }
@@ -63,19 +61,7 @@ export default handleActions(
         }),
         [DEL_DIARY]: (state, action) =>
         produce(state, (draft) => {
-            console.log(action.payload.diary_data.diary_uid)
-            console.log(state.list)
-            console.log(state.list.filter((v,i) => v.diary_uid !== action.payload.diary_data.diary_uid))
-        
-
             draft.list = state.list.filter((v,i) => v.diary_uid !== action.payload.diary_data.diary_uid);
-
-        // draft.list = draft.list.filter((l) => l.id !== action.payload.post_id);
-
-        // draft.list = state.list
-        // [DEL_POST] : (state,action) => 
-        // produce(state,(draft)=>
-        // { draft.list = state.list.filter((v,i) => v.id===action.payload.post_id?false:true); }), 
         }),
 
     },

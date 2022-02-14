@@ -12,17 +12,16 @@ import { Button, Grid, Input, Image, Text } from "../elements" ;
 import { actionCreators as diaryActions } from "../redux/modules/diary";
 
 //import API
-import {RESP} from "../shared/tempAPI";
 import instance from "../shared/Request";
 import axios from "axios";
 
-import qs from 'qs';
 
 function DiaryWrite() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const _state = useSelector(state => state)
-    console.log(_state);
+    const _user = useSelector(state => state.user.user)
+    console.log(_user);
 
     const titleRef = React.useRef(null);
     const ImageRef = React.useRef(null);
@@ -61,55 +60,15 @@ function DiaryWrite() {
             comment_cnt : 0,
             is_open : is_open,
             user_info:{
-                uid : "nuknown user uid...",
-                user_id: "nuknown user id...",
-                user_name : "nuknown user nick name...",
-                user_profile : "nuknown user profile..."
+                uid : _user.uid,
+                user_id: _user.user_id,
+                user_name : _user.nickname,
+                user_profile : _user.user_profile,
             },
         }
-        // instance.post('/user/login', {
-        //     firstName: 'Fred',
-        //     lastName: 'Flintstone'
-        // })
-        // .then(function (response) {
-        // console.log(response);
-        // })
-        // .catch(function (error) {
-        // console.log(error);
-        // });
-
-        const params = new URLSearchParams();
-        params.append('userId',"aaaaaa");
-        params.append('nickname',"hello");
-        params.append('password',"111111");
-
-        
-        
-
-        const headers = {
-            "Access-Control-Allow-Origin": "http://binscot.shop", 
-            "Access-Control-Allow-Credentials": true,
-            "Content-Type": "application/x-www-form-urlencoded",
-            
-        };
-        const data = {
-            username: "123123123",
-            nickname : "123123123",
-            password : "123123",
-        };
-        const option = {
-            method : "POST",
-            headers : headers,
-            data : data,
-
-        }
-        
-        
-        axios.post('http://binscot.shop/api/login',data,headers).then((res) => console.log(res.data)).catch((err,res) => console.log(err,res));
-        
-
-
-
+        console.log(newdiary);
+        dispatch(diaryActions.addDiarydata(newdiary));
+        navigate("/");
     }
 
     React.useEffect(async() => {

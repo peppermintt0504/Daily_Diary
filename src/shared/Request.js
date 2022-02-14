@@ -1,7 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-	baseURL: "http://binscot.shop" // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
+	baseURL: "http://binscot.shop", // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
+        headers : {
+                "content-type" : "application/json;charset-UTF-8",
+                accept : "application/json,",
+                //token : token,
+        }
 });
 
 // instance.post('/api/login', {
@@ -24,7 +29,6 @@ const instance = axios.create({
         //     "Access-Control-Allow-Origin": "http://binscot.shop", 
         //     "Access-Control-Allow-Credentials": true,
         //     "Content-Type": "application/x-www-form-urlencoded",
-            
         // };
         // instance.get('/api/users',logIn_data)
         //     .then((res) => {
