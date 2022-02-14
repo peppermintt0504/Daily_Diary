@@ -60,7 +60,7 @@ function Login() {
                     <Image width="100%" src="https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229"/>
                 </Grid>
                 <Input _ref={idRef} margin="10px" label="ID" width = "30vw"></Input>
-                <Input _ref={pwdRef} margin="10px" label="PassWord" width = "30vw"></Input>
+                <Input _ref={pwdRef} type='password' margin="10px" label="PassWord" width = "30vw"></Input>
                 <Button margin="20px" width="15vw" text="LogIn" _onClick={tryLogIn}/>
                 <Text cursor="pointer" F_color="#3d078cd9" _onClick={()=>{navigate("/signup")}}>회원이 아니신가요??</Text>
             </Grid>

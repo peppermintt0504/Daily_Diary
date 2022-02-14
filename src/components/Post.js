@@ -8,12 +8,14 @@ import { useSelector ,useDispatch} from "react-redux";
 
 
 const Post = (props) => {
-
+    const _props = props
+    // console.log(_props);
     const navigate = useNavigate();
 
     return(
         <>
-        <Grid Border='1px solid black' width='385px' height='600px' margin='0 0 20px 0' B_radius='20px' >
+        <Grid Border='1px solid black' width='385px' height='600px' margin='0 0 20px 0' B_radius='20px' 
+        _onClick={()=>{navigate("/detail/"+_props.diary_uid)}}>
             <Grid height='70px' padding='0 15px' is_flex justify_content='space-between'>
                 <Grid is_flex>
                     <Image shape='circle' size='40'></Image>

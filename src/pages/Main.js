@@ -6,6 +6,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 //import Actions
 import { actionCreators as diaryActions } from "../redux/modules/diary";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 //import elements
 import { Button, Grid, Input, Image, Text } from "../elements" 
@@ -33,13 +34,18 @@ function Main() {
     }
 
     React.useEffect(async() => {
-        dispatch(diaryActions.getDiary())
+        if( !is_login )
+            dispatch(userActions.loginCheck());
+
+        if(_diary.length === 0){
+            dispatch(diaryActions.getDiary())
+        }
     },[]);
 
-    if(!is_login){
-        navigate('/login');
-        return (<Grid/>);
-    }
+    // if(!is_login){
+    //     navigate('/login');
+    //     return (<React.Fragment/>);
+    // }
 
     return (
         <Grid>
@@ -52,7 +58,7 @@ function Main() {
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
                     {_diary.map((D, idx) => {
                         return(
-                            <Post key={idx} {...D}/>
+                            <Post key={idx} index={idx} {...D}/>
                             )
                     })}
                 </Grid>

@@ -55,6 +55,25 @@ const loginUser=(user_data) =>{
 
 const loginCheck=() =>{
     return async function (dispatch,getState){
+        const is_login = getState().user.is_login
+        console.log(is_login);
+
+
+        const Co = getCookie("is_login");
+
+        console.log(Co);
+        if(Co !== undefined){
+            //temp data
+            const _user = {
+                uid : "15",
+                user_id : "test",
+                nickname : "test1",
+                user_profile : "url",
+            }
+            
+            dispatch(setUser(_user));
+
+        }
 
     }
 }

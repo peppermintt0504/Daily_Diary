@@ -87,8 +87,8 @@ function SignUp() {
                 </Grid>
                 
                 <Input _ref={nickRef} margin="10px" label="NickName" width = "30vw"></Input>
-                <Input _ref={pwdRef} margin="10px" label="PassWord" width = "30vw"></Input>
-                <Input _ref={pwdCheckRef} margin="10px" label="CheckPassWord" width = "30vw"></Input>
+                <Input _ref={pwdRef} type='password' margin="10px" label="PassWord" width = "30vw"></Input>
+                <Input _ref={pwdCheckRef} type='password' margin="10px" label="CheckPassWord" width = "30vw"></Input>
                 <Button margin="20px" width="15vw" text="Signup" _onClick={sendData} />
             </Grid>
         </Grid>

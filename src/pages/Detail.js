@@ -2,12 +2,16 @@
 import React from "react"
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
+import { useParams } from 'react-router-dom';
 import { Route, Routes, useNavigate } from "react-router-dom";
 
+//import elements
 import { Button, Grid, Input, Image, Text } from "../elements" 
 
-//import Icon
+//import Actions
+import { actionCreators as diaryActions } from "../redux/modules/diary";
 
+//component
 import CommentWrite from "../components/CommentWrite.js";
 import CommentList from "../components/CommentList";
 import Header from "../components/Header";
@@ -15,7 +19,34 @@ import Header from "../components/Header";
 
 
 
-function Detail() {
+function Detail(props) {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const _diary = useSelector(state => state.diary.list);
+
+    const params = useParams()
+    const diary_uid = params.diary_uid
+    // console.log(params.index)
+
+    React.useEffect(async() => {
+        if(_diary.length === 0){
+            dispatch(diaryActions.getDiary())
+        }
+    },[]);
+
+    const diary = useSelector((state)=> state.diary.list).reduce((x,v,i) => v.diary_uid ===diary_uid?v:x,"");
+    console.log(diary)
+    if (diary === undefined ){
+        return( <React.Fragment></React.Fragment> )
+    }
+
+    // console.log(diary)
+    const diary_del = () => {
+        dispatch(diaryActions.delDiarydata(diary))
+        navigate("/")  
+        
+    }
+
     return(
         <React.Fragment>
             <Header/>
@@ -24,18 +55,19 @@ function Detail() {
 
                 <Grid BG_c='white' padding= '20px' B_radius='15px' >
                     <Grid is_flex justify_content='flex-start' padding='10px 0 ' align_items='end'>
-                        <Image shape='circle' size="150" src ='https://item.kakaocdn.net/do/431c1c842860f98b0d0a6b5cc85cfd608f324a0b9c48f77dbce3a43bd11ce785'/>      
-                        <Text F_size='16px' margin='0 0 10px 0'>2022-02-12</Text>
+                        <Image shape='circle' size="150" src ={diary.image_url}/>      
+                        <Text F_size='16px' margin='0 0 10px 0'>{diary.insert_dt}</Text>
                     </Grid>
                     <Grid Border='1px dotted black' height='200px' B_radius='20px'  padding='20px' margin='0 0 20px 0'>
-                        <Text Text F_size='16px' width='100%' height='100px'>다이어리 내용 오늘 하루도 고생하셨습니다 으아! ㅋㅋㅋㅋㅋㅋ오늘 하루도 고생하셨습니다 으아! ㅋㅋㅋㅋㅋㅋ오늘 하루도 고생하셨습니다 으아! ㅋㅋㅋㅋㅋㅋ오늘 하루도 고생하셨습니다 으아! ㅋㅋㅋㅋㅋㅋ오늘 하루도 고생하셨습니다 으아! ㅋㅋㅋㅋㅋㅋ  </Text>
+                        <Text Text F_size='16px' width='100%' height='100px'>{diary.contents}</Text>
                     </Grid>
                     <Grid is_flex justify_content='flex-end'>
                         <Button 
                             height='40px' width='65px' margin=' 10px' BG_color='#ffec99' Border='none' B_radius='10px'>수정
                         </Button>
                         <Button 
-                            height='40px' width='65px' BG_color='#ffec99' Border='none' B_radius='10px' margin='0 10px 0 0'>삭제
+                            height='40px' width='65px' BG_color='#ffec99' Border='none' B_radius='10px' margin='0 10px 0 0'
+                            _onClick={diary_del}>삭제
                         </Button>
                     </Grid>
                 </Grid>
@@ -57,3 +89,6 @@ function Detail() {
 }
 
 export default Detail; 
+
+// 귀여운사진...어디 쓸곳이 없을깡....ㅋㅋ
+// 'https://item.kakaocdn.net/do/431c1c842860f98b0d0a6b5cc85cfd608f324a0b9c48f77dbce3a43bd11ce785'
