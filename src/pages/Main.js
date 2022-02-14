@@ -20,8 +20,9 @@ import Post from "../components/Post";
 
 
 
-function Temp() {
+function Main() {
     const _diary = useSelector(state => state.diary.list);
+    const is_login = useSelector(state => state.user.is_login);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     // console.log(_diary.list)
@@ -34,6 +35,11 @@ function Temp() {
     React.useEffect(async() => {
         dispatch(diaryActions.getDiary())
     },[]);
+
+    if(!is_login){
+        navigate('/login');
+        return (<Grid/>);
+    }
 
     return (
         <Grid>
@@ -61,4 +67,4 @@ function Temp() {
     );
 }
 
-export default Temp;
+export default Main;

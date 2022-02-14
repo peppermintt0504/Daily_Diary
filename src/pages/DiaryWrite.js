@@ -14,7 +14,9 @@ import { actionCreators as diaryActions } from "../redux/modules/diary";
 //import API
 import {RESP} from "../shared/tempAPI";
 import instance from "../shared/Request";
+import axios from "axios";
 
+import qs from 'qs';
 
 function DiaryWrite() {
     const dispatch = useDispatch();
@@ -31,7 +33,7 @@ function DiaryWrite() {
 
     const [emotion, setEmotion ] = React.useState("Good")
     const [title,setTitle] = React.useState("");
-    const [image_url,setImage_url] = React.useState("https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832");
+    const [image_url,setImage_url] = React.useState("https://mnapoli.fr/images/posts/null.png");
     const [contents,setContents] = React.useState("");
     const [tag,setTag] = React.useState("");
     const [is_open,setIs_open] = React.useState(true);
@@ -65,10 +67,49 @@ function DiaryWrite() {
                 user_profile : "nuknown user profile..."
             },
         }
-        dispatch(diaryActions.addDiarydata(newdiary));
-        window.alert("게시물이 추가 되었습니다.");
-        navigate("/");
+        // instance.post('/user/login', {
+        //     firstName: 'Fred',
+        //     lastName: 'Flintstone'
+        // })
+        // .then(function (response) {
+        // console.log(response);
+        // })
+        // .catch(function (error) {
+        // console.log(error);
+        // });
+
+        const params = new URLSearchParams();
+        params.append('userId',"aaaaaa");
+        params.append('nickname',"hello");
+        params.append('password',"111111");
+
         
+        
+
+        const headers = {
+            "Access-Control-Allow-Origin": "http://binscot.shop", 
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type": "application/x-www-form-urlencoded",
+            
+        };
+        const data = {
+            username: "123123123",
+            nickname : "123123123",
+            password : "123123",
+        };
+        const option = {
+            method : "POST",
+            headers : headers,
+            data : data,
+
+        }
+        
+        
+        axios.post('http://binscot.shop/api/login',data,headers).then((res) => console.log(res.data)).catch((err,res) => console.log(err,res));
+        
+
+
+
     }
 
     React.useEffect(async() => {
@@ -101,7 +142,6 @@ function DiaryWrite() {
                         <label onClick={()=>setIs_open(false)}>비공개<input type={"radio"} name={"is_open"} value="비공개"></input></label>
                     </Grid>
                     <Button margin="20px" width="15vw" text="Signup" _onClick={sendData} />
-
                 </Grid>
         </Grid>
 

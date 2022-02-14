@@ -8,12 +8,15 @@ import { useSelector ,useDispatch} from "react-redux";
 //import Components
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 
+//import redux
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Header = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const is_login = useSelector(state => state.user.is_login);
+    const _user = useSelector(state => state.user.user);
 
     
 
@@ -21,6 +24,7 @@ const Header = (props) => {
 
     const logout = () =>{
         console.log("logout and go to login page");
+        dispatch(userActions.logoutUser());
         navigate("/login");
     }
 
@@ -42,7 +46,7 @@ const Header = (props) => {
     
     
                     <Grid width="600px" margin="0 100px" flex_direction= "row" justify_content="space-between" is_flex>
-                        <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">XXXXX님</Text>
+                        <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">{_user.nickname}</Text>
                         <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="마이페이지" _onClick ={() => navigate("/mypage")}/>
                         <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={logout}/>
                         

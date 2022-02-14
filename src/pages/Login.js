@@ -11,10 +11,15 @@ import { Button, Grid, Input, Image, Text } from "../elements" ;
 //import Actions
 import { actionCreators as userActions } from "../redux/modules/user";
 
+//import API
+import instance from "../shared/Request"
+import axios from "axios";
 
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const _user = useSelector(state => state.user);
 
     const idRef = React.useRef(null);
     const pwdRef = React.useRef(null);
@@ -22,11 +27,48 @@ function Login() {
     const [ id, setId ] = React.useState("")
     const [ pwd,setPwd ] = React.useState("");
 
-    const tryLogIn = () =>{
-        console.log(idRef.current.value);
-        console.log(pwdRef.current.value);
+    console.log(_user);
 
-        
+    const tryLogIn = () =>{
+        const logIn_data = {
+            username : idRef.current.value,
+            password : pwdRef.current.value,
+        }
+        const headers = {
+            "Access-Control-Allow-Origin": "http://binscot.shop", 
+            "Access-Control-Allow-Credentials": true,
+            "Content-Type": "application/x-www-form-urlencoded",
+            
+        };
+        console.log(logIn_data);
+
+        const _user = {
+                uid : "15",
+                user_id : "test",
+                nickname : "test1",
+                user_profile : "url",
+            }
+            dispatch(userActions.loginUser(_user));
+            navigate("/");
+
+
+        // instance.get('/api/users',logIn_data)
+        //     .then((res) => {
+        //     console.log(res.data)
+        //     const _user = {
+        //         uid : res.data.id,
+        //         user_id : res.data.username,
+        //         nickname : res.data.nickname,
+        //         user_profile : res.data.userimage,
+        //     }
+        //     //dispatch(userActions.loginUser(_user));
+
+
+        // })
+        // .catch((err,res) => {
+        //     console.log(err)
+        //     //window.alert("로그인에 실패하였습니다.");
+        // });
 
     }
 
