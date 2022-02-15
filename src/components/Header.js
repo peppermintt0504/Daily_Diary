@@ -31,7 +31,7 @@ const Header = (props) => {
     if(is_login){
         return(
             <React.Fragment>
-                <Grid flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+                <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
                     <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
                         <Grid F_style={"italic"} is_flex justify_content='flex-start' >
                             <Grid>
@@ -59,7 +59,7 @@ const Header = (props) => {
     }
     return(
         <React.Fragment>
-            <Grid flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+            <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
                 <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
                     <Grid F_style={"italic"} is_flex justify_content='flex-start' >
                         <Grid>

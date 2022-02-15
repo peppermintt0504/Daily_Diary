@@ -15,9 +15,10 @@ import { Button, Grid, Input } from "../elements"
 import Main from "../pages/Main";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import DiaryWrite from "../pages/DiaryWrite"
-import Detail from "../pages/Detail"
-import MyPage from "../pages/MyPage"
+import DiaryWrite from "../pages/DiaryWrite";
+import DiaryEdit from "../pages/DiaryEdit";
+import Detail from "../pages/Detail";
+import MyPage from "../pages/MyPage";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/diarywrite" element={<DiaryWrite />}/>
         <Route path="/detail/:diary_uid" element={<Detail />}/>
         <Route path="/mypage" element={<MyPage />}/>
+        <Route path="/diaryedit/:diary_uid" element={<DiaryEdit />}/>
 
 
       </Routes>

@@ -6,6 +6,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 //import Components && elements
 import Header from "../components/Header";
+import Upload from "../shared/Upload";
 import { Button, Grid, Input, Image, Text } from "../elements" ;
 
 //import Actions
@@ -80,20 +81,18 @@ function DiaryWrite() {
         <Grid>
             <Header/>
                 <Grid margin="150px 0" is_flex flex_direction="column" align-items="center">
-                    <Grid justify_content="center" is_flex align-items="center">
+                    <Grid width="50vw" justify_content="center" is_flex align-items="center">
                         <Input _ref={titleRef} margin="10px" label="Title" width = "26vw"></Input>
-                        <select ref={emoRef} style={ { margin : "20px 0 0 0",height:"40px", width:"4vw"}} >
+                        <select ref={emoRef} style={ { margin : "20px 0 0 0",height:"40px", width:"6vw"}} >
                             <option value={"Good"}>좋아요!</option>
                             <option value={"Soso"}>그냥~</option>
                             <option value={"NotGood"}>에휴...</option>
                         </select>
                     </Grid>
+                    
+                    <Upload/>
 
-
-                    <Text margin="20px">미리보기</Text>
-                    <Image margin="20px" width="100%" src={image_url?image_url:"https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832"}/>
                     <Grid margin="10px"/>
-                    <Input _ref={ImageRef} margin="10px" label="Image_url" width = "30vw" _onChange={changeImg_url}></Input>
                     <Input _ref={contentsRef} is_textarea margin="10px" label="Contents" height="150px" width = "30vw"></Input>
                     <Input _ref={tagRef} margin="10px" label="Hash tag" width = "30vw"></Input>
                     <Grid is_flex width="30vw" align-items="center">

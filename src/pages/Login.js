@@ -35,7 +35,8 @@ function Login() {
             password : pwdRef.current.value,
         }
         
-        console.log(logIn_data);
+
+        const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTY0NDkwMjYxMiwiZXhwIjoxNjQ0OTA0NDEyfQ.lumvh1keGUpIvNKcWfT51eqXyls2yvvx_t8hduugZGg";
 
         const _user = {
                 uid : "15",
@@ -43,12 +44,26 @@ function Login() {
                 nickname : "test1",
                 user_profile : "url",
             }
-        dispatch(userActions.loginUser(_user));
-        navigate("/");
+        // dispatch(userActions.loginUser(_user));
+        // navigate("/");
+        
+        instance.post('/api/login',logIn_data,{token:TOKEN})
+            .then((res) => {
+                window.alert("로그인이 완료되었습니다.")
+                console.log(res);
+                // navigate("/login");
+                instance.get('/api/user',{token:TOKEN},{token:TOKEN}).then(res=>console.log(res)).catch(err=>console.log(err));
+            })
+            .catch((err,res) => {
+                console.log(err)
+            });
 
+
+        
     }
 
     React.useEffect(async() => {
+        
     },[]);
 
     return (

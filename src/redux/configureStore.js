@@ -6,11 +6,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 //import Modules
 import Diary from "./modules/diary";
 import User from "./modules/user"
+import Image from "./modules/image";
 
 
 
 const middlewares = [thunk];
 const rootReducer = combineReducers({
+    image : Image,
     diary : Diary,
     user : User,
 });

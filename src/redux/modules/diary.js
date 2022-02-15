@@ -61,6 +61,7 @@ export default handleActions(
         }),
         [DEL_DIARY]: (state, action) =>
         produce(state, (draft) => {
+            window.alert('데이터가 삭제되었습니다');
             draft.list = state.list.filter((v,i) => v.diary_uid !== action.payload.diary_data.diary_uid);
         }),
 

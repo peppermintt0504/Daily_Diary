@@ -7,8 +7,11 @@ const Grid = (props) => {
     //Border category
     const { B_left, B_right, Border, B_radius, B_bottom, B_top,} = props;
 
+    //box category
+    const { box_shadow, } = props;
+
     //Background category
-    const { BG_c } = props;
+    const { BG_c, } = props;
     
     //flex category
     const { is_flex, flex_direction, flex_wrap, justify_content, align_items } = props;
@@ -28,6 +31,8 @@ const Grid = (props) => {
         B_bottom, B_top,
         B_radius,
         Border,
+
+        box_shadow,
 
         BG_c,
 
@@ -65,6 +70,8 @@ Grid.defaultProps ={
     flex_wrap : 'wrap',
     align_items : "center",
     justify_content : null,
+
+    box_shadow : null,
     
     BG_c : false,
     
@@ -90,6 +97,8 @@ const GridBox = styled.div`
     justify-content:${props => props.justify_content};
     flex-direction :  ${props => props.flex_direction};
     flex-wrap :  ${props => props.flex_wrap};
+
+    box-shadow: ${props => props.box_shadow};;
 
     //size, position
     width : ${props => props.width};

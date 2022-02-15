@@ -4,6 +4,9 @@ const instance = axios.create({
 	baseURL: "http://binscot.shop", // 요청을 www.aa.com/user로 보낸다면, www.aa.com까지 기록
         headers : {
                 "content-type" : "application/json;charset-UTF-8",
+                // "Content-Type": "application/x-www-form-urlencoded",
+
+
                 accept : "application/json,",
                 //token : token,
         }

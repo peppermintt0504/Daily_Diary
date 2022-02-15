@@ -26,7 +26,6 @@ function Detail(props) {
 
     const params = useParams()
     const diary_uid = params.diary_uid
-    // console.log(params.index)
 
     React.useEffect(async() => {
         if(_diary.length === 0){
@@ -47,6 +46,10 @@ function Detail(props) {
         
     }
 
+    const diary_update = () => {
+        navigate("/diaryedit/"+params.diary_uid)  
+    }
+
     return(
         <React.Fragment>
             <Header/>
@@ -54,16 +57,25 @@ function Detail(props) {
                 <Text F_size='30px' margin='20px 0 50px' F_color='white' F_weight='600' F_shadow='1px 1px 2px gray'>일기 상세 페이지</Text>
 
                 <Grid BG_c='white' padding= '20px' B_radius='15px' >
-                    <Grid is_flex justify_content='flex-start' padding='10px 0 ' align_items='end'>
-                        <Image shape='circle' size="150" src ={diary.image_url}/>      
-                        <Text F_size='16px' margin='0 0 10px 0'>{diary.insert_dt}</Text>
+                <Grid is_flex justify_content='flex-start' padding='10px 0 ' align_items='end' align_items>
+                        <Grid>
+                            <Image shape='circle' size="150" src ={diary?diary.image_url:""}/>      
+                        </Grid>
+                        <Grid padding = '20px 15px' width='80%' >
+                            <Grid is_flex justify_content="space-between" align_items>
+                                <Text margin='0 10px 0 0'>{diary?diary.user_info.user_name:""}</Text>
+                                <Text F_size='16px' margin='0 0 10px 0'>{diary?diary.insert_dt:""}</Text>
+                            </Grid>
+                            <Text F_size='23px' F_weight='600'>{diary?diary.title:""}</Text>
+                        </Grid>
                     </Grid>
                     <Grid Border='1px dotted black' height='200px' B_radius='20px'  padding='20px' margin='0 0 20px 0'>
-                        <Text Text F_size='16px' width='100%' height='100px'>{diary.contents}</Text>
+                        <Text Text F_size='16px' width='100%' height='100px'>{diary?diary.contents:""}</Text>
                     </Grid>
                     <Grid is_flex justify_content='flex-end'>
                         <Button 
-                            height='40px' width='65px' margin=' 10px' BG_color='#ffec99' Border='none' B_radius='10px'>수정
+                            height='40px' width='65px' margin=' 10px' BG_color='#ffec99' Border='none' B_radius='10px'
+                            _onClick={diary_update}>수정
                         </Button>
                         <Button 
                             height='40px' width='65px' BG_color='#ffec99' Border='none' B_radius='10px' margin='0 10px 0 0'
