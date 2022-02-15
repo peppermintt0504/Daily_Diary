@@ -63,18 +63,10 @@ export default handleActions(
         }),
         [DEL_DIARY]: (state, action) =>
         produce(state, (draft) => {
-            console.log(state.list)
-            console.log(action.payload.diary_data)
-        
-
+            // console.log(state.list)
+            // console.log(action.payload.diary_data)
+            window.alert('데이터가 삭제되었습니다')
             draft.list = state.list.filter((v,i) => v.diary_uid !== action.payload.diary_data.diary_uid);
-
-        // draft.list = draft.list.filter((l) => l.id !== action.payload.post_id);
-
-        // draft.list = state.list
-        // [DEL_POST] : (state,action) => 
-        // produce(state,(draft)=>
-        // { draft.list = state.list.filter((v,i) => v.id===action.payload.post_id?false:true); }), 
         }),
 
     },
