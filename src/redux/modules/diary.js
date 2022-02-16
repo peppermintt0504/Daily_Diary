@@ -5,6 +5,7 @@ import moment from 'moment';
 
 //API
 import { RESP } from "../../shared/tempAPI"
+import instance from "../../shared/Request";
 
 
 //action
@@ -22,6 +23,7 @@ const updateDiary = createAction(UPDATE_DIARY, (diary_data) => ({ diary_data}));
 
 //initialState
 const initialState = {
+    ok :true,
     list : [],
 };
 
@@ -29,21 +31,48 @@ const initialState = {
 //middleware actions
 const getDiary=() =>{
     return async function (dispatch,getState){
-        const diary_list = RESP.DIARY.list;
-        dispatch(setDiary(diary_list));
+        console.log("get diary API..");
+        const diary_M = RESP.DIARY;
+        const diary_list = [];
+        instance.get('/api/diary',{}).then(res => {
+            for(let v of res.data){
+                diary_list.push(v);
+            }
+            dispatch(setDiary(diary_list));
+        });
+        
     }
 }
 
 const addDiarydata=(diary_data) =>{
     return async function (dispatch,getState){
-        
-        dispatch(addDiary(diary_data));
+        const token = getCookie("is_login");
+        instance.defaults.headers.common["X-AUTH-TOKEN"] =token;
+        instance.post('/api/diary',diary_data).then(res => {
+                console.log("post :",res)
+                instance.get('/api/diary',{}).then(res => console.log("get :",res));
+                dispatch(addDiary(res.data));
+        });
+
+
     }
 }
 
-const delDiarydata=(diary_data) =>{
+const delDiarydata=(diary_id) =>{
     return async function (dispatch,getState){
-        dispatch(delDiary(diary_data));
+        const token = getCookie("is_login");
+        instance.defaults.headers.common["X-AUTH-TOKEN"] =token;
+        instance.delete(`/api/diary/${diary_id}`,).then(res => {
+            instance.get('/api/diary',{}).then(res => console.log("get :",res));
+            const diary_list = [];
+            for(let v of res.data){
+                diary_list.push(v);
+            }
+            dispatch(setDiary(diary_list));
+        });
+
+
+        dispatch(delDiary(diary_id));
     }
 }
 const updateDiarydata=(diary_data, diary_idx) =>{
@@ -57,12 +86,10 @@ export default handleActions(
     {
         [SET_DIARY]: (state, action) =>
         produce(state, (draft) => {
-            draft.list = action.payload.diary_list;
+            draft.list = [...action.payload.diary_list];
         }),
         [ADD_DIARY]: (state, action) =>
         produce(state, (draft) => {
-            console.log(state.list);
-            console.log(action.payload.diary_data);
             draft.list.push(action.payload.diary_data);
         }),
         [DEL_DIARY]: (state, action) =>

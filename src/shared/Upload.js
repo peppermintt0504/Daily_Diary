@@ -56,8 +56,8 @@ const Upload = (props) => {
                 {files.map((item,index) => (
                     <ImageListItem key={index}>
                     <img
-                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                         // alt={item.title}
                         loading="lazy"
                     />

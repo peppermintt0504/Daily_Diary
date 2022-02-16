@@ -11,7 +11,15 @@ import { BsFillMenuButtonWideFill } from "react-icons/bs";
 //import redux
 import { actionCreators as userActions } from "../redux/modules/user";
 
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+
+
 const Header = (props) => {
+
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -20,7 +28,6 @@ const Header = (props) => {
 
 
     const logout = () =>{
-        console.log("logout and go to login page");
         dispatch(userActions.logoutUser());
         navigate("/login");
     }
@@ -55,6 +62,7 @@ const Header = (props) => {
                     </Grid>
                 </Grid>
                 <Grid margin = "80px"/>
+
             </React.Fragment>
         );
     
@@ -81,6 +89,7 @@ const Header = (props) => {
                 </Grid>
             </Grid>
             <Grid margin = "80px"/>
+
         </React.Fragment>
     );
 

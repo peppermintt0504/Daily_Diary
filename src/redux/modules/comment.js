@@ -6,6 +6,7 @@ import moment from "moment";
 
 //API
 import { RESP } from "../../shared/tempAPI"
+import instance from "../../shared/Request";
 
 
 //action
@@ -31,14 +32,32 @@ const initialState = {
 const getComment = (diary_id) => {
   return async function (dispatch,getState){
     const diary_comment = RESP.COMMENT.list;
-    dispatch(setComment(diary_id, diary_comment));
+
+    const token = getCookie("is_login");
+    instance.defaults.headers.common["X-AUTH-TOKEN"] =token;
+    instance.get(`/api/comment/${diary_id}`,{}).then(res =>{
+        console.log("get :",res)
+        dispatch(setComment(diary_id, res.data));
+    });
+
+
     // console.log(diary_comment)
   }
 }
 
-const addCommentData = (comment_data) => {
+const addCommentData = (diary_id,comment_data) => {
   return async function (dispatch,getState){
-    dispatch(addComment(comment_data));
+
+    const token = getCookie("is_login");
+    instance.defaults.headers.common["X-AUTH-TOKEN"] =token;
+
+    instance.post(`/api/comment/${diary_id}`,{comment : comment_data}).then(res => {
+      instance.get(`/api/comment/${diary_id}`,{}).then(res => {
+        console.log("get :",res)
+        dispatch(setComment(diary_id, res.data));
+      });
+    });
+
   }
 }
 
@@ -57,7 +76,6 @@ export default handleActions(
 
       [ADD_COMMENT]: (state, action) => 
       produce(state, (draft)=> {
-        console.log(state);
         draft.list.push(action.payload.comment_data);
       }),
 

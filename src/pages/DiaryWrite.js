@@ -58,25 +58,18 @@ function DiaryWrite() {
         tag_list.shift();
 
         const newDiary = {
-            diary_uid : `${_user.nickname}_titleRef.current.value`,
             emotion : emotion,
-            tag : tag_list,
-            image_url : _image.image_url[0]?_image.image_url[0]:"https://mnapoli.fr/images/posts/null.png",
+            tag : tagRef.current.value,
+            imageUrlList : _image.image_url?_image.image_url:"https://mnapoli.fr/images/posts/null.png",
             title : titleRef.current.value,
-            contents : contentsRef.current.value,
+            content : contentsRef.current.value,
             comment_cnt : 0,
             is_open : is_open,
-            user_info:{
-                uid : _user.uid,
-                user_id: _user.user_id,
-                nickname : _user.nickname,
-                user_profile : _user.user_profile,
-            },
         }
         console.log(newDiary);
         dispatch(diaryActions.addDiarydata(newDiary));
         navigate("/");
-        //window.location.reload();
+        window.location.reload();
     }
 
     React.useEffect(async() => {

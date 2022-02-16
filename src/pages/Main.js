@@ -26,11 +26,11 @@ import instance from "../shared/Request";
 
 
 function Main() {
-    const _diary = useSelector(state => state.diary.list);
+    const _diary = useSelector(state => state.diary);
     const _image = useSelector(state => state.image);
     const _user = useSelector(state => state.user);
 
-    //console.log(_user);
+    console.log(_diary);
     
     const is_login = _user.is_login;
 
@@ -39,42 +39,7 @@ function Main() {
 
     
     instance.defaults.headers.common["X-AUTH-TOKEN"] = _user.token;
-    // const temp_data ={
-        
-    //         emotion:"웃는표정",
-    //         tag:"테그1",
-    //         imageUrlList :[
-    //             {"imageUrl":"asdfsadf"},
-    //             {"imageUrl":"asdfsa3df"}
-    //         ],
-    //         title:"제목",
-    //         content:"내용",
-    //         is_open:"true"
-        
-    // }
-    // const temp_C_data ={
-    //     diaryId : 9,
-    //     comment : "hello",
 
-    // }
-
-    // if(_user.is_login){
-    //     // instance.post('/api/diary',temp_data).then(res => {
-    //     //     console.log("post :",res)
-    //     //     instance.get('/api/diary',{}).then(res => console.log("get :",res));
-
-    //     // });
-
-    //     // instance.post('/api/comment/9',temp_C_data).then(res => {
-    //     //     console.log("post :",res)
-    //     //     instance.get('/api/comment/9',{diaryId : "9",}).then(res => console.log("get :",res));
-    //     // });
-
-    //     instance.delete('/api/comment/10',{}).then(res => {
-    //         console.log("post :",res)
-    //         instance.get('/api/comment/9',{diaryId : "9",}).then(res => console.log("get :",res));
-    //     });
-    // }
 
     const go_diarywrite = ()=>{
         navigate("/diarywrite")  
@@ -82,9 +47,9 @@ function Main() {
 
     React.useEffect(async() => {
 
-        if(_diary.length === 0){
-            dispatch(diaryActions.getDiary())
-        }
+        
+        dispatch(diaryActions.getDiary())
+        
     },[]);
 
 
@@ -92,16 +57,17 @@ function Main() {
         <Grid>
             <Header/>
             <Grid width='1200px' margin='0 auto'>
-                <Grid  height='300px' margin='120px 0'> 
-                    <Text F_size='30px' F_color='#fcc419' F_weight='600' margin='20px auto'>오늘의 일기</Text>
-                    <Image src='/img/dog.jpg' shape='imageBG'/>
+                <Grid  height='350px' margin='120px 0'> 
+                    <Image src='Logo.png' shape='imageBG'/>
                 </Grid>
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
-                    {_diary.map((D, idx) => {
-                        return(
-                            <Post key={idx+D.user_info.nickname} index={idx} {...D}/>
-                            )
-                    })}
+                    {_diary.list?_diary.list.map((D, idx) => {
+                        if(D.is_open){
+                            return(
+                                <Post key={idx} index={idx} {...D}/>
+                                )
+                        }
+                    }):""}
                 </Grid>
             </Grid>
             <Button 
