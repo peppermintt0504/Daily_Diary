@@ -21,11 +21,11 @@ const Post = (props) => {
         <Grid box_shadow="1px 4px 5px 1px #80808080" Border='1px solid #00000085' width='385px' height='600px' margin='0 0 20px 0' B_radius='20px' 
         _onClick={()=>{navigate("/detail/"+_props.diary_uid)}}>
             <Grid height='70px' padding='0 15px' is_flex justify_content='space-between'>
-                <Grid is_flex>
+                <Grid width='50%' is_flex> 
                     <Image shape='circle' size='40' src={props.user_info.user_profile}></Image>
-                    <Text margin='0 0 0 7px'>{props.user_info.nickname}</Text>
+                    <Text margin='0 0 0 7px' width='50%'>{props.user_info.nickname}</Text>
                 </Grid>
-                <Text>{props.insert_dt}</Text>
+                <Text width='50%' is_flex justify_content='flex-end'>{props.insert_dt}</Text>
             </Grid>
 
             <Grid width='100%' height='300px'>

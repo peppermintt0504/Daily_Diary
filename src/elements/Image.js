@@ -11,7 +11,7 @@ const Image = (props) => {
     //event category
     const { _onClick, } = props;
     
-    const { } = props;
+    const { box_shadow } = props;
 
 
     const styles = {
@@ -20,18 +20,20 @@ const Image = (props) => {
         width,
         height,
         margin,
+        box_shadow,
         
     }
-    if(shape === "imageBG"){
-        return(
-            <ImageBG onClick={_onClick} {...styles}></ImageBG>
-        )
-    }
+
     if(shape === "imagePost"){
         return(
             <ImagePost onClick={_onClick} {...styles}></ImagePost>
         )
     }
+    // if(shape === "imageLogo"){
+    //     return(
+    //         <ImageLogo onClick={_onClick} {...styles}></ImageLogo>
+    //     )
+    // }
     if(shape === "circle"){
         return (
             <ImageCircle onClick={_onClick} {...styles}></ImageCircle>
@@ -96,14 +98,7 @@ const ImagePost = styled.div`
     background-image: url("${(props) => props.src}");
     background-size: cover;   
     background-position: center;
-`;
-const ImageBG = styled.div`
-    width: 100%;
-    height: 100%;
-    background-image: url("${(props) => props.src}");
-    object-fit:cover; 
-    background-position: center;
-    border: 1px solid #ffec99;
+    box-shadow : ${(props) => props.box_shadow}
 `;
 
 export default Image;

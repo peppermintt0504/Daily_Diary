@@ -69,7 +69,6 @@ function Login() {
     return (
         <Grid >
             <Header/>
-            
             <Grid is_flex flex_direction="column" align-items="center">
                 <Grid width="30vw" margin="30px">
                     <Image width="100%" src="https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229"/>
@@ -80,6 +79,7 @@ function Login() {
                 <Text cursor="pointer" F_decoration="underline" F_color="#3d078cd9" _onClick={()=>{navigate("/signup")}}>회원이 아니신가요??</Text>
             </Grid>
         </Grid>
+
     );
 }
 

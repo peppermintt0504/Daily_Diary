@@ -92,9 +92,8 @@ function Main() {
         <Grid>
             <Header/>
             <Grid width='1200px' margin='0 auto'>
-                <Grid  height='300px' margin='120px 0'> 
-                    <Text F_size='30px' F_color='#fcc419' F_weight='600' margin='20px auto'>오늘의 일기</Text>
-                    <Image src='/img/dog.jpg' shape='imageBG'/>
+                <Grid  height='300px' width='1200px' margin='120px 0 50px'> 
+                    <Image src='/img/main1.png' width='100%' shape='imagePost' box_shadow='2px 2px 5px lightgrey' />
                 </Grid>
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
                     {_diary.map((D, idx) => {
@@ -105,7 +104,7 @@ function Main() {
                 </Grid>
             </Grid>
             <Button 
-                BG_color='#ffec99' Border='none' B_radius='30px' width='50px' height='50px' position='fixed' right='30px' bottom='30px'
+                BG_color='#a5d8ff' Border='none' B_radius='30px' width='50px' height='50px' position='fixed' right='30px' bottom='30px' font_color='white' box_shadow='2px 2px 3px grey' 
                 _onClick={go_diarywrite} >
                 <FiEdit2 size='30px'/>
             </Button>

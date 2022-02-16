@@ -8,7 +8,7 @@ const Button = (props) => {
     const { Border, B_radius,   } = props;
     
     //Background category
-    const { BG_color,   } = props;
+    const { BG_color, box_shadow,  } = props;
     
     //font category
     const { font_color, font_size  } = props;
@@ -35,6 +35,7 @@ const Button = (props) => {
         B_radius,
 
         BG_color,
+        box_shadow,
 
         font_color,
         font_size,
@@ -83,6 +84,8 @@ const Btn = styled.button`
     border-radius :     ${props => props.B_radius};
     
     background-color :  ${props => props.BG_color};
+    box-shadow :        ${props => props.box_shadow};
+
     
     font-size :         ${props => props.font_size};
     color :             ${props => props.font_color};

@@ -30,23 +30,22 @@ function MyPage() {
 
     return(
         <React.Fragment>
-        <Grid >
-            <Text F_size='50px' margin='120px 0 0 80px'>MyPage</Text>
-        </Grid>
-        <Grid position='relative' heigh='100%'>
             <Header/>
-                <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
-                    <Post ></Post>
+            <Grid width='1200px' margin='0 auto' >
+                <Grid  margin = '150px 0 70px'>
+                    <Text F_size='50px'>MyPage</Text>
                 </Grid>
-            <Button 
-                BG_color='#ffec99' Border='none' B_radius='30px' 
-                width='50px' height='50px' 
-                position='fixed' right='30px' bottom='30px'
-                // position ='fixed' bottom='30px' right='30px'
-                _onClick={go_diarywrite} >
-                <FiEdit2 size='30px'/>
-            </Button>
-        </Grid>
+                <Grid position='relative' heigh='100%'>
+                    <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
+                        <Post ></Post>
+                    </Grid>
+                    <Button BG_color='#a5d8ff' Border='none' B_radius='30px' width='50px' height='50px' position='fixed' right='30px' bottom='30px' font_color='white' box_shadow='2px 2px 3px grey' 
+                    _onClick={go_diarywrite} >
+                        <FiEdit2 size='30px'/>
+                    </Button>
+                </Grid>
+            </Grid>
+
         </React.Fragment>
     );
 }
