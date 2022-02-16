@@ -12,21 +12,20 @@ const CommentList = () => {
     const params = useParams()
     const diary_id = params.diary_uid
     const comment_list = useSelector((state) => state.comment.list);
-    // console.log(diary_id)
+    console.log(comment_list)
     
-    const thisDiaryComment = comment_list.filter((v,i) => v.diaryId===diary_id?true:false)
     //console.log(thisDiaryComment)
 
     React.useEffect(() =>{
-        if(comment_list.length === 0)
-            dispatch(commentActions.getComment(diary_id, comment_list));
+        
+        dispatch(commentActions.getComment(diary_id, comment_list));
     },[])
 
 
     return (
         <React.Fragment>
         <Grid margin='50px 0 0 0'>
-            {thisDiaryComment.map( (C,i) => {
+            {comment_list.map( (C,i) => {
             return <CommentItem key={i} {...C}/>
             })}
         </Grid>

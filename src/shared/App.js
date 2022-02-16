@@ -38,10 +38,8 @@ function App() {
       <Routes>
         
         <Route path="/" element={<Main />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/loginNew" element={<SignInSide />}/>
-        <Route path="/signup" element={<SignUp />}/>
-        <Route path="/signupNew" element={<SignUpNew />}/>
+        <Route path="/login" element={<SignInSide />}/>
+        <Route path="/signup" element={<SignUpNew />}/>
         <Route path="/diarywrite" element={<DiaryWrite />}/>
         <Route path="/detail/:diary_uid" element={<Detail />}/>
         <Route path="/mypage" element={<MyPage />}/>

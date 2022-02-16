@@ -27,7 +27,7 @@ const CommentWrite = (props) => {
             comment : contentsRef.current.value,
             insert_dt : "test_insert_dt",
         }
-        dispatch(commentActions.addCommentData(comment_data));
+        dispatch(commentActions.addCommentData(props.diary_id,contentsRef.current.value));
         window.alert('comment가 작성되었습니다');
     }
 

@@ -93,7 +93,7 @@ export default function SignInSide() {
             sm={4}
             md={7}
             sx={{
-                backgroundImage: 'url(https://source.unsplash.com/random)',
+                backgroundImage: 'url(/background.jpg)',
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: (t) =>
                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -111,7 +111,7 @@ export default function SignInSide() {
                 alignItems: 'center',
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <Avatar sx={{ m: 1, bgcolor: '#e6c755' }}>
                 <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
@@ -144,10 +144,11 @@ export default function SignInSide() {
                     label="Remember me"
                 /> */}
                 <Button
+                    color="warning"
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2,bgcolor: '#e6c755' }}
                 >
                     Sign In
                 </Button>
@@ -158,12 +159,12 @@ export default function SignInSide() {
                     </Link>
                     </Grid> */}
                     <Grid item>
-                    <Link onClick={()=>navigate("/signupNew")} variant="body2">
+                    <Link sx={{color: '#524b33a1'}} onClick={()=>navigate("/signup")} variant="body2">
                         {"Don't have an account? Sign Up"}
                     </Link>
                     </Grid>
                 </Grid>
-                <Copyright sx={{ mt: 5 }} />
+                <Copyright sx={{  mt: 5 }} />
                 </Box>
             </Box>
             </Grid>

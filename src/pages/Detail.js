@@ -22,33 +22,32 @@ import Header from "../components/Header";
 function Detail(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const _diary = useSelector(state => state.diary.list);
-    //console.log(_diary);
-
+    const _diary = useSelector(state => state.diary);
+    
     const params = useParams()
     const diary_uid = params.diary_uid
-
+    
+    // console.log(_diary);
+    // console.log(_diary.list);
+    // console.log(diary_uid)
+    
     React.useEffect(async() => {
-        if(_diary.length === 0){
-            dispatch(diaryActions.getDiary())
-        }
+        dispatch(diaryActions.getDiary())
+        
     },[]);
 
-    const diary = useSelector((state)=> state.diary.list).reduce((x,v,i) => v.diary_uid ===diary_uid?v:x,"");
-    //console.log(diary)
+    const diary = _diary.list.reduce((x,v,i) => {
+        return v.id === parseInt(diary_uid)?v:x},"");
+    console.log(diary);
 
-
-    // console.log(diary)
     const diary_del = () => {
-        dispatch(diaryActions.delDiarydata(diary))
+        dispatch(diaryActions.delDiarydata(diary.id))
         navigate("/")  
-        
     }
 
     const diary_update = () => {
         navigate("/diaryedit/"+params.diary_uid)  
     }
-
     return(
         <React.Fragment>
             <Header/>
@@ -58,18 +57,18 @@ function Detail(props) {
                 <Grid BG_c='white' padding= '20px' B_radius='15px' >
                 <Grid is_flex justify_content='flex-start' padding='10px 0 ' align_items='end' align_items>
                         <Grid>
-                            <Image shape='circle' size="150" src ={diary?diary.image_url:""}/>      
+                            <Image shape='circle' size="150" src ={diary?diary.imageUrls[0].imageUrl:""}/>      
                         </Grid>
                         <Grid padding = '20px 15px' width='80%' >
                             <Grid is_flex justify_content="space-between" align_items>
-                                <Text margin='0 10px 0 0'>{diary?diary.user_info.nickname:""}</Text>
-                                <Text F_size='16px' margin='0 0 10px 0'>{diary?diary.insert_dt:""}</Text>
+                                <Text margin='0 10px 0 0'>{diary?diary.nickname:""}</Text>
+                                <Text F_size='16px' margin='0 0 10px 0'>{diary?diary.createdAt:""}</Text>
                             </Grid>
                             <Text F_size='23px' F_weight='600'>{diary?diary.title:""}</Text>
                         </Grid>
                     </Grid>
                     <Grid Border='1px dotted black' height='200px' B_radius='20px'  padding='20px' margin='0 0 20px 0'>
-                        <Text Text F_size='16px' width='100%' height='100px'>{diary?diary.contents:""}</Text>
+                        <Text Text F_size='16px' width='100%' height='100px'>{diary?diary.content:""}</Text>
                     </Grid>
                     <Grid is_flex justify_content='flex-end'>
                         <Button 

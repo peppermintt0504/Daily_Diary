@@ -48,7 +48,7 @@ const Upload = (props) => {
 
 
     return (
-        <Grid width="35vw">
+        <Grid width="600px" margin='35px 0'>
             <input ref={fileInput} onChange={selectFile} type="file"/>
             {files.length!==0?<Text margin="20px">미리보기</Text>:""}
             {files.length ===0 ?"" : 
@@ -56,8 +56,8 @@ const Upload = (props) => {
                 {files.map((item,index) => (
                     <ImageListItem key={index}>
                     <img
-                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                         // alt={item.title}
                         loading="lazy"
                     />

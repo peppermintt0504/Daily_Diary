@@ -54,7 +54,7 @@ export default handleActions(
     {
         [UPLOAD_IMAGE]: (state, action) =>
         produce(state, (draft) => {
-            draft.image_url.push(action.payload);
+            draft.image_url=[...state.image_url,{"imageUrl":action.payload}];
             draft.uploading = false;
         }),
         [UPLOADING]: (state,action)=>

@@ -82,7 +82,7 @@ Input.defaultProps ={
     width : "100%",
     height : "40px",
     margin : "auto",
-    padding : false,
+    padding : null,
 
     is_textarea : false,
 
@@ -104,7 +104,9 @@ const In = styled.input`
     
     height : ${props => props.height};
     width : ${props => props.width};
-    margin :  ${props => props.margin};;
+    margin :  ${props => props.margin};
+    padding : ${props => props.padding};
+    box-sizing : border-box;
 `;
 
 const TA = styled.textarea`
