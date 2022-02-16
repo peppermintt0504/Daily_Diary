@@ -30,7 +30,7 @@ const initialState = {
 //middleware actions
 const getComment = (diary_id) => {
   return async function (dispatch,getState){
-    const diary_comment = RESP.COMMENT;
+    const diary_comment = RESP.COMMENT.list;
     dispatch(setComment(diary_id, diary_comment));
     // console.log(diary_comment)
   }
@@ -39,7 +39,6 @@ const getComment = (diary_id) => {
 const addCommentData = (comment_data) => {
   return async function (dispatch,getState){
     dispatch(addComment(comment_data));
-    console.log(comment_data)
   }
 }
 
@@ -50,16 +49,16 @@ export default handleActions(
   {
       [SET_COMMENT]: (state, action) => 
       produce(state, (draft) => {
-        draft.list = action.payload.comment_list;
+        //console.log(action.payload.comment_list);
+        draft.list = [...action.payload.comment_list];
         // console.log(state)
       }),
 
 
       [ADD_COMMENT]: (state, action) => 
       produce(state, (draft)=> {
-        console.log(state.list.list)
-        console.log(action.payload.comment_data)
-        draft.list.list.push(action.payload.comment_data);
+        console.log(state);
+        draft.list.push(action.payload.comment_data);
       }),
 
       [LOADING]: (state, action) => 

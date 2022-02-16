@@ -40,7 +40,7 @@ const Post = (props) => {
                 </Grid>
                 <Text margin='0 0 20px 0' height='120px'>{props.contents}</Text>
                 <Grid position='absolute' bottom='15px'>
-                    <Grid is_flex flex_direction="row">{props.tag.map((T,idx)=>{return <Grid  margin="0 5px"><Chip label={`#${T}`} size="small" /></Grid>})}</Grid>
+                    <Grid is_flex flex_direction="row">{props.tag.map((T,idx)=>{return <Grid key={idx} margin="0 5px"><Chip label={`#${T}`} size="small" /></Grid>})}</Grid>
                 </Grid>
             </Grid>
         </Grid>

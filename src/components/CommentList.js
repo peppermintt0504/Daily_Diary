@@ -11,23 +11,22 @@ const CommentList = () => {
     const dispatch = useDispatch();
     const params = useParams()
     const diary_id = params.diary_uid
-    const comment_list = useSelector((state) => state.comment.list.list);
+    const comment_list = useSelector((state) => state.comment.list);
     // console.log(diary_id)
-    console.log(comment_list)
-
+    
+    const thisDiaryComment = comment_list.filter((v,i) => v.diaryId===diary_id?true:false)
+    //console.log(thisDiaryComment)
 
     React.useEffect(() =>{
-        dispatch(commentActions.getComment(diary_id, comment_list));
+        if(comment_list.length === 0)
+            dispatch(commentActions.getComment(diary_id, comment_list));
     },[])
 
-    if (comment_list === undefined) {
-        return <React.Fragment></React.Fragment>
-    }
 
     return (
         <React.Fragment>
         <Grid margin='50px 0 0 0'>
-            {comment_list.map( (C,i) => {
+            {thisDiaryComment.map( (C,i) => {
             return <CommentItem key={i} {...C}/>
             })}
         </Grid>
@@ -39,7 +38,6 @@ export default CommentList;
 
 
 const CommentItem = (props) => {
-    console.log(props)
     return ( 
         <Grid is_flex justify_content='space-between' padding='10px 0' >
             <Grid is_flex width="22%" >

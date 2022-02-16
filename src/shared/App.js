@@ -19,6 +19,9 @@ import DiaryWrite from "../pages/DiaryWrite";
 import DiaryEdit from "../pages/DiaryEdit";
 import Detail from "../pages/Detail";
 import MyPage from "../pages/MyPage";
+import SignInSide from "../pages/Login_new";
+import SignUpNew from "../pages/SignUp_New.js";
+
 
 function App() {
 
@@ -36,7 +39,9 @@ function App() {
         
         <Route path="/" element={<Main />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/loginNew" element={<SignInSide />}/>
         <Route path="/signup" element={<SignUp />}/>
+        <Route path="/signupNew" element={<SignUpNew />}/>
         <Route path="/diarywrite" element={<DiaryWrite />}/>
         <Route path="/detail/:diary_uid" element={<Detail />}/>
         <Route path="/mypage" element={<MyPage />}/>

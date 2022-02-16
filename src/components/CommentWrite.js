@@ -8,9 +8,8 @@ import {Grid, Input, Button} from "../elements";
 import { actionCreators as commentActions } from "../redux/modules/comment";
 
 const CommentWrite = (props) => {
-    const _comment_info = useSelector((state)=> state)
-    console.log(_comment_info)
-
+    const _user = useSelector((state)=> state.user);
+    //console.log(_user.user);
     const dispatch = useDispatch();
     const contentsRef = React.useRef(null);
     const [contents,setContents] = React.useState("");
@@ -20,11 +19,11 @@ const CommentWrite = (props) => {
         const comment_data =
         {
             user_info:{
-                user_id: "test_user_id",
-                nickname : "test_nickname",
-                user_profile : "test_user_propfile"
+                user_id: _user.user.user_id,
+                nickname : _user.user.nickname,
+                user_profile : _user.user.user_profile,
             },
-            diaryId : "test_diary",
+            diaryId : props.diary_id,
             comment : contentsRef.current.value,
             insert_dt : "test_insert_dt",
         }

@@ -37,7 +37,6 @@ function SignUp() {
             password : pwdRef.current.value,
             nickname : nickRef.current.value,
             user_profile : "https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832",
-
         }
 
         if(pwdRef.current.value !== pwdCheckRef.current.value){
