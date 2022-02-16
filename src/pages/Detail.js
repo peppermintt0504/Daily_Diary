@@ -87,10 +87,10 @@ function Detail(props) {
                 <Grid>
                     <Text F_size='25px' F_color='#ffec99' F_weight='600' margin='0 0 20px' F_shadow='1px 1px 2px gray'>내 일기를 읽은 소감은!</Text>
                     <Grid>
-                        <CommentWrite/>
+                        <CommentWrite diary_id={diary_uid}/>
                     </Grid>
                     <Grid>
-                        <CommentList/>
+                        <CommentList diary_id={diary_uid}/>
                     </Grid>
                 </Grid>
             </Grid>

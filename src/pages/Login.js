@@ -34,19 +34,19 @@ function Login() {
             password : pwdRef.current.value,
         }
         
-        const APIdata = instance.post('/api/login',logIn_data,{token:1})
+        const APIdata = instance.post('/api/login',logIn_data)
         .then((res) => {
-            //window.alert("로그인이 완료되었습니다.")
-            
+            //window.alert("로그인이 완료되었습니다.";
             const token = res.data.token;
             instance.defaults.headers.common["X-AUTH-TOKEN"] = token; 
+
             let loginUserData = {
                 user_id : "",
                 nickname : "",
                 user_profile : "",
             }
+            
             instance.post('/api/user',{}).then(response=>{
-
                 loginUserData.user_id = response.data.username;
                 loginUserData.nickname = response.data.nickname;
                 loginUserData.user_profile = response.data.user_profile;

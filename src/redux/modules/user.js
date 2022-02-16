@@ -28,7 +28,6 @@ const logOut = createAction(LOG_OUT, (  ) => ({  }));
 const initialState = {
     is_login : false,
     user : {},
-    list : {...RESP.USER.list},
     token : "",
 };
 
