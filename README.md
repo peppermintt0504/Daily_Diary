@@ -1,36 +1,39 @@
 # Mini_Porject
 
 
-🎡 프로젝트 소개
+<h2>🎡 프로젝트 소개</h2>
+
+<br/><br/><br/><br/><br/><br/>
+
+
+<h2>🎥 Together Logo & Video</h2>
+<h3>logo</h3>
+<br/><br/><br/>
+<h3>Youtube</h3>
+<br/><br/><br/>
 
 
 
+<h2>📅 Schedule & Developers</h2>
+<p>2022-02-11 ~ 2022-02-17</p>
+<br/>
 
-🎥 Together Logo & Video
-logo
+<h2>🛠️Frontend developers</h2>
+<p>유동건, 정소영</p>
+<br/>
+<h2>🔍Backend developers</h2>
+<p>홍하빈, 정희재, 이규진</p>
 
-Youtube
-
-
-
-
-
-📅 Schedule & Developers
-2022-02-11 ~ 2022-02-17
-Frontend developers
-유동건, 정소영
-Backend developers
-홍하빈, 정희재, 이규진
-
-🛠 Tech Stack
+<br/><br/>
+<h2>🛠 Tech Stack</h2>
 Backend Tech Stack
 Spring
-
+<br/><br/>
 
 Frontend Tech Stack
 React.js
 Redux
-
+<br/><br/>
 
 
 📖 Notion & WireFrame & API
