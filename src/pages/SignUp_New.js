@@ -55,7 +55,7 @@ export default function SignUp() {
             username : data.get('email'),
             password : data.get('password'),
             nickname : data.get('nickname'),
-            user_profile : "https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832",
+            user_profile : "https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/309/59932b0eb046f9fa3e063b8875032edd_crop.jpeg",
         }
 
         instance.defaults.headers.common["X-AUTH-TOKEN"] = "";

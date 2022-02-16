@@ -1,5 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import { useNavigate } from "react-router-dom";
+
 
 //API
 import { RESP } from "../../shared/tempAPI";
@@ -49,6 +51,7 @@ const loginUser=(user_data,token) =>{
 const loginCheck=() =>{
     return async function (dispatch,getState){
         const Auth = getCookie("is_login");
+    
 
         if(Auth !== undefined){
 
@@ -61,6 +64,7 @@ const loginCheck=() =>{
                 }
                 dispatch(setUser(_user,Auth));
             });
+        }else{
         }
 
     }
