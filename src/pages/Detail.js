@@ -23,6 +23,7 @@ function Detail(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const _diary = useSelector(state => state.diary.list);
+    console.log(_diary);
 
     const params = useParams()
     const diary_uid = params.diary_uid
@@ -35,9 +36,7 @@ function Detail(props) {
 
     const diary = useSelector((state)=> state.diary.list).reduce((x,v,i) => v.diary_uid ===diary_uid?v:x,"");
     console.log(diary)
-    if (diary === undefined ){
-        return( <React.Fragment></React.Fragment> )
-    }
+
 
     // console.log(diary)
     const diary_del = () => {

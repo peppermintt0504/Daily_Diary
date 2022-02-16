@@ -9,8 +9,6 @@ import { actionCreators as commentActions } from "../redux/modules/comment";
 
 const CommentWrite = (props) => {
     const _comment_info = useSelector((state)=> state)
-    console.log(_comment_info)
-
     const dispatch = useDispatch();
     const contentsRef = React.useRef(null);
     const [contents,setContents] = React.useState("");

@@ -13,7 +13,7 @@ const CommentList = () => {
     const diary_id = params.diary_uid
     const comment_list = useSelector((state) => state.comment.list.list);
     // console.log(diary_id)
-    console.log(comment_list)
+    // console.log(comment_list)
 
 
     React.useEffect(() =>{
@@ -39,7 +39,6 @@ export default CommentList;
 
 
 const CommentItem = (props) => {
-    console.log(props)
     return ( 
         <Grid is_flex justify_content='space-between' padding='10px 0' >
             <Grid is_flex width="22%" >

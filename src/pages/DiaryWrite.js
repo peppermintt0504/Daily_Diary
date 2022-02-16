@@ -51,7 +51,7 @@ function DiaryWrite() {
         tag_list.shift();
 
         const newDiary = {
-            
+            diary_uid : `${_user.nickname}_titleRef.current.value`,
             emotion : emotion,
             tag : tag_list,
             image_url : _image.image_url[0]?_image.image_url[0]:"https://mnapoli.fr/images/posts/null.png",

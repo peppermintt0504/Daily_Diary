@@ -39,18 +39,29 @@ function Main() {
 
     
     instance.defaults.headers.common["X-AUTH-TOKEN"] = _user.token;
-    const temp_data ={
-        title : "제목",
-        content : "내용",
-        emotion : "이모지",
-        tag : "태그",
-        is_open : true,
-        iamgeUrl : "이미지",
-    }
+    // const temp_data ={
+        
+    //         emotion:"웃는표정",
+    //         tag:"테그1",
+    //         imageUrlList :[
+    //             {"imageUrl":"asdfsadf"},
+    //             {"imageUrl":"asdfsa3df"}
+    //         ],
+    //         title:"제목",
+    //         content:"내용",
+    //         is_open:"true"
+        
+    // }
+    // const temp_data ={
+    //     diaryId : "5",
+    //     comment : "hello",
+
+    // }
+
     // if(_user.is_login){
 
-    //     instance.post('/api/diary',temp_data).then(res => console.log("post :",res));
-    //     instance.get('/api/diary',{}).then(res => console.log("get :",res));
+    //     instance.delete('/api/diary/5',{diaryId : 5}).then(res => console.log("post :",res));
+    //     instance.get('/api/comment/5',{diaryId : "5",}).then(res => console.log("get :",res));
     // }
 
     const go_diarywrite = ()=>{
@@ -58,8 +69,6 @@ function Main() {
     }
 
     React.useEffect(async() => {
-        if( !is_login )
-            dispatch(userActions.loginCheck());
 
         if(_diary.length === 0){
             dispatch(diaryActions.getDiary())
@@ -78,7 +87,7 @@ function Main() {
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
                     {_diary.map((D, idx) => {
                         return(
-                            <Post key={idx} index={idx} {...D}/>
+                            <Post key={idx+D.user_info.nickname} index={idx} {...D}/>
                             )
                     })}
                 </Grid>
