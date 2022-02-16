@@ -18,15 +18,18 @@ const Header = (props) => {
     const is_login = useSelector(state => state.user.is_login);
     const _user = useSelector(state => state.user.user);
 
-    
-
-
 
     const logout = () =>{
         console.log("logout and go to login page");
         dispatch(userActions.logoutUser());
         navigate("/login");
     }
+
+    React.useEffect(async() => {
+        if( !is_login ){
+            dispatch(userActions.loginCheck());
+        }
+    },[]);
 
     if(is_login){
         return(
@@ -49,7 +52,6 @@ const Header = (props) => {
                         <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">{_user.nickname}</Text>
                         <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="마이페이지" _onClick ={() => navigate("/mypage")}/>
                         <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={logout}/>
-                        
                     </Grid>
                 </Grid>
                 <Grid margin = "80px"/>
@@ -69,12 +71,13 @@ const Header = (props) => {
                             <Text F_size='22px' align='center'  L_height='18px' F_weight='600' display='inline-block'>Daily</Text>
                             <Text F_size='22px' L_height='22px' F_weight='600' >Diary</Text>
                         </Grid>
+                        
                     </Grid>
                 </Grid>
 
 
-                <Grid width="600px" margin="0 100px" flex_direction= "row" justify_content="space-between" is_flex>
-                    
+                <Grid width="600px" margin="0 100px" flex_direction= "row-reverse" justify_content="space-between" is_flex>
+                    <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="로그인" _onClick ={() => navigate("/login")}/>    
                 </Grid>
             </Grid>
             <Grid margin = "80px"/>

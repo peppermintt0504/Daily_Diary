@@ -1,12 +1,35 @@
 import React from "react";
 import {Grid, Image, Text} from "../elements";
+import styled from "styled-components";
 
-const CommentList = () => {
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as commentActions } from "../redux/modules/comment";
+
+
+const CommentList = () => {    
+    const dispatch = useDispatch();
+    const params = useParams()
+    const diary_id = params.diary_uid
+    const comment_list = useSelector((state) => state.comment.list.list);
+    // console.log(diary_id)
+    console.log(comment_list)
+
+
+    React.useEffect(() =>{
+        dispatch(commentActions.getComment(diary_id, comment_list));
+    },[])
+
+    if (comment_list === undefined) {
+        return <React.Fragment></React.Fragment>
+    }
+
     return (
         <React.Fragment>
-        <Grid padding="16px">
-            <CommentItem />
-            <CommentItem />
+        <Grid margin='50px 0 0 0'>
+            {comment_list.map( (C,i) => {
+            return <CommentItem key={i} {...C}/>
+            })}
         </Grid>
         </React.Fragment>
     );
@@ -16,27 +39,30 @@ export default CommentList;
 
 
 const CommentItem = (props) => {
-
-    const {user_profile, user_name, user_id, post_id, contents, insert_dt} = props;
-    return (
-        <Grid is_flex>
-            <Grid is_flex width="auto">
+    console.log(props)
+    return ( 
+        <Grid is_flex justify_content='space-between' padding='10px 0' >
+            <Grid is_flex width="22%" >
                 <Image shape="circle" size='60'/>
-                <Text bold>{user_name}</Text>
-            </Grid>
-            <Grid is_flex margin="0px 4px">
-                <Text margin="0px">{contents}</Text>
-                <Text margin="0px">{insert_dt}</Text>
+                <Grid>
+                    <Text bold>{props.user_info.nickname}</Text>
+                    <Text margin="0px">{props.insert_dt}</Text>
+                </Grid>
+            </Grid >
+            <Grid width="751%">
+                <Text margin="0px 4px"  padding='20px' width="100%"  Border='1px solid black' B_radius='10px' BG_color='#ffec99' >{props.comment} </Text>
             </Grid>
         </Grid>
     )
 }
 
 CommentItem.defaultProps = {
-    user_profile: "",
-    user_name: "thdud22",
-    user_id: "",
-    post_id: 1,
-    contents: "오늘도 공부하시느라 고생하셨습니다!",
-    insert_dt: '2022-02-12 19:00:00'
+    user_info:{
+        user_id: "user_id",
+        nickname : "nickname",
+        user_profile : "user_propfile"
+    },
+    diaryId : "diary",
+    comment : "나도 comment",
+    insert_dt : "insert_dt",
 }

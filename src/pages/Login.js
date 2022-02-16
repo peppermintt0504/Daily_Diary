@@ -19,15 +19,14 @@ function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const is_login = useSelector(state => state.user.is_login);
+    if(is_login){
+        navigate("/");
+    }
     const _user = useSelector(state => state.user);
 
     const idRef = React.useRef(null);
     const pwdRef = React.useRef(null);
-
-    const [ id, setId ] = React.useState("")
-    const [ pwd,setPwd ] = React.useState("");
-
-    console.log(_user);
 
     const tryLogIn = () =>{
         const logIn_data = {
@@ -35,35 +34,36 @@ function Login() {
             password : pwdRef.current.value,
         }
         
-
-        const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTY0NDkwMjYxMiwiZXhwIjoxNjQ0OTA0NDEyfQ.lumvh1keGUpIvNKcWfT51eqXyls2yvvx_t8hduugZGg";
-
-        const _user = {
-                uid : "15",
-                user_id : "test",
-                nickname : "test1",
-                user_profile : "url",
+        const APIdata = instance.post('/api/login',logIn_data,{token:1})
+        .then((res) => {
+            //window.alert("로그인이 완료되었습니다.")
+            
+            const token = res.data.token;
+            instance.defaults.headers.common["X-AUTH-TOKEN"] = token; 
+            let loginUserData = {
+                user_id : "",
+                nickname : "",
+                user_profile : "",
             }
-        // dispatch(userActions.loginUser(_user));
-        // navigate("/");
-        
-        instance.post('/api/login',logIn_data,{token:TOKEN})
-            .then((res) => {
-                window.alert("로그인이 완료되었습니다.")
-                console.log(res);
-                // navigate("/login");
-                instance.get('/api/user',{token:TOKEN},{token:TOKEN}).then(res=>console.log(res)).catch(err=>console.log(err));
-            })
-            .catch((err,res) => {
-                console.log(err)
+            instance.post('/api/user',{}).then(response=>{
+
+                loginUserData.user_id = response.data.username;
+                loginUserData.nickname = response.data.nickname;
+                loginUserData.user_profile = response.data.user_profile;
+                dispatch(userActions.loginUser(loginUserData,token));
+
             });
-
-
-        
+            
+        })
+        .catch((err,res) => {
+            console.log(err)
+        });
     }
 
     React.useEffect(async() => {
-        
+        if( !is_login ){
+            dispatch(userActions.loginCheck());
+        }
     },[]);
 
     return (

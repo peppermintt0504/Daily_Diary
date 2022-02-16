@@ -3,7 +3,7 @@ import { produce } from "immer";
 
 //API
 import { RESP } from "../../shared/tempAPI";
-import { instance } from "../../shared/Request"
+import instance from "../../shared/Request";
 
 //cookie
 import { getCookie, setCookie, deleteCookie } from "../../shared/Cookie";
@@ -20,13 +20,8 @@ const SET_USER = "SET_USER";
 
 
 //action creatos
-
-const logIn = createAction(SIGN_UP, (diary_list) => ({ diary_list }));
-const get_user = createAction(LOG_IN, (diary_data) => ({ diary_data }));
-
-const setUser = createAction(SET_USER, (user) => ({ user }));
+const setUser = createAction(SET_USER, (user , token) => ({ user, token }));
 const logOut = createAction(LOG_OUT, (  ) => ({  }));
-const getUser = createAction(GET_USER, (user) => ({ user }));
 
 
 //initialState
@@ -34,41 +29,39 @@ const initialState = {
     is_login : false,
     user : {},
     list : {...RESP.USER.list},
+    token : "",
 };
 
 
 //middleware actions
 const signupUser=(user_data) =>{
     return async function (dispatch,getState){
-        console.log("user data : ", user_data);
         
     }
 }
 
-const loginUser=(user_data) =>{
+const loginUser=(user_data,token) =>{
     return async function (dispatch,getState){
-        console.log("user data : ", user_data);
-        setCookie("is_login",user_data.uid);
-        dispatch(setUser(user_data));
+        setCookie("is_login",token);
+        dispatch(setUser(user_data,token));
     }
 }
 
 const loginCheck=() =>{
     return async function (dispatch,getState){
-        const is_login = getState().user.is_login
-        const Co = getCookie("is_login");
+        const Auth = getCookie("is_login");
 
-        if(Co !== undefined){
-            //temp data
-            const _user = {
-                uid : "15",
-                user_id : "test",
-                nickname : "test1",
-                user_profile : "url",
-            }
-            
-            dispatch(setUser(_user));
+        if(Auth !== undefined){
 
+            instance.defaults.headers.common["X-AUTH-TOKEN"] = Auth; 
+            instance.post('/api/user',{}).then(response=>{
+                const _user = {
+                user_id : response.data.username,
+                nickname : response.data.nickname,
+                user_profile : response.data.user_profile
+                }
+                dispatch(setUser(_user,Auth));
+            });
         }
 
     }
@@ -81,15 +74,13 @@ const logoutUser=() =>{
     }
 }
 
-
-
-
 //reducer
 export default handleActions(
     {
         [SET_USER]: (state, action) =>
         produce(state, (draft) => {
             draft.is_login=true;
+            draft.token = action.payload.token;
             draft.user = action.payload.user;
         }),
         [LOG_OUT]: (state, action) =>

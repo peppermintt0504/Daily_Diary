@@ -11,14 +11,14 @@ import { RESP } from "../../shared/tempAPI"
 const SET_DIARY = "SET_DIARY";
 const ADD_DIARY = "ADD_DIARY";
 const DEL_DIARY = "DEL_DIARY";
-
+const UPDATE_DIARY = "UPDATE_DIARY";
 
 //action creatos
 
 const setDiary = createAction(SET_DIARY, (diary_list) => ({ diary_list }));
 const addDiary = createAction(ADD_DIARY, (diary_data) => ({ diary_data }));
 const delDiary = createAction(DEL_DIARY, (diary_data) => ({ diary_data }));
-
+const updateDiary = createAction(UPDATE_DIARY, (diary_data) => ({ diary_data}));
 
 //initialState
 const initialState = {
@@ -46,7 +46,11 @@ const delDiarydata=(diary_data) =>{
         dispatch(delDiary(diary_data));
     }
 }
-
+const updateDiarydata=(diary_data, diary_idx) =>{
+    return async function (dispatch,getState){
+        dispatch(delDiary(diary_data, diary_idx));
+    }
+}
 
 //reducer
 export default handleActions(
@@ -57,6 +61,8 @@ export default handleActions(
         }),
         [ADD_DIARY]: (state, action) =>
         produce(state, (draft) => {
+            console.log(state.list);
+            console.log(action.payload.diary_data);
             draft.list.push(action.payload.diary_data);
         }),
         [DEL_DIARY]: (state, action) =>
@@ -75,6 +81,7 @@ const actionCreators = {
     getDiary,
     addDiarydata,
     delDiarydata,
+    updateDiarydata,
 
 };
 
