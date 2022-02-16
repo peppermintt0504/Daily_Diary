@@ -7,7 +7,9 @@ const Text = (props) => {
 
     const { cursor } = props
 
-    const { margin } = props
+    const { margin, padding } = props
+
+    const { Border, B_radius,} = props;
 
     const { _onClick, children } = props;
     const styles = {
@@ -17,7 +19,11 @@ const Text = (props) => {
         F_style,
         F_decoration,
 
+        Border, 
+        B_radius,
+
         margin,
+        padding,
 
         cursor,
         };
@@ -38,7 +44,11 @@ Text.defaultProps ={
 
     cursor : null,
 
+    Border : null, 
+    B_radius : null,
+
     margin : null,
+    padding : null,
     
     _onClick : null,
 };
@@ -50,8 +60,10 @@ const P = styled.div`
     font-style: ${(props) => props.F_style};
     text-decoration : ${props => props.F_decoration};
 
+    border :  ${props => props.Border};
+    border-radius :  ${props => props.B_radius};
 
-
+    padding : ${(props) => props.padding};
     margin : ${(props) => props.margin};
     cursor : ${(props) => props.cursor};
 `;

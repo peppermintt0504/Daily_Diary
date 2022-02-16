@@ -20,6 +20,7 @@ import Header from "../components/Header";
 
 
 function Detail(props) {
+    
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const _diary = useSelector(state => state.diary.list);
@@ -34,7 +35,7 @@ function Detail(props) {
     },[]);
 
     const diary = useSelector((state)=> state.diary.list).reduce((x,v,i) => v.diary_uid ===diary_uid?v:x,"");
-    console.log(diary)
+    // console.log(diary.user_info.nickname)
     if (diary === undefined ){
         return( <React.Fragment></React.Fragment> )
     }
@@ -57,13 +58,13 @@ function Detail(props) {
                 <Text F_size='30px' margin='20px 0 50px' F_color='white' F_weight='600' F_shadow='1px 1px 2px gray'>일기 상세 페이지</Text>
 
                 <Grid BG_c='white' padding= '20px' B_radius='15px' >
-                <Grid is_flex justify_content='flex-start' padding='10px 0 ' align_items='end' align_items>
+                <Grid is_flex justify_content='flex-start' padding='10px 0 ' align_items='end' align_items >
                         <Grid>
                             <Image shape='circle' size="150" src ={diary?diary.image_url:""}/>      
                         </Grid>
                         <Grid padding = '20px 15px' width='80%' >
                             <Grid is_flex justify_content="space-between" align_items>
-                                <Text margin='0 10px 0 0'>{diary?diary.user_info.user_name:""}</Text>
+                                <Text margin='0 10px 0 0'>{diary?diary.user_info.nickname:""}</Text>
                                 <Text F_size='16px' margin='0 0 10px 0'>{diary?diary.insert_dt:""}</Text>
                             </Grid>
                             <Text F_size='23px' F_weight='600'>{diary?diary.title:""}</Text>
@@ -96,11 +97,8 @@ function Detail(props) {
                 </Grid>
             </Grid>
         </React.Fragment>
-
     )
 }
 
 export default Detail; 
 
-// 귀여운사진...어디 쓸곳이 없을깡....ㅋㅋ
-// 'https://item.kakaocdn.net/do/431c1c842860f98b0d0a6b5cc85cfd608f324a0b9c48f77dbce3a43bd11ce785'

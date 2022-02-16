@@ -65,7 +65,6 @@ export const RESP = {
     list: [
         {
             user_info:{
-                uid : "user000001",
                 user_id: "hello_world@naver.com",
                 nickname : "hello_world",
                 user_profile : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229"
@@ -76,7 +75,6 @@ export const RESP = {
         },
         {
             user_info:{
-                uid : "user000321",
                 user_id: "123123@naver.com",
                 nickname : "onetwothree",
                 user_profile : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229"

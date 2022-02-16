@@ -33,7 +33,7 @@ function DiaryEdit(props) {
         }
     },[]);
 
-    const diary = useSelector((state)=> state.diary.list).reduce((x,v,i) => v.diary_uid ===diary_uid?v:x,"");
+    const diary = useSelector((state)=> state.diary.list).reduce((x,v,i) => v.diary_uid === diary_uid?v:x,"");
 
     console.log(diary)
     console.log(diary.title);
@@ -51,12 +51,11 @@ function DiaryEdit(props) {
     }
     
     const updateData = () =>{
-
         const tag_list = tagRef.current.value.split("#");
         tag_list.shift();
         // setEmotion(emoRef.current.value)
 
-        const newdiary = {
+        const updatediary = {
             emotion : emoRef.current.value,
             tag : tag_list,
             image_url : ImageRef,
@@ -71,12 +70,11 @@ function DiaryEdit(props) {
                 user_profile : "nuknown user profile..."
             },
         }
-        // dispatch(diaryActions.updateDiarydata(updatediary));
+        dispatch(diaryActions.updateDiarydata(updatediary, diary_uid));
+        console.log(updatediary, diary_uid)
         window.alert("게시물이 수정 되었습니다.");
-        navigate("/");  
-        
+        navigate("/"); 
     }
-
 
 
     return (

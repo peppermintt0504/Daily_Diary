@@ -21,8 +21,6 @@ const initialState = {
     image_url : [],
     uploading : false,
     preview : null,
-
-
 };
 
 //middleware actions

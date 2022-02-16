@@ -63,7 +63,7 @@ function DiaryWrite() {
             user_info:{
                 uid : _user.uid,
                 user_id: _user.user_id,
-                user_name : _user.nickname,
+                nickname : _user.nickname,
                 user_profile : _user.user_profile,
             },
         }

@@ -11,13 +11,14 @@ import { RESP } from "../../shared/tempAPI"
 const SET_DIARY = "SET_DIARY";
 const ADD_DIARY = "ADD_DIARY";
 const DEL_DIARY = "DEL_DIARY";
+const UPDATE_DIARY = "UPDATE_DIARY";
 
 
 //action creatos
-
 const setDiary = createAction(SET_DIARY, (diary_list) => ({ diary_list }));
 const addDiary = createAction(ADD_DIARY, (diary_data) => ({ diary_data }));
 const delDiary = createAction(DEL_DIARY, (diary_data) => ({ diary_data }));
+const updateDiary = createAction(UPDATE_DIARY, (diary_data) => ({ diary_data}));
 
 
 //initialState
@@ -47,6 +48,12 @@ const delDiarydata=(diary_data) =>{
     }
 }
 
+const updateDiarydata=(diary_data, diary_idx) =>{
+    return async function (dispatch,getState){
+        dispatch(delDiary(diary_data, diary_idx));
+    }
+}
+
 
 //reducer
 export default handleActions(
@@ -64,7 +71,6 @@ export default handleActions(
             window.alert('데이터가 삭제되었습니다');
             draft.list = state.list.filter((v,i) => v.diary_uid !== action.payload.diary_data.diary_uid);
         }),
-
     },
     initialState
 );
@@ -75,6 +81,7 @@ const actionCreators = {
     getDiary,
     addDiarydata,
     delDiarydata,
+    updateDiarydata,
 
 };
 
