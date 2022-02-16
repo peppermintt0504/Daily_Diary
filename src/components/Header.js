@@ -1,5 +1,5 @@
 import React from "react";
-import {Grid, Text, Button} from "../elements";
+import {Grid, Text, Button,Image} from "../elements";
 
 
 import { useNavigate } from "react-router-dom";
@@ -41,52 +41,55 @@ const Header = (props) => {
     if(is_login){
         return(
             <React.Fragment>
-                <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+            <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#e9ecef" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+                <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between'>
                     <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
                         <Grid F_style={"italic"} is_flex justify_content='flex-start' >
-                            <Grid>
-                                <BsFillMenuButtonWideFill size='38px'/>
-                            </Grid>
-                            <Grid margin='0 0 2px 7px'>
-                                <Text F_size='22px' align='center'  L_height='18px' F_weight='600' display='inline-block'>Daily</Text>
-                                <Text F_size='22px' L_height='22px' F_weight='600' >Diary</Text>
+                            <Grid is_flex justify_content='flex-start'>
+                                <Grid width='140px' height='55px'>
+                                    {/* <BsFillMenuButtonWideFill size='38px'/> */}
+                                    <Image src='/img/logo2.png' width='100%' height='100%' shape='imagePost'/>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
+                </Grid>
     
     
-                    <Grid width="600px" margin="0 100px" flex_direction= "row" justify_content="space-between" is_flex>
-                        <Text F_decoration="underline" F_style={"italic"} F_size="20px" F_weight="bold">{_user.nickname}</Text>
-                        <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="마이페이지" _onClick ={() => navigate("/mypage")}/>
-                        <Button B_radius="10px" Border="none" BG_color="white" width="150px" text="로그아웃" _onClick ={logout}/>
+                <Grid is_flex justify_content='space-between' align_items='center' >
+                            <Text F_size="18px" width='100px' F_weight="bold" margin ='0 10px 0 0'>{_user.nickname}</Text>
+                            <Button B_radius="10px" Border="none"  BG_color="white" width="100px" height='40px' text="마이페이지" margin ='0 10px 0 0' box_shadow='1px 1px 3px gray' _onClick ={() => navigate("/mypage")}/>
+                            <Button B_radius="10px" Border="none" BG_color="white" width="100px" height='40px' text="로그아웃"  box_shadow='1px 1px 3px gray' 
+                            _onClick ={logout}/>
                     </Grid>
                 </Grid>
                 <Grid margin = "80px"/>
-
             </React.Fragment>
         );
     
     }
     return(
         <React.Fragment>
-            <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#ffec99" width="100%" justify_content="space-between" is_flex padding="4px 16px">
-                <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
-                    <Grid F_style={"italic"} is_flex justify_content='flex-start' >
-                        <Grid>
-                            <BsFillMenuButtonWideFill size='38px'/>
-                        </Grid>
-                        <Grid margin='0 0 2px 7px'>
-                            <Text F_size='22px' align='center'  L_height='18px' F_weight='600' display='inline-block'>Daily</Text>
-                            <Text F_size='22px' L_height='22px' F_weight='600' >Diary</Text>
+            <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#e9ecef" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+                <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between'>
+                    <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
+                        <Grid F_style={"italic"} is_flex justify_content='flex-start' >
+                            <Grid is_flex justify_content='flex-start'>
+                                <Grid width='140px' height='55px'>
+                                    {/* <BsFillMenuButtonWideFill size='38px'/> */}
+                                    <Image src='/img/logo2.png' width='100%' height='100%' shape='imagePost'/>
+                                </Grid>
+                            </Grid>
                         </Grid>
                         
                     </Grid>
                 </Grid>
 
 
-                <Grid width="600px" margin="0 100px" flex_direction= "row-reverse" justify_content="space-between" is_flex>
-                    <Button B_radius="10px" Border="none"   BG_color="white" width="150px" text="로그인" _onClick ={() => navigate("/login")}/>    
-                </Grid>
+                <Grid flex_direction= "row-reverse" justify_content="space-between" is_flex>
+                        <Button B_radius="10px" Border="none" BG_color="white" width="100px" height='40px' text="로그인" 
+                        _onClick ={() => navigate("/login")}/>    
+                    </Grid>
             </Grid>
             <Grid margin = "80px"/>
 

@@ -57,8 +57,8 @@ function Main() {
         <Grid>
             <Header/>
             <Grid width='1200px' margin='0 auto'>
-                <Grid  height='350px' margin='120px 0'> 
-                    <Image src='Logo.png' shape='imageBG'/>
+            <Grid  height='300px' width='1200px' margin='120px 0 50px'> 
+                    <Image src='/img/main1.png' width='100%' shape='imagePost' box_shadow='2px 2px 5px lightgrey' />
                 </Grid>
                 <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
                     {_diary.list?_diary.list.map((D, idx) => {
@@ -71,7 +71,7 @@ function Main() {
                 </Grid>
             </Grid>
             <Button 
-                BG_color='#ffec99' Border='none' B_radius='30px' width='50px' height='50px' position='fixed' right='30px' bottom='30px'
+                BG_color='#a5d8ff' Border='none' B_radius='30px' width='50px' height='50px' position='fixed' right='30px' bottom='30px'
                 _onClick={go_diarywrite} >
                 <FiEdit2 size='30px'/>
             </Button>

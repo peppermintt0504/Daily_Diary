@@ -79,9 +79,10 @@ function DiaryWrite() {
     return (
         <Grid>
             <Header/>
-                <Grid margin="150px 0" is_flex flex_direction="column" align-items="center">
-                    <Grid width="50vw" justify_content="center" is_flex align-items="center">
-                        <Input _ref={titleRef} margin="10px" label="Title" width = "30vw"/>
+            <Text width='800px' margin='150px auto 50px' padding='0 100px' F_size='25px' >오늘의 일기를 써 봅시다</Text>
+                <Grid  width='1200px' margin="0 auto" padding='30px' is_flex flex_direction="column" align-items="center">                
+                    <Grid justify_content="center" is_flex align-items="center">
+                        <Input _ref={titleRef} margin='3px 0 30px' label="Title" width = "600px" padding=' 0 15px'/>
                     </Grid>
 
                     <RadioGroup
@@ -124,13 +125,13 @@ function DiaryWrite() {
                     <Upload/>
 
                     <Grid margin="10px"/>
-                    <Input _ref={contentsRef} is_textarea margin="10px" label="Contents" height="150px" width = "30vw"></Input>
-                    <Input _ref={tagRef} margin="10px" label="Hash tag" width = "30vw"></Input>
-                    <Grid is_flex width="30vw" align-items="center">
+                    <Input _ref={contentsRef} is_textarea margin='3px 0 30px' padding='15px' label="Contents" height="150px" width = "600px"></Input>
+                    <Input _ref={tagRef} margin="10px" label="Hash tag" width="600px" margin='3px 0 50px' padding=' 0 15px'></Input>
+                    <Grid is_flex align-items="center" >
                         <label onClick={()=>setIs_open(true)} style={{margin:"10px 20px 10px 0"}} >공개<input type={"radio"} name={"is_open"} value="공개"></input></label>
                         <label onClick={()=>setIs_open(false)}>비공개<input type={"radio"} name={"is_open"} value="비공개"></input></label>
                     </Grid>
-                    <Button margin="20px" width="15vw" text="Signup" _onClick={sendData} />
+                    <Button margin="20px" width="15vw" text="일기작성"  _onClick={sendData} />
                 </Grid>
         </Grid>
 

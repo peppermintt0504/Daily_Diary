@@ -48,7 +48,7 @@ const Upload = (props) => {
 
 
     return (
-        <Grid width="35vw">
+        <Grid width="600px" margin='35px 0'>
             <input ref={fileInput} onChange={selectFile} type="file"/>
             {files.length!==0?<Text margin="20px">미리보기</Text>:""}
             {files.length ===0 ?"" : 

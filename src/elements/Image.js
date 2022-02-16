@@ -11,7 +11,7 @@ const Image = (props) => {
     //event category
     const { _onClick, } = props;
     
-    const { } = props;
+    const { box_shadow } = props;
 
 
     const styles = {
@@ -20,6 +20,7 @@ const Image = (props) => {
         width,
         height,
         margin,
+        box_shadow,
         
     }
     if(shape === "imageBG"){
@@ -96,6 +97,7 @@ const ImagePost = styled.div`
     background-image: url("${(props) => props.src}");
     background-size: cover;   
     background-position: center;
+    box-shadow : ${(props) => props.box_shadow}
 `;
 const ImageBG = styled.div`
     width: 100%;

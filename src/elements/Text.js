@@ -7,7 +7,9 @@ const Text = (props) => {
 
     const { cursor } = props
 
-    const { margin, padding } = props
+    const { margin, padding, width,  } = props
+
+    const { is_flex, flex_direction,flex_wrap, align_items, justify_content,  } = props
 
     const { Border, B_radius,} = props;
 
@@ -19,11 +21,19 @@ const Text = (props) => {
         F_style,
         F_decoration,
 
+        is_flex,
+        flex_direction ,
+        flex_wrap ,
+        align_items,
+        justify_content,
+
+
         Border, 
         B_radius,
 
         margin,
         padding,
+        width,
 
         cursor,
         };
@@ -42,7 +52,11 @@ Text.defaultProps ={
     F_style : null,
     F_decoration : null,
 
-    
+    is_flex :false,
+    flex_direction : "row",
+    flex_wrap : 'wrap',
+    align_items : "center",
+    justify_content : null,
 
     cursor : null,
 
@@ -51,6 +65,7 @@ Text.defaultProps ={
 
     margin : null,
     padding : null,
+    width: '100%',
     
     _onClick : null,
 };
@@ -62,11 +77,20 @@ const P = styled.div`
     font-style: ${(props) => props.F_style};
     text-decoration : ${props => props.F_decoration};
 
+    ${(props) => (props.is_flex? `display : flex;`:"")};
+    align-items : ${props => props.align_items};
+    justify-content:${props => props.justify_content};
+    flex-direction :  ${props => props.flex_direction};
+    flex-wrap :  ${props => props.flex_wrap};
+
     border :  ${props => props.Border};
     border-radius :  ${props => props.B_radius};
 
+
     padding : ${(props) => props.padding};
     margin : ${(props) => props.margin};
+    width : ${(props) => props.width};
+    
     cursor : ${(props) => props.cursor};
 `;
 
