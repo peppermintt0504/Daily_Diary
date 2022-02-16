@@ -7,7 +7,7 @@ export const RESP = {
         list: [
         {
             diary_uid : "NKLJSDFGLER",
-            emotion : "GOOD",
+            emotion : "soso",
             tag : ["오늘","언제","끝날까?"],
             image_url : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229",
             title : "야근하는 날",
@@ -24,7 +24,7 @@ export const RESP = {
         },
         {
             diary_uid : "LMUABWUIFAFW",
-            emotion : "GOOD",
+            emotion : "angry",
             tag : ["내일","언제","집가지?"],
             image_url : "https://t1.daumcdn.net/cfile/tistory/206CA00E4CF0B11229",
             title : "출근하는 날",

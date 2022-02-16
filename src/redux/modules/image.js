@@ -9,10 +9,12 @@ import { getDownloadURL ,uploadBytesResumable, ref } from "firebase/storage";
 const UPLOADING = "UPLOADING";
 const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 const SET_PREVIEW = "SET_PREVIEW";
+const RESET = "RESET";
 
 const uploading = createAction(UPLOADING, (uploading) => (uploading));
 const uploadImage = createAction(UPLOAD_IMAGE, (image_url) => (image_url));
 const setPreview = createAction(SET_PREVIEW, (preview) => (preview));
+const reset = createAction(RESET, ( ) => ( {}));
 
 
 
@@ -33,7 +35,6 @@ const uploadImageFB=(image) =>{
         const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.then(() =>{
             getDownloadURL(storageRef).then((url) =>{
-                console.log(url);
                 dispatch(uploadImage(url));
             });
         })
@@ -41,13 +42,18 @@ const uploadImageFB=(image) =>{
     }
 }
 
+const resetImage=() =>{
+    return function (dispatch,getState,){
+        dispatch(reset());
+    }}
+
+
 
 //reducer
 export default handleActions(
     {
         [UPLOAD_IMAGE]: (state, action) =>
         produce(state, (draft) => {
-            console.log(action.payload);
             draft.image_url.push(action.payload);
             draft.uploading = false;
         }),
@@ -59,6 +65,10 @@ export default handleActions(
         produce(state,(draft)=>{
             draft.preview = action.payload.preview;
         }),
+        [RESET]: (state,action)=>
+        produce(state,(draft)=>{
+            draft.image_url = {};
+        }),
     },
     initialState
 );
@@ -68,6 +78,7 @@ export default handleActions(
 const actionCreators = {
     uploadImageFB,
     setPreview,
+    resetImage,
 
 };
 

@@ -11,18 +11,22 @@ import { Button, Grid, Input, Image, Text } from "../elements" ;
 
 //import Actions
 import { actionCreators as diaryActions } from "../redux/modules/diary";
+import { actionCreators as imageActions } from "../redux/modules/image";
 
 //import API
 import instance from "../shared/Request";
 import axios from "axios";
+import { actionCreators } from "../redux/modules/image";
 
 
 function DiaryWrite() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const _state = useSelector(state => state)
-    const _user = useSelector(state => state.user.user)
-    console.log(_user);
+
+    const _image = useSelector(state => state.image);
+    const _dairy = useSelector(state => state.dairy);
+    const _user = useSelector(state => state.user.user);
+    console.log(_image);
 
     const titleRef = React.useRef(null);
     const ImageRef = React.useRef(null);
@@ -31,31 +35,26 @@ function DiaryWrite() {
     const emoRef = React.useRef(null);
 
 
-    const [emotion, setEmotion ] = React.useState("Good")
+    const [emotion, setEmotion ] = React.useState("heart")
     const [title,setTitle] = React.useState("");
     const [image_url,setImage_url] = React.useState("https://mnapoli.fr/images/posts/null.png");
     const [contents,setContents] = React.useState("");
     const [tag,setTag] = React.useState("");
     const [is_open,setIs_open] = React.useState(true);
+    
 
-
-    const changeImg_url = () => {
-        console.log(ImageRef.current.value)
-        setImage_url(ImageRef.current.value);
-    }
     
     const sendData = () =>{
         setTitle(titleRef.current.value)
         setContents(contentsRef.current.value)
         const tag_list = tagRef.current.value.split("#");
         tag_list.shift();
-        setEmotion(emoRef.current.value)
 
-        const newdiary = {
+        const newDiary = {
             
-            emotion : emoRef.current.value,
+            emotion : emotion,
             tag : tag_list,
-            image_url : image_url,
+            image_url : _image.image_url[0]?_image.image_url[0]:"https://mnapoli.fr/images/posts/null.png",
             title : titleRef.current.value,
             contents : contentsRef.current.value,
             comment_cnt : 0,
@@ -63,18 +62,18 @@ function DiaryWrite() {
             user_info:{
                 uid : _user.uid,
                 user_id: _user.user_id,
-                user_name : _user.nickname,
+                nickname : _user.nickname,
                 user_profile : _user.user_profile,
             },
         }
-        console.log(newdiary);
-        dispatch(diaryActions.addDiarydata(newdiary));
+        console.log(newDiary);
+        dispatch(diaryActions.addDiarydata(newDiary));
         navigate("/");
+        //window.location.reload();
     }
 
     React.useEffect(async() => {
 
-        dispatch(diaryActions.getDiary());
     },[]);
 
     return (
@@ -82,12 +81,34 @@ function DiaryWrite() {
             <Header/>
                 <Grid margin="150px 0" is_flex flex_direction="column" align-items="center">
                     <Grid width="50vw" justify_content="center" is_flex align-items="center">
-                        <Input _ref={titleRef} margin="10px" label="Title" width = "26vw"></Input>
-                        <select ref={emoRef} style={ { margin : "20px 0 0 0",height:"40px", width:"6vw"}} >
-                            <option value={"Good"}>좋아요!</option>
-                            <option value={"Soso"}>그냥~</option>
-                            <option value={"NotGood"}>에휴...</option>
-                        </select>
+                        <Input _ref={titleRef} margin="10px" label="Title" width = "30vw"></Input>
+                    </Grid>
+                    <Grid is_flex margin="0 0 10px">
+                        <label onClick={()=>setEmotion("heart")} style={{margin:"10px"}}>
+                            <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/heart.jpeg"/><input type={"radio"} name={"emotion"} value="heart"></input>
+                            </Grid>
+                        </label>
+                        <label onClick={()=>setEmotion("HaHa")} style={{margin:"10px"}}>
+                            <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/HaHa.jpeg"/><input type={"radio"} name={"emotion"} value="HaHa"></input>
+                            </Grid>
+                        </label>
+                        <label onClick={()=>setEmotion("soso")} style={{margin:"10px"}}>
+                            <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/soso.jpeg"/><input type={"radio"} name={"emotion"} value="soso"></input>
+                            </Grid>
+                        </label>
+                        <label onClick={()=>setEmotion("sad")} style={{margin:"10px"}}>
+                            <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/sad.jpeg"/><input type={"radio"} name={"emotion"} value="sad"></input>
+                            </Grid>
+                        </label>
+                        <label onClick={()=>setEmotion("angry")} style={{margin:"10px"}}>
+                            <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/angry.jpeg"/><input type={"radio"} name={"emotion"} value="angry"></input>
+                            </Grid>
+                        </label>
                     </Grid>
                     
                     <Upload/>

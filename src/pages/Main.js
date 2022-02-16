@@ -18,18 +18,42 @@ import { FiEdit2 } from "react-icons/fi";
 import Header from "../components/Header";
 import Post from "../components/Post";
 
+//import Actions
+import { actionCreators as imageActions } from "../redux/modules/image";
 
+//import axios
+import instance from "../shared/Request";
 
 
 function Main() {
     const _diary = useSelector(state => state.diary.list);
-    const is_login = useSelector(state => state.user.is_login);
+    const _image = useSelector(state => state.image);
+    const _user = useSelector(state => state.user);
+
+    console.log(_diary);
+    
+    const is_login = _user.is_login;
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // console.log(_diary.list)
+
+    
+    instance.defaults.headers.common["X-AUTH-TOKEN"] = _user.token;
+    const temp_data ={
+        title : "제목",
+        content : "내용",
+        emotion : "이모지",
+        tag : "태그",
+        is_open : true,
+        iamgeUrl : "이미지",
+    }
+    // if(_user.is_login){
+
+    //     instance.post('/api/diary',temp_data).then(res => console.log("post :",res));
+    //     instance.get('/api/diary',{}).then(res => console.log("get :",res));
+    // }
 
     const go_diarywrite = ()=>{
-        console.log('글작성페이지 이동')
         navigate("/diarywrite")  
     }
 
@@ -42,10 +66,6 @@ function Main() {
         }
     },[]);
 
-    // if(!is_login){
-    //     navigate('/login');
-    //     return (<React.Fragment/>);
-    // }
 
     return (
         <Grid>
@@ -72,5 +92,6 @@ function Main() {
 
     );
 }
+
 
 export default Main;

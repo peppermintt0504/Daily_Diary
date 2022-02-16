@@ -31,10 +31,6 @@ function SignUp() {
 
 
     const sendData = () =>{
-        console.log(idRef.current.value)
-        console.log(nickRef.current.value)
-        console.log(pwdRef.current.value)
-        console.log(pwdCheckRef.current.value)
 
         const user_data = {
             username : idRef.current.value,
@@ -48,6 +44,7 @@ function SignUp() {
             console.log("plz recheck your password...");
             return;
         }else{
+            instance.defaults.headers.common["X-AUTH-TOKEN"] = "";
             instance.post('/api/signup',user_data)
             .then((res) => {
                 window.alert("회원가입이 완료되었습니다.")
@@ -57,7 +54,6 @@ function SignUp() {
             .catch((err,res) => {
                 console.log(err)
             });
-            //dispatch( userActions.signupUser(user_data))
         }
         
 
