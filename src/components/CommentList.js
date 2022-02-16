@@ -15,7 +15,7 @@ const CommentList = () => {
     // console.log(diary_id)
     
     const thisDiaryComment = comment_list.filter((v,i) => v.diaryId===diary_id?true:false)
-    console.log(thisDiaryComment)
+    //console.log(thisDiaryComment)
 
     React.useEffect(() =>{
         if(comment_list.length === 0)

@@ -30,7 +30,7 @@ function Main() {
     const _image = useSelector(state => state.image);
     const _user = useSelector(state => state.user);
 
-    console.log(_user);
+    //console.log(_user);
     
     const is_login = _user.is_login;
 
@@ -54,7 +54,7 @@ function Main() {
     // }
     // const temp_C_data ={
     //     diaryId : 5,
-    //     comment : "hello",
+    //     comment : "hello2",
 
     // }
 
@@ -70,10 +70,10 @@ function Main() {
     //         instance.get('/api/comment/4',{diaryId : "4",}).then(res => console.log("get :",res));
     //     });
 
-    //     instance.delete('/api/comment/8',{}).then(res => {
-    //         console.log("post :",res)
-    //         instance.get('/api/comment/4',{diaryId : "4",}).then(res => console.log("get :",res));
-    //     });
+    //     // instance.delete('/api/comment/8',{}).then(res => {
+    //     //     console.log("post :",res)
+    //     //     instance.get('/api/comment/4',{diaryId : "4",}).then(res => console.log("get :",res));
+    //     // });
     // }
 
     const go_diarywrite = ()=>{

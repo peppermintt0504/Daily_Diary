@@ -49,7 +49,7 @@ export default handleActions(
   {
       [SET_COMMENT]: (state, action) => 
       produce(state, (draft) => {
-        console.log(action.payload.comment_list);
+        //console.log(action.payload.comment_list);
         draft.list = [...action.payload.comment_list];
         // console.log(state)
       }),
