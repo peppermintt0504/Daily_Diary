@@ -53,27 +53,27 @@ function Main() {
         
     // }
     // const temp_C_data ={
-    //     diaryId : 5,
-    //     comment : "hello2",
+    //     diaryId : 9,
+    //     comment : "hello",
 
     // }
 
     // if(_user.is_login){
-    //     instance.post('/api/diary',temp_data).then(res => {
-    //         console.log("post :",res)
-    //         instance.get('/api/diary',{}).then(res => console.log("get :",res));
-
-    //     });
-
-    //     instance.post('/api/comment/4',temp_C_data).then(res => {
-    //         console.log("post :",res)
-    //         instance.get('/api/comment/4',{diaryId : "4",}).then(res => console.log("get :",res));
-    //     });
-
-    //     // instance.delete('/api/comment/8',{}).then(res => {
+    //     // instance.post('/api/diary',temp_data).then(res => {
     //     //     console.log("post :",res)
-    //     //     instance.get('/api/comment/4',{diaryId : "4",}).then(res => console.log("get :",res));
+    //     //     instance.get('/api/diary',{}).then(res => console.log("get :",res));
+
     //     // });
+
+    //     // instance.post('/api/comment/9',temp_C_data).then(res => {
+    //     //     console.log("post :",res)
+    //     //     instance.get('/api/comment/9',{diaryId : "9",}).then(res => console.log("get :",res));
+    //     // });
+
+    //     instance.delete('/api/comment/10',{}).then(res => {
+    //         console.log("post :",res)
+    //         instance.get('/api/comment/9',{diaryId : "9",}).then(res => console.log("get :",res));
+    //     });
     // }
 
     const go_diarywrite = ()=>{

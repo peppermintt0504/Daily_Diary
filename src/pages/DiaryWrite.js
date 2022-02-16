@@ -18,6 +18,13 @@ import instance from "../shared/Request";
 import axios from "axios";
 import { actionCreators } from "../redux/modules/image";
 
+//import MUI
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 
 function DiaryWrite() {
     const dispatch = useDispatch();
@@ -81,35 +88,45 @@ function DiaryWrite() {
             <Header/>
                 <Grid margin="150px 0" is_flex flex_direction="column" align-items="center">
                     <Grid width="50vw" justify_content="center" is_flex align-items="center">
-                        <Input _ref={titleRef} margin="10px" label="Title" width = "30vw"></Input>
+                        <Input _ref={titleRef} margin="10px" label="Title" width = "30vw"/>
                     </Grid>
-                    <Grid is_flex margin="0 0 10px">
+
+                    <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                    >
                         <label onClick={()=>setEmotion("heart")} style={{margin:"10px"}}>
                             <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
-                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/heart.jpeg"/><input type={"radio"} name={"emotion"} value="heart"></input>
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/heart.jpeg"/>
+                                <FormControlLabel value="heart" labelPlacement="top" control={<Radio />} label=""/>
                             </Grid>
                         </label>
                         <label onClick={()=>setEmotion("HaHa")} style={{margin:"10px"}}>
                             <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
-                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/HaHa.jpeg"/><input type={"radio"} name={"emotion"} value="HaHa"></input>
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/HaHa.jpeg"/>
+                                <FormControlLabel value="HaHa" labelPlacement="top" control={<Radio />} label=""/>
                             </Grid>
                         </label>
                         <label onClick={()=>setEmotion("soso")} style={{margin:"10px"}}>
                             <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
-                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/soso.jpeg"/><input type={"radio"} name={"emotion"} value="soso"></input>
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/soso.jpeg"/>
+                                <FormControlLabel value="soso" labelPlacement="top" control={<Radio />} label=""/>
                             </Grid>
                         </label>
                         <label onClick={()=>setEmotion("sad")} style={{margin:"10px"}}>
                             <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
-                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/sad.jpeg"/><input type={"radio"} name={"emotion"} value="sad"></input>
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/sad.jpeg"/>
+                                <FormControlLabel value="sad" labelPlacement="top" control={<Radio />} label=""/>
                             </Grid>
                         </label>
                         <label onClick={()=>setEmotion("angry")} style={{margin:"10px"}}>
                             <Grid is_flex flex_direction="column" justify_content="center" align-items="center">
-                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/angry.jpeg"/><input type={"radio"} name={"emotion"} value="angry"></input>
+                                <Image shape='circle' size='40' margin='0 10px 0 0' src="/emozi/angry.jpeg"/>
+                                <FormControlLabel value="angry" labelPlacement="top" control={<Radio />} label=""/>
                             </Grid>
                         </label>
-                    </Grid>
+                    </RadioGroup>
                     
                     <Upload/>
 
