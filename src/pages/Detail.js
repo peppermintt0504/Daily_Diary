@@ -63,7 +63,7 @@ function Detail(props) {
                         </Grid>
                         <Grid padding = '20px 15px' width='80%' >
                             <Grid is_flex justify_content="space-between" align_items>
-                                <Text margin='0 10px 0 0'>{diary?diary.user_info.user_name:""}</Text>
+                                <Text margin='0 10px 0 0'>{diary?diary.user_info.nickname:""}</Text>
                                 <Text F_size='16px' margin='0 0 10px 0'>{diary?diary.insert_dt:""}</Text>
                             </Grid>
                             <Text F_size='23px' F_weight='600'>{diary?diary.title:""}</Text>
