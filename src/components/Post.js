@@ -26,7 +26,7 @@ const Post = (props) => {
         _onClick={()=>{navigate("/detail/"+_props.id)}}>
             <Grid height='70px' padding='0 15px' is_flex justify_content='space-between'>
                 <Grid width='50%' is_flex> 
-                    <Image shape='circle' size='40' src={props.user_profile}></Image>
+                    <Image shape='circle' size='40' src={"https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/309/59932b0eb046f9fa3e063b8875032edd_crop.jpeg"}></Image>
                     <Text margin='0 0 0 7px' width='50%'>{props.nickname}</Text>
                 </Grid>
                 <Text width='50%' is_flex justify_content='flex-end'>{time}</Text>
