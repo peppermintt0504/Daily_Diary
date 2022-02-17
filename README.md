@@ -14,7 +14,7 @@
 <h2>🎥 Together Logo & Video</h2>
 <h3>logo</h3>
 <br/>
-![Logo2](https://user-images.githubusercontent.com/73277351/154501537-07674d23-dfc6-4ef4-937b-ccb7035773aa.png)
+<img src=https://user-images.githubusercontent.com/73277351/154501537-07674d23-dfc6-4ef4-937b-ccb7035773aa.png/>
 
 <h3>Youtube</h3>
 <br/><br/><br/>
