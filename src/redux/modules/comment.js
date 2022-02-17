@@ -38,7 +38,7 @@ const getComment = (diary_id) => {
     instance.get(`/api/comment/${diary_id}`,{}).then(res =>{
         console.log("get :",res)
         dispatch(setComment(diary_id, res.data));
-    }).catch(err => window.alert("댓글 정보를 가져오는데 실패하였습니다."));;
+    });
 
 
     // console.log(diary_comment)
@@ -55,8 +55,9 @@ const addCommentData = (diary_id,comment_data) => {
       instance.get(`/api/comment/${diary_id}`,{}).then(res => {
         console.log("get :",res)
         dispatch(setComment(diary_id, res.data));
+        
       });
-    }).catch(err => window.alert("댓글 작성에 실패하였습니다."));;
+    });
 
   }
 }
@@ -72,7 +73,7 @@ const delCommentData = (diary_id,comment_id) => {
         console.log("get :",res)
         dispatch(setComment(comment_id, res.data));
       });
-    }).catch(err => window.alert("삭제에 실패하였습니다."));;
+    });
 
   }
 }

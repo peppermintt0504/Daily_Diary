@@ -46,7 +46,7 @@ const Post = (props) => {
             <Grid padding='10px 15px' margin='0 0 10px 0' position='relative' height='225px'>
                 <Grid flex_direction="row" is_flex justify_content='flex-start' align_items='center' margin='0 10px 15px 0'>
                     <Image shape='circle' size='40' margin='0 10px 0 0' src={`/emozi/${props.emotion}.jpeg`}></Image>
-                    <Text width="200px" F_size='20px' F_weight='600' >{props.title}</Text>
+                    <Text width="85%" F_size='20px' F_weight='600' >{props.title}</Text>
                 </Grid>
                 <Text margin='0 0 20px 0' height='120px'>{props.content}</Text>
                 <Grid position='absolute' bottom='15px'>

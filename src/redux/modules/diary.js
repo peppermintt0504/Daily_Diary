@@ -39,7 +39,7 @@ const getDiary=() =>{
                 diary_list.push(v);
             }
             dispatch(setDiary(diary_list));
-        }).catch(err => window.alert("다이어리 정보 불러오기 실패하였습니다."));
+        });
         
     }
 }
@@ -52,7 +52,7 @@ const addDiarydata=(diary_data) =>{
                 console.log("post :",res)
                 instance.get('/api/diary',{}).then(res => console.log("get :",res));
                 dispatch(addDiary(res.data));
-        }).catch(err => window.alert("다이어리 추가가 실패하였습니다."));
+        });
 
 
     }
@@ -69,7 +69,7 @@ const delDiarydata=(diary_id) =>{
                 diary_list.push(v);
             }
             dispatch(setDiary(diary_list));
-        }).catch(err => window.alert("삭제에 실패하였습니다."));
+        });
 
 
         dispatch(delDiary(diary_id));

@@ -16,7 +16,7 @@ const CommentList = () => {
     
     const params = useParams()
     const diary_id = params.diary_uid
-    const comment_list = useSelector((state) => state.comment.list);
+    let comment_list = useSelector((state) => state.comment.list);
     
     const navigate = useNavigate();
     const comment_del = () => {
@@ -24,18 +24,21 @@ const CommentList = () => {
         navigate("/")  
     }
 
-    //console.log(thisDiaryComment)
+
 
     React.useEffect(() =>{
         
         dispatch(commentActions.getComment(diary_id, comment_list));
     },[])
 
+    let temp_list = []; 
+    comment_list.map( (C,i) => { temp_list.unshift(C) });
+
 
     return (
         <React.Fragment>
         <Grid margin='50px 0 0 0'>
-            {comment_list.map( (C,i) => {
+            {temp_list.map( (C,i) => {
             return <CommentItem key={i} {...C}/>
             })}
         </Grid>
