@@ -66,7 +66,7 @@ const loginCheck=() =>{
                     user_profile : response.data.user_profile
                 }
                 dispatch(setUser(_user,Auth));
-            });
+            }).catch(err => window.alert("로그인에 실패하였습니다."));
         }else{
         }
 

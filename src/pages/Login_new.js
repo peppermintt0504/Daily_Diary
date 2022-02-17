@@ -64,18 +64,21 @@ export default function SignInSide() {
             instance.defaults.headers.common["X-AUTH-TOKEN"] = token; 
 
             let loginUserData = {
+                uid :"",
                 user_id : "",
                 nickname : "",
                 user_profile : "",
+                
             }
             
             instance.post('/api/user',{}).then(response=>{
+                loginUserData.uid = response.data.id;
                 loginUserData.user_id = response.data.username;
                 loginUserData.nickname = response.data.nickname;
                 loginUserData.user_profile = response.data.user_profile;
                 dispatch(userActions.loginUser(loginUserData,token));
                 navigate("/");
-            });
+            }).catch(err => window.alert("로그인에 실패하였습니다."));
             
         })
         .catch((err,res) => {

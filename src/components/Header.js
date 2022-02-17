@@ -69,7 +69,7 @@ const Header = (props) => {
     
                 <Grid width="70%" is_flex justify_content='flex-end' align_items='center' >
                     <Switch {...label} checked={checked} onChange={handleChange} />
-                            <Text F_size="18px" width='100px' F_weight="bold" margin ='0 10px 0 0'>{_user.nickname}</Text>
+                            <Text F_size="18px" width='100px' F_weight="bold" margin ='0 10px 0 60px'>{_user.nickname}</Text>
                             <Button B_radius="10px" Border="none"  BG_color="white" width="100px" height='40px' text="마이페이지" margin ='0 10px 0 0' box_shadow='1px 1px 3px gray' _onClick ={() => navigate("/mypage")}/>
                             <Button B_radius="10px" Border="none" BG_color="white" width="100px" height='40px' text="로그아웃"  box_shadow='1px 1px 3px gray' 
                             _onClick ={logout}/>

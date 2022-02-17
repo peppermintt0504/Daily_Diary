@@ -75,9 +75,7 @@ export default function MyPage() {
                 navigate("/");
                 window.location.reload();
             })
-            .catch((err,res) => {
-                console.log(err)
-            });
+            .catch(err => window.alert("정보 수정에 실패하였습니다."));
     };
 
     return (
