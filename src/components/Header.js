@@ -20,13 +20,16 @@ import MuiAlert from '@mui/material/Alert';
 
 const Header = (props) => {
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
-
+    const [checked, setChecked] = React.useState(false);
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        dispatch(userActions.secretDiary(event.target.checked))
+    };
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const _user = useSelector(state => state.user.user);
     const is_login = useSelector(state => state.user.is_login);
-    const [check,setCheck] = React.useState(0);
 
     
     // if(!is_login){
@@ -56,28 +59,21 @@ const Header = (props) => {
     if(is_login){
         return(
             <React.Fragment>
-            <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#e9ecef" width="100%" justify_content="space-between" is_flex padding="4px 16px">
-                <Grid width='1000px' margin='0 auto' is_flex justify_content='space-between'>
-                    <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
-                        <Grid F_style={"italic"} is_flex justify_content='flex-start' >
-                            <Grid is_flex justify_content='flex-start'>
-                                <Grid width='140px' height='55px'>
-                                    {/* <BsFillMenuButtonWideFill size='38px'/> */}
-                                    <Image src='/img/Logo2.png' width='100%' height='100%' shape='imagePost'/>
-                                </Grid>
-                            </Grid>
+                <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#e9ecef" width="100%" justify_content="space-between" is_flex padding="4px 16px">
+                    <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' >
+                        <Grid cursor={"pointer"} width="100px" height='55px' _onClick= {() => navigate("/")}>
+                            {/* <BsFillMenuButtonWideFill size='38px'/> */}
+                            <Image src='/img/Logo2.png' width='100%' height='100%' shape='imagePost'/>
                         </Grid>
-                    </Grid>
-                </Grid>
-                <Grid>
-                    <Switch {...label} defaultChecked />
-                </Grid>
+
     
-                <Grid width="400px" is_flex justify_content='space-between' align_items='center' >
+                <Grid width="70%" is_flex justify_content='flex-end' align_items='center' >
+                    <Switch {...label} checked={checked} onChange={handleChange} />
                             <Text F_size="18px" width='100px' F_weight="bold" margin ='0 10px 0 0'>{_user.nickname}</Text>
                             <Button B_radius="10px" Border="none"  BG_color="white" width="100px" height='40px' text="마이페이지" margin ='0 10px 0 0' box_shadow='1px 1px 3px gray' _onClick ={() => navigate("/mypage")}/>
                             <Button B_radius="10px" Border="none" BG_color="white" width="100px" height='40px' text="로그아웃"  box_shadow='1px 1px 3px gray' 
                             _onClick ={logout}/>
+                            </Grid>
                     </Grid>
                 </Grid>
                 <Grid margin = "80px"/>
@@ -88,24 +84,16 @@ const Header = (props) => {
     return(
         <React.Fragment>
             <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#e9ecef" width="100%" justify_content="space-between" is_flex padding="4px 16px">
-                <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between'>
-                    <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
-                        <Grid F_style={"italic"} is_flex justify_content='flex-start' >
-                            <Grid is_flex justify_content='flex-start'>
-                                <Grid width='140px' height='55px'>
-                                    {/* <BsFillMenuButtonWideFill size='38px'/> */}
-                                    <Image src='/img/logo2.png' width='100%' height='100%' shape='imagePost'/>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+            <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' >
+                    <Grid cursor={"pointer"} width="100px" height='55px'
+                        _onClick= {() => navigate("/")}>
+                        <Image src='/img/logo2.png' width='100%' height='100%' shape='imagePost'/>
                         
                     </Grid>
-                </Grid>
-
-
-                <Grid flex_direction= "row-reverse" justify_content="space-between" is_flex>
+                    <Grid flex_direction= "row-reverse" justify_content="space-between" is_flex>
                         <Button B_radius="10px" Border="none" BG_color="white" width="100px" height='40px' text="로그인" 
                         _onClick ={() => navigate("/login")}/>    
+                    </Grid>
                     </Grid>
             </Grid>
             <Grid margin = "80px"/>

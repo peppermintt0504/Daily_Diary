@@ -34,12 +34,12 @@ const CommentWrite = (props) => {
 
     return (
         <React.Fragment>
-            <Grid is_flex justify_content='space-between'>
-            <Input is_textarea width='800px' height='100px' padding='20px' B_radius='12px' _ref={contentsRef}/>
-            <Button 
-                height='100px' B_radius='12px' width='70px'  margin='0 10px 0 0'  Border='none' BG_color='#ffec99'
-                _onClick={commentSend}>작성
-            </Button>
+            <Grid is_flex margin='0 auto'  justify_content='space-between' >
+                <Input is_textarea width='860px' height='120px' _ref={contentsRef} padding='20px'/>
+                <Button 
+                    height='120px' width='70px'  margin='0 10px 0 0'  Border='none' BG_color="white" box_shadow='1px 1px 1px gray'
+                    _onClick={commentSend}>작성
+                </Button>
             </Grid>
         </React.Fragment>
     );

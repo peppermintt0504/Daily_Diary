@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+//import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -59,24 +59,25 @@ export default function MyPage() {
         // eslint-disable-next-line no-console
 
         const user_data={
-            username : _user.user.user_id,
             nickname : data.get('nickname'),
-            user_profile : _image.image_url?_image.image_url:"https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/309/59932b0eb046f9fa3e063b8875032edd_crop.jpeg",
+            user_profile : _image.image_url?_image.image_url[0].imageUrl:"https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/309/59932b0eb046f9fa3e063b8875032edd_crop.jpeg",
         }
 
         console.log(user_data);
+        console.log(_user.token);
 
-        instance.defaults.headers.common["X-AUTH-TOKEN"] = "";
+        instance.defaults.headers.common["X-AUTH-TOKEN"] = _user.token;
 
-            // instance.put(`/api/signup/${_user.user.id}`,user_data)
-            // .then((res) => {
-            //     window.alert("개인정보 수정이 완료되었습니다.")
-            //     console.log(res);
-            //     navigate("/");
-            // })
-            // .catch((err,res) => {
-            //     console.log(err)
-            // });
+            instance.put(`/api/user/${_user.user.uid}`,user_data)
+            .then((res) => {
+                window.alert("개인정보 수정이 완료되었습니다.")
+                console.log(res);
+                navigate("/");
+                window.location.reload();
+            })
+            .catch((err,res) => {
+                console.log(err)
+            });
     };
 
     return (
@@ -94,7 +95,7 @@ export default function MyPage() {
             }}
             >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlinedIcon />
+                {/* <LockOutlinedIcon /> */}
             </Avatar>
             <Typography component="h1" variant="h5">
                 개인정보 수정
