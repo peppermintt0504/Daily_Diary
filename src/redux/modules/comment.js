@@ -38,7 +38,7 @@ const getComment = (diary_id) => {
     instance.get(`/api/comment/${diary_id}`,{}).then(res =>{
         console.log("get :",res)
         dispatch(setComment(diary_id, res.data));
-    });
+    }).catch(err => window.alert("댓글 정보를 가져오는데 실패하였습니다."));;
 
 
     // console.log(diary_comment)
@@ -56,11 +56,26 @@ const addCommentData = (diary_id,comment_data) => {
         console.log("get :",res)
         dispatch(setComment(diary_id, res.data));
       });
-    });
+    }).catch(err => window.alert("댓글 작성에 실패하였습니다."));;
 
   }
 }
 
+const delCommentData = (diary_id,comment_id) => {
+  return async function (dispatch,getState){
+
+    const token = getCookie("is_login");
+    instance.defaults.headers.common["X-AUTH-TOKEN"] =token;
+
+    instance.delete(`/api/comment/${comment_id}`,{}).then(res => {
+      instance.get(`/api/comment/${diary_id}`,{}).then(res => {
+        console.log("get :",res)
+        dispatch(setComment(comment_id, res.data));
+      });
+    }).catch(err => window.alert("삭제에 실패하였습니다."));;
+
+  }
+}
 
 
 //reducer
@@ -93,6 +108,8 @@ const actionCreators = {
   setComment,
   addComment,
   addCommentData,
+  delCommentData,
+
 };
 
 

@@ -1,3 +1,17 @@
+
+@font-face {
+  font-family: "de";
+  src: url("./fonts/GowunBatang-Bold.ttf");
+}
+
+*{
+  
+  font-family: "de";
+}
+
+
+
+
 .App {
   text-align: center;
 }
