@@ -7,9 +7,11 @@ import { useSelector ,useDispatch} from "react-redux";
 
 //import Components
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
+import Switch from '@mui/material/Switch';
 
 //import redux
 import { actionCreators as userActions } from "../redux/modules/user";
+
 
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
@@ -19,6 +21,7 @@ import MuiAlert from '@mui/material/Alert';
 
 const Header = (props) => {
 
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -54,8 +57,12 @@ const Header = (props) => {
                         </Grid>
                     </Grid>
                 </Grid>
-    
-    
+                <Grid>
+                    <Switch {...label} defaultChecked />
+                </Grid>
+            
+
+
                 <Grid is_flex justify_content='space-between' align_items='center' >
                             <Text F_size="18px" width='100px' F_weight="bold" margin ='0 10px 0 0'>{_user.nickname}</Text>
                             <Button B_radius="10px" Border="none"  BG_color="white" width="100px" height='40px' text="마이페이지" margin ='0 10px 0 0' box_shadow='1px 1px 3px gray' _onClick ={() => navigate("/mypage")}/>
@@ -81,7 +88,6 @@ const Header = (props) => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        
                     </Grid>
                 </Grid>
 
