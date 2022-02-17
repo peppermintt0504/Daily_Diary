@@ -30,9 +30,8 @@ function Main() {
     const _image = useSelector(state => state.image);
     const _user = useSelector(state => state.user);
 
-    console.log(_diary);
+    const secret = true;
     
-    const is_login = _user.is_login;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -46,7 +45,6 @@ function Main() {
     }
 
     React.useEffect(async() => {
-
         
         dispatch(diaryActions.getDiary())
         
@@ -60,13 +58,28 @@ function Main() {
             <Grid  height='300px' width='1200px' margin='120px 0 50px'> 
                     <Image src='/img/main1.png' width='100%' shape='imagePost' box_shadow='2px 2px 5px lightgrey' />
                 </Grid>
-                <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
+                <Grid margin='0 auto' is_flex justify_content='flex-start' flex_wrap='wrap' > 
                     {_diary.list?_diary.list.map((D, idx) => {
-                        if(D.is_open){
-                            return(
-                                <Post key={idx} index={idx} {...D}/>
-                                )
+                        if(secret){
+                            if(D.is_open){
+                                return(
+                                    <Post key={idx} index={idx} {...D}/>
+                                    )
+                            }
+                            if(_user.user.nickname === D.nickname){
+                                return(
+                                    <Post key={idx} index={idx} {...D}/>
+                                    )
+                            }
                         }
+                        else{
+                            if(D.is_open){
+                                return(
+                                    <Post key={idx} index={idx} {...D}/>
+                                    )
+                            }
+                        }
+                        
                     }):""}
                 </Grid>
             </Grid>

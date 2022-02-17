@@ -7,6 +7,7 @@ import { useSelector ,useDispatch} from "react-redux";
 
 //import Components
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
+import Switch from '@mui/material/Switch';
 
 //import redux
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -18,45 +19,61 @@ import MuiAlert from '@mui/material/Alert';
 
 
 const Header = (props) => {
-
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const is_login = useSelector(state => state.user.is_login);
     const _user = useSelector(state => state.user.user);
+    const is_login = useSelector(state => state.user.is_login);
+    const [check,setCheck] = React.useState(0);
 
+    
+    // if(!is_login){
+    //     setCheck(check+1);
+    // }
 
+    // if(check===1 && !is_login){
+    //     setCheck(check+1);
+    // }
+    // if(check > 1){
+    //     if(!is_login){
+    //         navigate("/login");
+    //     }
+    // }
     const logout = () =>{
         dispatch(userActions.logoutUser());
         navigate("/login");
     }
-
+    
     React.useEffect(async() => {
         if( !is_login ){
             dispatch(userActions.loginCheck());
         }
+        
     },[]);
-
+    
     if(is_login){
         return(
             <React.Fragment>
             <Grid box_shadow="1px 1px 5px 1px grey" flex_wrap = "nowrap" z_index = "9" top="0px" position="fixed" height="70px" BG_c="#e9ecef" width="100%" justify_content="space-between" is_flex padding="4px 16px">
-                <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between'>
+                <Grid width='1000px' margin='0 auto' is_flex justify_content='space-between'>
                     <Grid  cursor={"pointer"} width="200px" _onClick= {() => navigate("/")} >
                         <Grid F_style={"italic"} is_flex justify_content='flex-start' >
                             <Grid is_flex justify_content='flex-start'>
                                 <Grid width='140px' height='55px'>
                                     {/* <BsFillMenuButtonWideFill size='38px'/> */}
-                                    <Image src='/img/logo2.png' width='100%' height='100%' shape='imagePost'/>
+                                    <Image src='/img/Logo2.png' width='100%' height='100%' shape='imagePost'/>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
+                <Grid>
+                    <Switch {...label} defaultChecked />
+                </Grid>
     
-    
-                <Grid is_flex justify_content='space-between' align_items='center' >
+                <Grid width="400px" is_flex justify_content='space-between' align_items='center' >
                             <Text F_size="18px" width='100px' F_weight="bold" margin ='0 10px 0 0'>{_user.nickname}</Text>
                             <Button B_radius="10px" Border="none"  BG_color="white" width="100px" height='40px' text="마이페이지" margin ='0 10px 0 0' box_shadow='1px 1px 3px gray' _onClick ={() => navigate("/mypage")}/>
                             <Button B_radius="10px" Border="none" BG_color="white" width="100px" height='40px' text="로그아웃"  box_shadow='1px 1px 3px gray' 

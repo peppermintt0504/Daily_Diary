@@ -37,13 +37,14 @@ export default CommentList;
 
 
 const CommentItem = (props) => {
+    console.log(props);
     return ( 
         <Grid is_flex justify_content='space-between' padding='10px 0' >
             <Grid is_flex width="22%" >
-                <Image shape="circle" size='60'/>
+                <Image src={props.user.user_profile} shape="circle" size='60'/>
                 <Grid>
-                    <Text bold>{props.user_info.nickname}</Text>
-                    <Text margin="0px">{props.insert_dt}</Text>
+                    <Text bold>{props.user.nickname}</Text>
+                    <Text margin="0px">{props.createdAt}</Text>
                 </Grid>
             </Grid >
             <Grid width="751%">
