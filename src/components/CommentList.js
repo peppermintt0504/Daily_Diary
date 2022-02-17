@@ -12,8 +12,9 @@ const CommentList = () => {
     const params = useParams()
     const diary_id = params.diary_uid
     const comment_list = useSelector((state) => state.comment.list);
-    console.log(comment_list)
+
     
+
     //console.log(thisDiaryComment)
 
     React.useEffect(() =>{
@@ -37,18 +38,24 @@ export default CommentList;
 
 
 const CommentItem = (props) => {
-    console.log(props);
+
+    const temp = props.createdAt.split("T")
+    const day = temp[0].split("-");
+    const t = temp[1].split(":");
+    const time = day[0] + "년 " +day[1] +"월 " +day[2] +"일 " + t[0] + ":" + t[1];
+
+
     return ( 
-        <Grid is_flex justify_content='space-between' padding='10px 0' >
-            <Grid is_flex width="22%" >
+        <Grid is_flex justify_content='space-between' padding='10px'   >
+            <Grid is_flex  >
                 <Image src={props.user.user_profile} shape="circle" size='60'/>
-                <Grid>
-                    <Text bold>{props.user.nickname}</Text>
-                    <Text margin="0px">{props.createdAt}</Text>
+                <Grid margin='0 10px'>
+                    <Text F_size='16px' F_weight='600'>{props.user.nickname}</Text>
+                    <Text margin="0px" F_size='12px'>{time}</Text>
                 </Grid>
             </Grid >
-            <Grid width="751%">
-                <Text margin="0px 4px"  padding='20px' width="100%"  Border='1px solid black' B_radius='10px' BG_color='#ffec99' >{props.comment} </Text>
+            <Grid width="75%" BG_c='white' height='80px'>
+                <Text margin="0px 4px"  padding='20px' width="100%" >{props.comment} </Text>
             </Grid>
         </Grid>
     )

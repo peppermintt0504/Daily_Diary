@@ -30,7 +30,7 @@ function Main() {
     const _image = useSelector(state => state.image);
     const _user = useSelector(state => state.user);
 
-    const secret = true;
+    const secret = _user.secret;
     
 
     const dispatch = useDispatch();

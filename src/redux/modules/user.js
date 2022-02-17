@@ -18,16 +18,18 @@ const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const GET_USER = "GET_USER";
 const SET_USER = "SET_USER";
+const SECRET ="SECRET";
 
 
 
 //action creatos
 const setUser = createAction(SET_USER, (user , token) => ({ user, token }));
 const logOut = createAction(LOG_OUT, (  ) => ({  }));
-
+const secret = createAction(SECRET, ( value ) => ({ value }));
 
 //initialState
 const initialState = {
+    secret : false,
     is_login : false,
     user : {},
     token : "",
@@ -57,11 +59,11 @@ const loginCheck=() =>{
 
             instance.defaults.headers.common["X-AUTH-TOKEN"] = Auth; 
             instance.post('/api/user',{}).then(response=>{
-                console.log(response);
                 const _user = {
-                user_id : response.data.username,
-                nickname : response.data.nickname,
-                user_profile : response.data.user_profile
+                    uid : response.data.id,
+                    user_id : response.data.username,
+                    nickname : response.data.nickname,
+                    user_profile : response.data.user_profile
                 }
                 dispatch(setUser(_user,Auth));
             });
@@ -78,6 +80,35 @@ const logoutUser=() =>{
     }
 }
 
+const updateUser=() =>{
+    return async function (dispatch,getState){
+        const Auth = getCookie("is_login");
+    
+
+        if(Auth !== undefined){
+
+            instance.defaults.headers.common["X-AUTH-TOKEN"] = Auth; 
+            instance.put(`/api/user/`,{}).then(response=>{
+                console.log(response);
+                const _user = {
+                    uid : response.data.id,
+                    user_id : response.data.username,
+                    nickname : response.data.nickname,
+                    user_profile : response.data.user_profile
+                }
+                dispatch(setUser(_user,Auth));
+            });
+        }
+    }
+}
+
+const secretDiary = (value) =>{
+    return async function (dispatch,getState){
+        dispatch(secret(value));
+    }
+}
+
+
 //reducer
 export default handleActions(
     {
@@ -92,6 +123,10 @@ export default handleActions(
             draft.is_login=false;
             draft.user = {};
         }),
+        [SECRET]: (state, action) =>
+        produce(state, (draft) => {
+            draft.secret = action.payload.value;
+        }),
 
     },
     initialState
@@ -104,6 +139,7 @@ const actionCreators = {
     loginUser,
     logoutUser,
     loginCheck,
+    secretDiary,
 
 };
 

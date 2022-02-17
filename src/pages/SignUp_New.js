@@ -63,7 +63,7 @@ export default function SignUp() {
             .then((res) => {
                 window.alert("회원가입이 완료되었습니다.")
                 console.log(res);
-                navigate("/loginNew");
+                navigate("/login");
             })
             .catch((err,res) => {
                 console.log(err)

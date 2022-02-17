@@ -60,7 +60,7 @@ function DiaryWrite() {
         const newDiary = {
             emotion : emotion,
             tag : tagRef.current.value,
-            imageUrlList : _image.image_url?_image.image_url:"https://mnapoli.fr/images/posts/null.png",
+            imageUrlList : _image.image_url.length!==0?_image.image_url:[{imageUrl:"/default/image (1).png"},],
             title : titleRef.current.value,
             content : contentsRef.current.value,
             comment_cnt : 0,
@@ -70,6 +70,7 @@ function DiaryWrite() {
         dispatch(diaryActions.addDiarydata(newDiary));
         navigate("/");
         window.location.reload();
+        
     }
 
     React.useEffect(async() => {
