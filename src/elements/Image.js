@@ -92,7 +92,7 @@ const ImageCircle = styled.div`
     margin: 4px;
 `;
 const ImagePost = styled.div`
-    width: 100%;
+    width: ${(props) => props.width};
     height: 100%;
     background-image: url("${(props) => props.src}");
     background-size: cover;   

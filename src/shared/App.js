@@ -43,7 +43,6 @@ function App() {
         <Route path="/mypage" element={<MyPage />}/>
         <Route path="/diaryedit/:diary_uid" element={<DiaryEdit />}/>
 
-
       </Routes>
     </React.Fragment>
 
