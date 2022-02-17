@@ -24,7 +24,10 @@ import instance from "../shared/Request"
 import Header from "../components/Header";
 
 //import Actions
-import { actionCreators as userActions } from "../redux/modules/user";
+import user, { actionCreators as userActions } from "../redux/modules/user";
+
+//import components
+import Upload from "../shared/Upload"
 
 function Copyright(props) {
     return (
@@ -45,32 +48,35 @@ export default function MyPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const _user = useSelector(state => state.user);
+    const _image = useSelector(state => state.image);
+
+    console.log(_user);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         // eslint-disable-next-line no-console
-        console.log({
-        email: data.get('email'),
-        nickname: data.get('nickname'),
-        password: data.get('password'),
-        });
+
         const user_data={
-            username : data.get('email'),
-            password : data.get('password'),
+            username : _user.user.user_id,
             nickname : data.get('nickname'),
-            user_profile : "https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211010_208%2F1633837607425u4lqM_JPEG%2FO1CN01VExWw01cXsmQSROKS_2034743611.jpg&type=sc960_832",
+            user_profile : _image.image_url?_image.image_url:"https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/309/59932b0eb046f9fa3e063b8875032edd_crop.jpeg",
         }
 
+        console.log(user_data);
+
         instance.defaults.headers.common["X-AUTH-TOKEN"] = "";
-            instance.post('/api/signup',user_data)
-            .then((res) => {
-                window.alert("회원가입이 완료되었습니다.")
-                console.log(res);
-                navigate("/loginNew");
-            })
-            .catch((err,res) => {
-                console.log(err)
-            });
+
+            // instance.put(`/api/signup/${_user.user.id}`,user_data)
+            // .then((res) => {
+            //     window.alert("개인정보 수정이 완료되었습니다.")
+            //     console.log(res);
+            //     navigate("/");
+            // })
+            // .catch((err,res) => {
+            //     console.log(err)
+            // });
     };
 
     return (
@@ -91,20 +97,12 @@ export default function MyPage() {
                 <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-                Sign up
+                개인정보 수정
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                 <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    />
-                </Grid>
+
+                <Upload/>
                 <Grid item xs={12}>
                     <TextField
                     required
@@ -115,17 +113,6 @@ export default function MyPage() {
                     autoComplete="nickname"
                     />
                 </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
-                    />
-                </Grid>
                 </Grid>
                 <Button
                 type="submit"
@@ -133,7 +120,7 @@ export default function MyPage() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 >
-                Sign Up
+                수정
                 </Button>
 
             </Box>

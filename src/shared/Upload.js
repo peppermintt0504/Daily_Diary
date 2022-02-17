@@ -23,6 +23,8 @@ const Upload = (props) => {
     const fileInput = React.useRef();
     const dispatch = useDispatch();
     let files = [];
+    
+    let line = parseInt(files.length/3)+1
 
     if(_image.image_url){
         files=[..._image.image_url]
@@ -52,7 +54,7 @@ const Upload = (props) => {
             <input ref={fileInput} onChange={selectFile} type="file"/>
             {files.length!==0?<Text margin="20px">미리보기</Text>:""}
             {files.length ===0 ?"" : 
-                <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+                <ImageList sx={{ width: 500, height: 150*line }} cols={3} rowHeight={164}>
                 {files.map((item,index) => (
                     <ImageListItem key={index}>
                     <img

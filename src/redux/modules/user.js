@@ -57,6 +57,7 @@ const loginCheck=() =>{
 
             instance.defaults.headers.common["X-AUTH-TOKEN"] = Auth; 
             instance.post('/api/user',{}).then(response=>{
+                console.log(response);
                 const _user = {
                 user_id : response.data.username,
                 nickname : response.data.nickname,

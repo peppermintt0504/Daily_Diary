@@ -58,7 +58,7 @@ function Main() {
             <Grid  height='300px' width='1200px' margin='120px 0 50px'> 
                     <Image src='/img/main1.png' width='100%' shape='imagePost' box_shadow='2px 2px 5px lightgrey' />
                 </Grid>
-                <Grid margin='0 auto' is_flex justify_content='space-between' flex_wrap='wrap' > 
+                <Grid margin='0 auto' is_flex justify_content='flex-start' flex_wrap='wrap' > 
                     {_diary.list?_diary.list.map((D, idx) => {
                         if(secret){
                             if(D.is_open){
