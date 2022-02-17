@@ -3,12 +3,19 @@
 
 <h2>🎡 프로젝트 소개</h2>
 
-<br/><br/><br/><br/><br/><br/>
+<br/>
+오늘 하루 어땠나요?
 
+힘든 날이었나요? 좋은 날이었나요? 자칫하면 의미없는 날로 지나갈 수 있는 
+매일의 일상을 기록하며, 오늘의 나를 되돌아 보고, 또 다른 유저들과 일상을 공유하며, 
+시시콜콜한 이야기, 감정을 나누어 볼수 있는 데일리 다이어리를 적어봅니다~!!
+<br/><br/>
 
 <h2>🎥 Together Logo & Video</h2>
 <h3>logo</h3>
-<br/><br/><br/>
+<br/>
+![Logo2](https://user-images.githubusercontent.com/73277351/154501537-07674d23-dfc6-4ef4-937b-ccb7035773aa.png)
+
 <h3>Youtube</h3>
 <br/><br/><br/>
 
