@@ -23,6 +23,7 @@ function Detail(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const _diary = useSelector(state => state.diary);
+    const _user = useSelector(state => state.user);
     
     const params = useParams()
     const diary_uid = params.diary_uid
@@ -73,13 +74,12 @@ function Detail(props) {
                         <Text padding ='25px 10px 0'>{diary?diary.content:""}</Text>
                     </Grid>
                     <Grid is_flex justify_content='center' > 
-                        <Button height='40px' width='65px' margin=' 10px' BG_color='#e9ecef' Border='none' B_radius='10px'
-                            _onClick={diary_update}>수정
-                        </Button>
+                        {_user.user.nickname===diary.nickname?
                         <Button 
-                            height='40px' width='65px' BG_color='#e9ecef' Border='none' B_radius='10px' margin='0 10px 0 0'
-                            _onClick={diary_del}>삭제
-                        </Button>
+                        height='40px' width='65px' BG_color='#e9ecef' Border='none' B_radius='10px' margin='0 10px 0 0'
+                        _onClick={diary_del}>삭제
+                    </Button>:""
+                    }
                     </Grid>
                 </Grid>
             </Grid>
