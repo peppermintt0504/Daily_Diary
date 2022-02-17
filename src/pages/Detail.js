@@ -24,6 +24,7 @@ function Detail(props) {
     const navigate = useNavigate();
     const _diary = useSelector(state => state.diary);
     const _user = useSelector(state => state.user);
+
     
     const params = useParams()
     const diary_uid = params.diary_uid
@@ -36,16 +37,22 @@ function Detail(props) {
         dispatch(diaryActions.getDiary())
         
     },[]);
-
+    
     const diary = _diary.list.reduce((x,v,i) => {
         return v.id === parseInt(diary_uid)?v:x},"");
-    console.log(diary);
-
-    const diary_del = () => {
-        dispatch(diaryActions.delDiarydata(diary.id))
-        navigate("/")  
-    }
-
+        
+        
+        const temp = diary.createdAt.split("T")
+        const day = temp[0].split("-");
+        const t = temp[1].split(":");
+        const time = day[0] + "년 " +day[1] +"월 " +day[2] +"일 " + t[0] + ":" + t[1];
+        console.log(diary);
+        
+        const diary_del = () => {
+            dispatch(diaryActions.delDiarydata(diary.id))
+            navigate("/")  
+        }
+        
     const diary_update = () => {
         navigate("/diaryedit/"+params.diary_uid)  
     }
@@ -62,7 +69,7 @@ function Detail(props) {
                                 <Image width='50%' shape='circle' size='40' src={`/emozi/${diary?diary.emotion:""}.jpeg`}></Image>
                                 <Text width='50%' F_weight='600'>{diary?diary.emotion:""}</Text>
                             </Grid>
-                            <Text width='50%' is_flex justify_content='flex-end'>{diary?diary.createdAt:""}</Text>
+                            <Text width='50%' is_flex justify_content='flex-end'>{diary?time:""}</Text>
                         </Grid>
                     </Grid>
                     <Grid width='495px' is_flex flex_direction='column' justify_content='center' align_items='center' padding='20px 0'>

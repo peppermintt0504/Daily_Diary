@@ -87,7 +87,7 @@ const Header = (props) => {
             <Grid width='1200px' margin='0 auto' is_flex justify_content='space-between' >
                     <Grid cursor={"pointer"} width="100px" height='55px'
                         _onClick= {() => navigate("/")}>
-                        <Image src='/img/logo2.png' width='100%' height='100%' shape='imagePost'/>
+                        <Image src='/img/Logo2.png' width='100%' height='100%' shape='imagePost'/>
                         
                     </Grid>
                     <Grid flex_direction= "row-reverse" justify_content="space-between" is_flex>
